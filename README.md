@@ -21,6 +21,7 @@ Before any prototype work begins, the system establishes a shared foundation:
 
 1. **Business Requirements Gathering** - Clarifies customer needs, business intent, and project purpose
 2. **Style Token Extraction** - Creates shared CSS design tokens for visual consistency
+3. **Project Setup** - Initializes the React application, creates shared systems structure, and generates the landing page
 
 This foundation is created once and reused across all prototypes in the project.
 
@@ -35,12 +36,13 @@ Each prototype cycle is independent, but all prototypes share the same foundatio
 
 ## Workflow
 
-The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md) coordinates four specialized agents:
+The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md) coordinates five specialized agents:
 
 1. **[Business Requirements Agent](.claude/agents/business-requirements-agent.md)** - Gathers business context
 2. **[Style Token Extraction Agent](.claude/agents/style-token-extraction-agent.md)** - Extracts design tokens
-3. **[Requirements Research Agent](.claude/agents/requirements-research-agent.md)** - Clarifies prototype requirements
-4. **[Prototype Agent](.claude/agents/prototype-agent.md)** - Generates the prototype
+3. **[Project Setup Agent](.claude/agents/project-setup-agent.md)** - Initializes React app and creates landing page
+4. **[Requirements Research Agent](.claude/agents/requirements-research-agent.md)** - Clarifies prototype requirements
+5. **[Prototype Agent](.claude/agents/prototype-agent.md)** - Generates the prototype
 
 ### Key Rules
 
@@ -53,19 +55,28 @@ The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md)
 
 ### Step 1: Run the Setup Script
 
-Create an empty directory for your project, navigate to it, and execute the setup script:
+Execute the setup script from anywhere:
 
 ```powershell
-mkdir my-prototype-project
-cd my-prototype-project
-path\to\setup-proto.ps1
+.\setup-proto.ps1
 ```
 
-This script will:
-- Clone the `agent-prototyping-system` repository into the current directory
-- Start Claude Code with the Opus 4.5 model
+The script will:
+- Prompt you for a project folder name
+- Create the project folder
+- Clone the `agent-prototyping-system` repository into the folder
+- Display next steps for starting the agent system
 
-### Step 2: Start the Project Orchestration Agent
+### Step 2: Navigate and Start Claude Code
+
+Navigate to your new project folder and start Claude Code:
+
+```powershell
+cd your-project-folder-name
+claude --model claude-4-5-opus
+```
+
+### Step 3: Start the Project Orchestration Agent
 
 Once Claude Code is running, load the Project Orchestration Agent:
 
@@ -102,7 +113,6 @@ The orchestrator will:
 ## Requirements
 
 - [Claude Code CLI](https://claude.com/claude-code)
-- Git
 - PowerShell (for running setup-proto.ps1)
 
 ## Notes
