@@ -53,15 +53,16 @@ The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md)
 
 ### Step 1: Run the Setup Script
 
-Execute the setup script to clone the repository and prepare the environment:
+Create an empty directory for your project, navigate to it, and execute the setup script:
 
-```bash
-./setup-proto.sh
+```powershell
+mkdir my-prototype-project
+cd my-prototype-project
+path\to\setup-proto.ps1
 ```
 
 This script will:
-- Clone the `agent-prototyping-system` repository (if not already present)
-- Navigate to the project directory
+- Clone the `agent-prototyping-system` repository into the current directory
 - Start Claude Code with the Opus 4.5 model
 
 ### Step 2: Start the Project Orchestration Agent
@@ -94,7 +95,7 @@ The orchestrator will:
 │       ├── requirements-research-agent.md
 │       └── prototype-agent.md
 ├── docs/                     # Documentation and guidelines
-├── setup-proto.sh           # Setup script
+├── setup-proto.ps1          # Setup script
 └── README.md               # This file
 ```
 
@@ -102,7 +103,7 @@ The orchestrator will:
 
 - [Claude Code CLI](https://claude.com/claude-code)
 - Git
-- Bash (for running setup-proto.sh)
+- PowerShell (for running setup-proto.ps1)
 
 ## Notes
 
