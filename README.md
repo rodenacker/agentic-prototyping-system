@@ -2,6 +2,49 @@
 
 A structured, agent-based system for creating consistent, defensible prototypes through coordinated AI workflows.
 
+## Getting Started
+
+### Step 1: Run the Setup Script
+
+Execute the setup script from anywhere:
+
+```powershell
+.\setup-proto.ps1
+```
+
+The script will:
+- Prompt you for a project folder name
+- Create the project folder
+- Clone the `agent-prototyping-system` repository into the folder
+- Display next steps for starting the agent system
+
+### Step 2: Navigate and Start Claude Code
+
+Navigate to your new project folder and start Claude Code:
+
+```powershell
+cd your-project-folder-name
+claude --model claude-4-5-opus
+```
+
+### Step 3: Start the Project Orchestration Agent
+
+Once Claude Code is running, load the Project Orchestration Agent:
+
+```
+/agentic .claude/agents/project-orchestration-agent.md
+```
+
+The orchestrator will guide you through the workflow, starting with Phase 1 (Project Foundation).
+
+### What to Expect
+
+The orchestrator will:
+1. Ask targeted questions to initiate the business requirements agent
+2. Guide you through style token extraction
+3. Help you create as many prototypes as needed, each following the structured cycle
+4. Ensure all dependencies are met before proceeding to the next phase
+
 ## Purpose
 
 This framework provides a systematic approach to prototype development by orchestrating specialized AI agents, each responsible for a specific phase of the prototyping process. The goal is to ensure:
@@ -189,49 +232,6 @@ Agents may invoke skills during their workflow:
 - **No shortcuts**: Foundation phase must be completed before prototype work begins
 - **User approvals**: You must explicitly approve requirement documents before implementation
 - **Manual server start**: Dev server must always be started manually by you (never automatically)
-
-## Getting Started
-
-### Step 1: Run the Setup Script
-
-Execute the setup script from anywhere:
-
-```powershell
-.\setup-proto.ps1
-```
-
-The script will:
-- Prompt you for a project folder name
-- Create the project folder
-- Clone the `agent-prototyping-system` repository into the folder
-- Display next steps for starting the agent system
-
-### Step 2: Navigate and Start Claude Code
-
-Navigate to your new project folder and start Claude Code:
-
-```powershell
-cd your-project-folder-name
-claude --model claude-4-5-opus
-```
-
-### Step 3: Start the Project Orchestration Agent
-
-Once Claude Code is running, load the Project Orchestration Agent:
-
-```
-/agentic .claude/agents/project-orchestration-agent.md
-```
-
-The orchestrator will guide you through the workflow, starting with Phase 1 (Project Foundation).
-
-### What to Expect
-
-The orchestrator will:
-1. Ask targeted questions to initiate the business requirements agent
-2. Guide you through style token extraction
-3. Help you create as many prototypes as needed, each following the structured cycle
-4. Ensure all dependencies are met before proceeding to the next phase
 
 ## Project Structure
 
