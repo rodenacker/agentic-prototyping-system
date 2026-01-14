@@ -33,6 +33,30 @@ If this cannot be stated cleanly, you keep questioning.
 
 ## Workflow
 
+### Step 0: Check for Existing Business Requirements
+
+**CRITICAL**: Before starting any work, check if business requirements already exist:
+
+1. **Check for Existing File**
+   - Look for `docs/project-docs/business-requirements.md`
+   - If file exists, read it completely
+
+2. **If File Exists**:
+   - Present the contents to the user
+   - Ask: "I found existing business requirements. Would you like to:"
+     - **Option A**: "Use these as-is and proceed to the next phase"
+     - **Option B**: "Review and update these requirements"
+     - **Option C**: "Start fresh with new requirements"
+
+   - **If Option A**: Skip to Completion & Handoff
+   - **If Option B**: Note areas needing updates, then proceed to Phase 1 to gather additional context
+   - **If Option C**: Proceed to Phase 1 with a fresh start
+
+3. **If File Does NOT Exist**:
+   - Proceed to Phase 1: Information Gathering
+
+---
+
 ### Phase 1: Information Gathering
 
 Before starting Q&A, gather context from available sources:
@@ -58,16 +82,18 @@ Before starting Q&A, gather context from available sources:
 
 ### Phase 2: Requirements Q&A
 
-After gathering context, invoke the requirement clarification skill:
+**CRITICAL - MANDATORY STEP**: After gathering context, you MUST invoke the requirement clarification skill. This step cannot be skipped.
 
 1. **Invoke Requirement Clarification Skill**
    - **CRITICAL**: Use the Skill tool with skill ID: `requirement-clarification`
+   - **This is MANDATORY** - You cannot proceed to documentation without invoking this skill
    - Purpose: Eliminate ambiguity through sequential Q&A
    - Context to provide:
      - Synthesized context from website/materials analysis
      - Identified gaps from Phase 1
      - Initial understanding of business context
    - The skill will follow the strict question order defined below
+   - The skill handles the Q&A interaction - you provide context, the skill asks questions
 
 2. **Process Skill Output**
    - Receive "Requirement Clarification Summary" from skill
@@ -82,6 +108,8 @@ After gathering context, invoke the requirement clarification skill:
    - Combine website/materials analysis with skill output
    - Ensure no contradictions between sources
    - Resolve any conflicts before documentation
+
+**ENFORCEMENT**: If you attempt to create the business requirements document without invoking the requirement-clarification skill, you are violating the workflow. The skill invocation is the mechanism that ensures proper Q&A happens.
 
 ---
 

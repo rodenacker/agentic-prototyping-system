@@ -174,14 +174,14 @@ Your first responsibility is to initiate Phase 1.
 When this agent is first invoked:
 
 1. **Check Project State**
-   - Check if `docs/project-docs/` exists with business requirements
-   - Check if `prototypes/shared/styles/` exists with design tokens
-   - Check if `prototypes/` has been initialized with React app
+   - Check if `docs/project-docs/business-requirements.md` file exists
+   - Check if `prototypes/shared/styles/design-tokens.css` file exists (or similar design tokens file)
+   - Check if `prototypes/package.json` exists (indicates React app initialization)
 
 2. **Determine Current Phase**
-   - If no business requirements: Start Phase 1, Step 1
-   - If business requirements exist but no design tokens: Start Phase 1, Step 2
-   - If business requirements and design tokens exist but no React app: Start Phase 1, Step 3
+   - If no business requirements file: Start Phase 1, Step 1
+   - If business requirements file exists but no design tokens file: Start Phase 1, Step 2
+   - If business requirements and design tokens files exist but no React app: Start Phase 1, Step 3
    - If all Phase 1 complete: Start Phase 2 (prototype cycle)
 
 3. **Prompt User Immediately**
