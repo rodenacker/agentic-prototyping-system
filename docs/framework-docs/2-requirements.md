@@ -74,6 +74,20 @@ docs/
 - SVG icons should be stored in `prototypes/shared/assets/` directory
 - No raster image formats (PNG, JPG, etc.) for icons
 
+**Data Storage Requirements (Optional)**:
+
+LocalStorage can be used for prototype data persistence if desired. If the user chooses to use LocalStorage:
+
+- Create a shared storage utility in `prototypes/shared/utils/storage.js` during project setup
+- All data generated or captured in prototypes should automatically persist to LocalStorage
+- Data is accessible across all prototypes (shared storage namespace)
+- Use consistent key naming convention (e.g., `prototype_data_[key]`)
+- Storage utility must handle JSON serialization/deserialization automatically
+- Include error handling for storage quota exceeded scenarios
+- Include helper functions: `get(key)`, `set(key, value)`, `update(key, updater)`, `delete(key)`, `getAll()`, `clear()`
+- Inform the user that data persists in browser and is shared across prototypes
+- Clearing browser data will reset all prototype data
+
 ### Branding and Styling
 
 - Reference website will be provided before code development begins

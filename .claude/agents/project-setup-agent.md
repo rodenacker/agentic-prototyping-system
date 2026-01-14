@@ -110,7 +110,24 @@ Within `prototypes/`, create:
 - Icon subdirectory structure in `shared/assets/icons/`
 - Any other asset organization specified in requirements
 
-### 3. Create Required Core UI Components
+### 3. Data Storage Setup (Optional)
+
+**Prompt the user**: "Would you like to use LocalStorage for data persistence across prototypes? This will automatically save and share data between all prototypes."
+
+**If user says YES**:
+- Create a shared storage utility in `shared/utils/storage.js`
+- Follow the **Data Storage Requirements (Optional)** section in `docs/framework-docs/2-requirements.md`
+- Implement all specifications exactly as defined in the requirements document
+- Inform the user that:
+  - Data will persist in the browser automatically
+  - Data is shared across all prototypes
+  - Clearing browser data will reset prototype data
+
+**If user says NO**:
+- Skip storage utility creation
+- Prototypes will handle their own data management as needed
+
+### 4. Create Required Core UI Components
 
 **CRITICAL**: Based on requirements document, create these components in `shared/components/`:
 
@@ -127,7 +144,7 @@ Within `prototypes/`, create:
 
 **Note**: Read requirements document for exact specifications and any additional required components.
 
-### 4. Set Up Base Styles
+### 5. Set Up Base Styles
 
 In `prototypes/shared/styles/`:
 - Ensure design tokens file exists (created by previous agent)
@@ -155,7 +172,7 @@ Create `animations.css` with:
 - Grid system structure
 - Animation philosophy and guidelines
 
-### 5. Generate Landing Page
+### 6. Generate Landing Page
 
 Create a minimal landing page in `prototypes/src/`:
 - **Component**: `App.jsx` or `App.tsx`
@@ -168,7 +185,7 @@ Create a minimal landing page in `prototypes/src/`:
 - **NO**: Feature lists, navigation menus, or complex layouts initially
 - **Structure**: Easy to update with prototype links later
 
-### 6. Configure Development Environment
+### 7. Configure Development Environment
 
 Set up `package.json` with:
 - Required dependencies (React, ReactDOM, etc.)
@@ -177,7 +194,7 @@ Set up `package.json` with:
   - `npm build` - production build
 - Ensure all scripts work correctly
 
-### 7. Verify Setup
+### 8. Verify Setup
 
 Test that:
 - `npm install` completes successfully
