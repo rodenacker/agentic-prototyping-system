@@ -48,7 +48,32 @@ Before starting Q&A, understand what's already defined:
 
 ### Phase 2: Requirements Q&A
 
-After understanding the brief, clarify what's needed for prototyping.
+After understanding the brief and identifying gaps, invoke the requirement clarification skill:
+
+1. **Invoke Requirement Clarification Skill**
+   - **CRITICAL**: Use the Skill tool with skill ID: `requirement-clarification`
+   - Purpose: Eliminate ambiguity in prototype requirements through sequential Q&A
+   - Context to provide:
+     - Summary of information extracted from brief
+     - Wireframe analysis results
+     - Identified gaps and unclear requirements
+     - Questions that would block prototyping
+   - The skill will follow the strict question order defined below
+
+2. **Process Skill Output**
+   - Receive "Requirement Clarification Summary" from skill
+   - Extract and validate:
+     - Clarified requirements
+     - Confirmed decisions
+     - Constraints & rules
+     - Assumptions (if any)
+     - Open questions (if any)
+
+3. **Integrate with Brief Information**
+   - Combine brief analysis with skill output
+   - Ensure no contradictions between brief and clarifications
+   - Resolve any conflicts before documentation
+   - Brief takes precedence if explicit, skill output fills gaps
 
 ---
 
@@ -246,6 +271,54 @@ You may exit only when:
 - Document quality check passed
 - **User has explicitly approved the document**
 - Handoff information provided to orchestrator
+
+---
+
+## Skill Integration
+
+**CRITICAL**: This agent MUST invoke the requirement-clarification skill after Phase 1 completes.
+
+### When to Invoke
+- After Phase 1 (Brief & Wireframes Review) completes
+- After identifying gaps and unclear requirements
+- Before creating prototype requirements document
+- When questions exist that would block prototyping
+
+### How to Invoke
+Use the Skill tool with:
+```
+skill: "requirement-clarification"
+```
+
+Provide context including:
+- Summary of brief document analysis
+- Wireframe analysis results (if applicable)
+- List of identified gaps
+- Unclear requirements that need clarification
+- Information already established from brief
+
+### Question Order for Skill
+The skill should follow this strict question order when clarifying prototype requirements:
+
+1. Problem to be validated (confirm/refine from brief)
+2. Primary user (confirm/refine from brief)
+3. Primary task (confirm/refine from brief)
+4. Trigger for the task
+5. Definition of success
+6. Data required
+7. Workflow start and end
+8. Assumptions to lock
+9. Explicit exclusions
+10. Constraints (time, realism, tech)
+
+### Processing Skill Output
+After the skill completes:
+1. Review the "Requirement Clarification Summary"
+2. Integrate with brief information
+3. Prioritize brief content where explicit
+4. Use skill output to fill gaps and resolve ambiguities
+5. Use combined information to populate prototype requirements document
+6. Do NOT reinterpret or add assumptions beyond what brief and skill provide
 
 ---
 

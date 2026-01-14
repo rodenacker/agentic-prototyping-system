@@ -129,7 +129,12 @@ docs/
 
 ## Development Workflow
 
-See [3-workflow.md](3-workflow.md) for complete workflow details.
+The workflow is managed by the [Project Orchestration Agent](../../.claude/agents/project-orchestration-agent.md), which coordinates specialized agents through two phases:
+
+- **Phase 1: Project Foundation** (once per project) - Business requirements, design tokens, application setup
+- **Phase 2: Prototype Cycle** (repeat per prototype) - Requirements research, prototype implementation
+
+For complete workflow details, see the [README.md](../../README.md#detailed-workflow).
 
 ## Testing and Validation
 

@@ -34,15 +34,152 @@ For each individual prototype:
 
 Each prototype cycle is independent, but all prototypes share the same foundational elements.
 
-## Workflow
+## Detailed Workflow
 
-The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md) coordinates five specialized agents:
+The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md) coordinates five specialized agents through a two-phase workflow:
 
-1. **[Business Requirements Agent](.claude/agents/business-requirements-agent.md)** - Gathers business context
-2. **[Style Token Extraction Agent](.claude/agents/style-token-extraction-agent.md)** - Extracts design tokens
-3. **[Project Setup Agent](.claude/agents/project-setup-agent.md)** - Initializes React app and creates landing page
-4. **[Requirements Research Agent](.claude/agents/requirements-research-agent.md)** - Clarifies prototype requirements
-5. **[Prototype Agent](.claude/agents/prototype-agent.md)** - Generates the prototype
+### Phase 1: Project Foundation (One-Time Setup)
+
+Complete these steps once at the beginning of the project:
+
+#### 1. Business Requirements Gathering
+**Agent**: [Business Requirements Agent](.claude/agents/business-requirements-agent.md)
+
+The agent will:
+- Request your organization's website URL and analyze it
+- Ask for any project briefs or meeting notes (optional)
+- Conduct sequential Q&A to clarify business intent and project purpose
+- Generate a business requirements document in `docs/project-docs/`
+
+**What you'll answer:**
+- Business problem and objective
+- Target users and their needs
+- Organizational value and success criteria
+- Constraints and scope boundaries
+
+**Output**: `docs/project-docs/business-requirements.md`
+
+**User Action Required**: Review and approve the document before proceeding
+
+#### 2. Design Token Extraction
+**Agent**: [Style Token Extraction Agent](.claude/agents/style-token-extraction-agent.md)
+
+The agent will:
+- Extract colors, fonts, and brand assets from your website
+- Create CSS design tokens (CSS variables)
+- Set up shared CSS foundation in `prototypes/shared/styles/`
+
+**Output**: `prototypes/shared/styles/design-tokens.css`
+
+#### 3. Application Setup
+**Agent**: [Project Setup Agent](.claude/agents/project-docs-agent.md)
+
+The agent will:
+- Initialize React application in `prototypes/` folder
+- Create shared systems structure (`components/`, `styles/`, `assets/`, `utils/`)
+- Set up required core UI components (confirmation dialog, toast notifications)
+- Configure development environment and build tools
+- Generate landing page with empty state placeholder
+
+**Output**:
+- React application structure
+- Shared component foundation
+- Landing page at `prototypes/src/App.jsx`
+- Working development environment
+
+**User Action Required**: Manually start dev server (`npm start`) to verify setup
+
+**Completion Criteria**:
+- ✅ Business requirements documented
+- ✅ Design tokens extracted and stored
+- ✅ Development environment ready
+- ✅ Landing page created and verified
+
+---
+
+### Phase 2: Prototype Cycle (Repeat Per Prototype)
+
+Complete these steps for each prototype you create:
+
+#### 1. Brief & Wireframes Review
+**Agent**: [Requirements Research Agent](.claude/agents/requirements-research-agent.md)
+
+**Before starting**: Create a brief file at `docs/[prototype-name]/brief.md`
+
+The agent will:
+- Read your brief document completely
+- Review any wireframes you provide
+- Identify what's unclear or missing
+- Prepare focused clarification questions
+
+#### 2. Requirements Q&A
+
+The agent will:
+- Invoke the requirement clarification skill
+- Ask sequential questions to eliminate ambiguity
+- Clarify prototype-specific requirements needed for implementation
+
+**What you'll answer:**
+- Problem to be validated
+- Primary user and core tasks
+- Success criteria and required data
+- Workflow boundaries and constraints
+- Explicit non-goals
+
+#### 3. Requirements Documentation
+
+The agent will:
+- Create prototype requirements document
+- Include acceptance criteria and documented assumptions
+- Save to `docs/[prototype-name]/requirements.md`
+
+**Output**: `docs/[prototype-name]/requirements.md`
+
+**User Action Required**: Review and approve the document before proceeding
+
+#### 4. Prototype Implementation
+**Agent**: [Prototype Agent](.claude/agents/prototype-agent.md)
+
+The agent will:
+- Read all requirement documents and create implementation checklist
+- Review existing shared components for reuse
+- Create new shared components in `prototypes/shared/components/` as needed
+- Build prototype structure in `prototypes/[prototype-name]/`
+- Implement UI screens using shared components and styling
+- Assemble screens into fully clickable prototype
+- **Update landing page** with link to new prototype
+- Run comprehensive code review checklist
+
+**Output**:
+- Prototype code in `prototypes/[prototype-name]/`
+- New shared components (if created)
+- Updated landing page with prototype link
+
+**User Action Required**:
+1. Start dev server (if not running): `npm start`
+2. Test the prototype thoroughly
+3. Provide feedback or type 'approve' to complete
+
+#### 5. Validation & Revision
+
+If issues are found:
+- Report specific issues to the agent
+- Agent will fix issues in tightly scoped changes
+- Agent will re-run code review checklist
+- Test again until approved
+
+**Focus**: One round of feedback and fixes per prototype
+
+---
+
+### Managed Skills
+
+Agents may invoke skills during their workflow:
+
+**requirement-clarification**
+- Purpose: Sequential Q&A to eliminate requirement ambiguity
+- Used by: Business Requirements Agent, Requirements Research Agent
+- Automatically invoked when needed during agent workflow
 
 ### Key Rules
 
@@ -50,6 +187,8 @@ The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md)
 - **One agent at a time**: No interleaving of agent conversations
 - **Document handoffs**: Each agent's output becomes immutable input for the next
 - **No shortcuts**: Foundation phase must be completed before prototype work begins
+- **User approvals**: You must explicitly approve requirement documents before implementation
+- **Manual server start**: Dev server must always be started manually by you (never automatically)
 
 ## Getting Started
 

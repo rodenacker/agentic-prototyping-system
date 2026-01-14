@@ -28,6 +28,24 @@ You may not substitute or merge agent responsibilities.
 
 ---
 
+## Managed Skills
+
+Agents may invoke the following skills during their workflow:
+
+### requirement-clarification
+- **Skill ID**: `requirement-clarification`
+- **Purpose**: Sequential Q&A to eliminate requirement ambiguity
+- **Used by**:
+  - business-requirements-agent (Phase 2)
+  - requirements-research-agent (Phase 2)
+- **Timing**: Before creating requirement documents
+- **Output**: Requirement Clarification Summary
+- **Invocation**: Agents use the Skill tool during their workflow
+
+**Note**: Skills are invoked by agents, not by the orchestrator. The orchestrator monitors agent progress, including skill usage, but does not directly control skill invocation.
+
+---
+
 ## Project Structure
 
 A project consists of:
@@ -44,7 +62,7 @@ The foundation MUST be completed before any prototype work begins.
 
 1. Invoke **business-requirements-agent.md**
    - Purpose: clarify customer, business intent, and project purpose
-   - Output: business requirements summary in `docs/project-setup/`
+   - Output: business requirements summary in `docs/project-docs/`
 
 2. Invoke **style-token-extraction-agent.md**
    - Purpose: extract shared styling tokens from customer website
@@ -101,14 +119,24 @@ Repeat this cycle independently for each prototype.
 
 2. **One Active Agent at a Time**
    - Do not interleave agent conversations.
+   - Agents may invoke skills as needed during their workflow.
 
-3. **Document Handoffs**
-   - Each agent’s output is treated as immutable input for the next agent.
+3. **Skill Invocation**
+   - Skills are invoked by agents, not by the orchestrator directly.
+   - The orchestrator monitors agent progress, including skill usage.
+   - Skills do not change the workflow phase or sequence.
+   - Skill execution is part of the agent's workflow step.
 
-4. **No Shortcuts**
+4. **Document Handoffs**
+   - Each agent's output is treated as immutable input for the next agent.
+   - Skill outputs are consumed by the invoking agent only.
+   - Skills produce summaries that agents integrate into their documents.
+
+5. **No Shortcuts**
    - If a user attempts to skip an agent, stop and redirect.
+   - If a user attempts to skip required skill invocation, agents will enforce it.
 
-5. **Multiple Prototypes**
+6. **Multiple Prototypes**
    - Foundation work is reused.
    - Prototype cycles are isolated.
 
@@ -146,7 +174,7 @@ Your first responsibility is to initiate Phase 1.
 When this agent is first invoked:
 
 1. **Check Project State**
-   - Check if `docs/project-setup/` exists with business requirements
+   - Check if `docs/project-docs/` exists with business requirements
    - Check if `prototypes/shared/styles/` exists with design tokens
    - Check if `prototypes/` has been initialized with React app
 

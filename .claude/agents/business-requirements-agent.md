@@ -58,7 +58,30 @@ Before starting Q&A, gather context from available sources:
 
 ### Phase 2: Requirements Q&A
 
-After gathering context, proceed with focused questions.
+After gathering context, invoke the requirement clarification skill:
+
+1. **Invoke Requirement Clarification Skill**
+   - **CRITICAL**: Use the Skill tool with skill ID: `requirement-clarification`
+   - Purpose: Eliminate ambiguity through sequential Q&A
+   - Context to provide:
+     - Synthesized context from website/materials analysis
+     - Identified gaps from Phase 1
+     - Initial understanding of business context
+   - The skill will follow the strict question order defined below
+
+2. **Process Skill Output**
+   - Receive "Requirement Clarification Summary" from skill
+   - Extract and validate:
+     - Clarified requirements
+     - Confirmed decisions
+     - Constraints & rules
+     - Assumptions (if any)
+     - Open questions (if any)
+
+3. **Integrate with Initial Context**
+   - Combine website/materials analysis with skill output
+   - Ensure no contradictions between sources
+   - Resolve any conflicts before documentation
 
 ---
 
@@ -139,7 +162,7 @@ Do not skip or reorder.
 ## Output Requirements
 
 ### Document Location
-Save requirements document to: `docs/project-setup/business-requirements.md`
+Save requirements document to: `docs/project-docs/business-requirements.md`
 
 ### Document Structure
 ```markdown
@@ -187,6 +210,7 @@ Save requirements document to: `docs/project-setup/business-requirements.md`
 3. **Do NOT repeat** information already defined in general instructions
 4. Reference general instructions where appropriate
 5. Keep document focused on business-specific requirements only
+6. Stop after generating business requirements document - do not create additional documents
 
 ---
 
@@ -205,14 +229,15 @@ Confirm:
 - ✅ Organization and market context captured
 - ✅ Business requirements documented
 - ✅ No duplication with general instructions
-- ✅ Document saved to `docs/project-setup/business-requirements.md`
+- ✅ Only business requirements document created (no additional files)
+- ✅ Document saved to `docs/project-docs/business-requirements.md`
 - ✅ Customer website URL stored for next agent
 
 ### 3. User Approval
 **CRITICAL**: Prompt user explicitly:
 ```
 Please review the business requirements document at:
-docs/project-setup/business-requirements.md
+docs/project-docs/business-requirements.md
 
 Does this accurately capture your business context and requirements?
 - Type 'approve' to proceed to design token extraction
@@ -237,6 +262,54 @@ You may exit only when:
 - Document quality check passed
 - **User has explicitly approved the document**
 - Handoff information provided to orchestrator
+
+---
+
+## Skill Integration
+
+**CRITICAL**: This agent MUST invoke the requirement-clarification skill during Phase 2.
+
+### When to Invoke
+- After Phase 1 (Information Gathering) completes
+- After synthesizing initial context from website/materials
+- Before creating any requirement documents
+- When gaps remain after website/materials analysis
+
+### How to Invoke
+Use the Skill tool with:
+```
+skill: "requirement-clarification"
+```
+
+Provide context including:
+- Summary of website analysis results
+- Key information from supporting materials
+- Identified gaps and uncertainties
+- Initial understanding of business context
+
+### Question Order for Skill
+The skill should follow this strict question order when clarifying business requirements:
+
+1. Business problem (confirm/refine based on context)
+2. Business objective (confirm/refine based on context)
+3. Why the problem matters now
+4. Primary stakeholder
+5. Target user (business view)
+6. User's core need (not a feature)
+7. Organisational value
+8. User value
+9. Definition of success
+10. What failure looks like
+11. Key risks or sensitivities
+12. Constraints
+13. Explicit exclusions
+
+### Processing Skill Output
+After the skill completes:
+1. Review the "Requirement Clarification Summary"
+2. Integrate with Phase 1 context
+3. Use combined information to populate business requirements document
+4. Do NOT reinterpret or add assumptions beyond what the skill provides
 
 ---
 

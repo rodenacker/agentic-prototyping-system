@@ -28,7 +28,7 @@ Initialize a working React application with:
 ## Prerequisites
 
 Before you begin, ensure these artifacts exist:
-1. Business requirements document in `docs/project-setup/`
+1. Business requirements document in `docs/project-docs/`
 2. Design tokens CSS file in `prototypes/shared/styles/`
 
 If either is missing, **stop immediately** and report what is needed.
@@ -81,7 +81,7 @@ prototypes/
   package.json      # Dependencies and scripts
 
 docs/
-  project-setup/    # Project requirements (already exists)
+  project-docs/    # Project requirements (already exists)
   design-system/    # Design system docs (create if needed)
 ```
 
@@ -181,12 +181,19 @@ Set up `package.json` with:
 
 Test that:
 - `npm install` completes successfully
-- `npm start` launches the dev server
-- Landing page displays correctly in browser
-- Design tokens are being applied
 - **All CRITICAL components exist** (confirmation dialog, toast system)
 - **All required styles exist** (base, layout, animations)
 - **Icon system is set up** (folder structure in place)
+
+**CRITICAL - Server Start Restriction:**
+- **NEVER** run `npm start` or start the dev server automatically
+- **ALWAYS** prompt the user to start the server manually when testing is needed
+- Only instruct: "Please run `npm start` to verify the setup"
+- This rule applies to ALL agents - dev server must be started by user only
+
+After user starts server, verify:
+- Landing page displays correctly in browser
+- Design tokens are being applied
 - No console errors
 - **Accessibility basics work** (keyboard navigation, semantic HTML)
 
@@ -263,6 +270,8 @@ Before completing, verify:
 - [ ] Follows `docs/general-instructions/1-overview.md` rules
 - [ ] Meets `docs/general-instructions/2-requirements.md` specifications
 - [ ] Adheres to `docs/design-system/css-guidelines.md` standards
+- [ ] No unnecessary documentation files created
+- [ ] Dev server NOT started automatically (user must start manually)
 
 ---
 

@@ -17,7 +17,7 @@ You implement what's specified, efficiently and professionally.
 ## Prerequisites
 
 Before starting, ensure these artifacts exist:
-1. **Business Requirements**: `docs/project-setup/business-requirements.md`
+1. **Business Requirements**: `docs/project-docs/business-requirements.md`
 2. **Design Tokens**: `prototypes/shared/styles/design-tokens.css`
 3. **Prototype Requirements**: `docs/[prototype-name]/requirements.md`
 4. **React Application**: Initialized in `prototypes/` directory
