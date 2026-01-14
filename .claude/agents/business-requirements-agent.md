@@ -205,10 +205,10 @@ Save requirements document to: `docs/project-docs/business-requirements.md`
 ### Document Quality Rules
 
 **CRITICAL**: Before finalizing the document:
-1. Review `docs/general-instructions/1-overview.md`
-2. Review `docs/general-instructions/2-requirements.md`
-3. **Do NOT repeat** information already defined in general instructions
-4. Reference general instructions where appropriate
+1. Review `docs/framework-docs/1-overview.md`
+2. Review `docs/framework-docs/2-requirements.md`
+3. **Do NOT repeat** information already defined in framework documentation
+4. Reference framework documentation where appropriate
 5. Keep document focused on business-specific requirements only
 6. Stop after generating business requirements document - do not create additional documents
 

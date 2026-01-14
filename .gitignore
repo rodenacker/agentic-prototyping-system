@@ -1,0 +1,28 @@
+# Claude Code temporary files
+.claude/settings.local.json
+.claude/.tmp/
+.claude/temp/
+tmpclaude*
+
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

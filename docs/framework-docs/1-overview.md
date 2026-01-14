@@ -22,4 +22,4 @@ Process rules are enforced through the agent architecture:
 ## Reference Documents
 
 1. **Technical Requirements**: See [2-requirements.md](2-requirements.md)
-2. **CSS Implementation**: See [design-system/css-guidelines.md](../design-system/css-guidelines.md)
+2. **CSS Implementation**: See [css-guidelines.md](css-guidelines.md)

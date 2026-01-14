@@ -31,13 +31,13 @@ If any are missing, **stop immediately** and report what is needed.
 
 Before starting implementation, you MUST read and understand these documents:
 
-1. **`docs/general-instructions/2-requirements.md`**
+1. **`docs/framework-docs/2-requirements.md`**
    - Extract ALL technical requirements
    - Note CRITICAL requirements (marked as **CRITICAL**)
    - Understand shared component requirements
    - Note styling and CSS rules
 
-2. **`docs/design-system/css-guidelines.md`**
+2. **`docs/framework-docs/css-guidelines.md`**
    - Understand CSS implementation rules
    - Note animation and UX guidelines
    - Extract responsive design patterns
@@ -67,8 +67,8 @@ Before starting implementation, you MUST read and understand these documents:
 - Stop if any are missing
 
 ### 2. Read Requirements Documents
-- Read `docs/general-instructions/2-requirements.md` completely
-- Read `docs/design-system/css-guidelines.md` completely
+- Read `docs/framework-docs/2-requirements.md` completely
+- Read `docs/framework-docs/css-guidelines.md` completely
 - Read `docs/[prototype-name]/requirements.md` completely
 - Extract ALL requirements and acceptance criteria
 - Create implementation checklist
@@ -123,7 +123,7 @@ Before starting implementation, you MUST read and understand these documents:
 - **CRITICAL**: All CSS in `prototypes/shared/styles/` - NO prototype-specific CSS files
 - **CRITICAL**: Use design tokens exclusively - NO hard-coded values
 - **CRITICAL**: No inline styles, no `!important`, semantic class names only
-- **CRITICAL**: Follow `docs/design-system/css-guidelines.md` strictly
+- **CRITICAL**: Follow `docs/framework-docs/css-guidelines.md` strictly
 
 ### Component Usage (CRITICAL)
 - **CRITICAL**: Use shared components - NEVER copy components into prototype directories
@@ -216,9 +216,9 @@ Before completing, verify:
 - [ ] No console errors
 
 ✅ **Documentation References**
-- [ ] Adheres to `docs/general-instructions/1-overview.md` rules
-- [ ] Meets `docs/general-instructions/2-requirements.md` specifications
-- [ ] Follows `docs/design-system/css-guidelines.md` standards
+- [ ] Adheres to `docs/framework-docs/1-overview.md` rules
+- [ ] Meets `docs/framework-docs/2-requirements.md` specifications
+- [ ] Follows `docs/framework-docs/css-guidelines.md` standards
 - [ ] Implements `docs/[prototype-name]/requirements.md` specifications
 
 ---

@@ -56,12 +56,12 @@ docs/
 - **CRITICAL**: All CSS in `prototypes/shared/styles/` - prototypes should NOT have their own CSS files
 - **CRITICAL**: No inline styles, no `!important`, semantic class names only
 - **CRITICAL**: All colors, spacing, typography must use CSS variables - no hard-coded values
-- See [design-system/css-guidelines.md](../design-system/css-guidelines.md) for complete CSS implementation details
+- See [css-guidelines.md](css-guidelines.md) for complete CSS implementation details
 
 **UX Design Philosophy**:
 - Slick, modern, and task-focused user experience for business applications
 - Subtle animations that enhance usability and productivity
-- See [design-system/css-guidelines.md](../design-system/css-guidelines.md) for animation guidelines
+- See [css-guidelines.md](css-guidelines.md) for animation guidelines
 
 **UI Interaction Requirements**:
 - **CRITICAL**: JavaScript `alert()` and `confirm()` dialogs are strictly forbidden
