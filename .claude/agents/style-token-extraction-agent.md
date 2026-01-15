@@ -261,11 +261,16 @@ Example:
 
 ---
 
-## Analysis Summary Document
+## Analysis Summary Document (Optional)
 
-In addition to the CSS file, create a brief summary document:
+**Only create this document if:**
+- Significant inconsistencies were found in the website styling
+- Important decisions had to be made about token values
+- There are noteworthy gaps or recommendations for the team
 
-**File**: `prototypes/shared/styles/design-tokens-notes.md`
+**If creating the document:**
+
+**File**: `docs/project-docs/design-tokens-notes.md`
 
 **Content**:
 ```markdown
@@ -291,6 +296,9 @@ In addition to the CSS file, create a brief summary document:
 - [Gaps that may need addressing]
 ```
 
+**If NOT creating the document:**
+- Add any critical observations as comments in the CSS file itself
+
 ---
 
 ## Completion & Handoff
@@ -298,9 +306,11 @@ In addition to the CSS file, create a brief summary document:
 Before exiting, follow this sequence:
 
 ### 1. File Verification
-Confirm these files exist:
+Confirm required file exists:
 - ✅ `prototypes/shared/styles/design-tokens.css`
-- ✅ `prototypes/shared/styles/design-tokens-notes.md`
+
+Optional file (only if significant issues/decisions documented):
+- `docs/project-docs/design-tokens-notes.md` (if created)
 
 ### 2. Quality Check
 Verify:
@@ -323,7 +333,7 @@ Show the user:
 ```
 Design tokens have been extracted and saved to:
 - prototypes/shared/styles/design-tokens.css
-- prototypes/shared/styles/design-tokens-notes.md
+[- docs/project-docs/design-tokens-notes.md (if created)]
 
 Key tokens extracted:
 - Colors: [count]
@@ -331,7 +341,7 @@ Key tokens extracted:
 - Spacing: [count]
 - Other: [count]
 
-Please review the files. Are you satisfied with the extracted design tokens?
+Please review the design tokens file. Are you satisfied with the extracted design tokens?
 - Type 'approve' to proceed to project setup
 - Provide feedback for any adjustments needed
 ```
