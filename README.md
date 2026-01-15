@@ -1,4 +1,4 @@
-# Prototyping Framework Agents
+# Prototyping Framework
 
 A structured, agent-based system for creating consistent, defensible prototypes through coordinated AI workflows.
 
