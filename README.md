@@ -2,48 +2,39 @@
 
 A structured, agent-based system for creating consistent, defensible prototypes through coordinated AI workflows.
 
-## Getting Started
+## Table of Contents
+- [Quick Start](#quick-start)
+- [Purpose](#purpose)
+- [How It Works](#how-it-works)
+- [Getting Started](#getting-started)
+- [Detailed Workflow](#detailed-workflow)
+  - [Phase 1: Project Foundation](#phase-1-project-foundation-one-time-setup)
+  - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype)
+- [Managed Skills](#managed-skills)
+- [Key Rules](#key-rules)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Notes](#notes)
 
-### Step 1: Run the Setup Script
+## Quick Start
 
-Execute the setup script from anywhere:
+1. **Run setup script:**
+   ```powershell
+   .\setup-proto.ps1
+   ```
 
-```powershell
-.\setup-proto.ps1
-```
+2. **Navigate to project and start Claude Code:**
+   ```powershell
+   cd your-project-folder-name
+   claude --model claude-4-5-opus
+   ```
 
-The script will:
-- Prompt you for a project folder name
-- Create the project folder
-- Clone the `agent-prototyping-system` repository into the folder
-- Display next steps for starting the agent system
+3. **Start the orchestrator:**
+   ```
+   /project-orchestrator
+   ```
 
-### Step 2: Navigate and Start Claude Code
-
-Navigate to your new project folder and start Claude Code:
-
-```powershell
-cd your-project-folder-name
-claude --model claude-4-5-opus
-```
-
-### Step 3: Start the Project Orchestration Agent
-
-Once Claude Code is running, load the Project Orchestration Agent:
-
-```
-/agentic .claude/agents/project-orchestration-agent.md
-```
-
-The orchestrator will guide you through the workflow, starting with Phase 1 (Project Foundation).
-
-### What to Expect
-
-The orchestrator will:
-1. Ask targeted questions to initiate the business requirements agent
-2. Guide you through style token extraction
-3. Help you create as many prototypes as needed, each following the structured cycle
-4. Ensure all dependencies are met before proceeding to the next phase
+The orchestrator will guide you through Phase 1 (Project Foundation) and then help you create prototypes through Phase 2 cycles.
 
 ## Purpose
 
@@ -73,25 +64,92 @@ This foundation is created once and reused across all prototypes in the project.
 For each individual prototype:
 
 1. **Requirements Research** - Clarifies prototype-specific requirements
-2. **Prototype Generation** - Builds the prototype using the foundation and specific requirements
+2. **Prototype Design** - Creates design brief with user stories, views, and task flows
+3. **Prototype Implementation** - Builds the prototype using the foundation and specifications
+4. **Code Review & Compliance** - Strict review gate with automated fix orchestration
+5. **Validation & Revision** - Optional refinement based on user testing
 
 Each prototype cycle is independent, but all prototypes share the same foundational elements.
 
+## Getting Started
+
+### Step 1: Run the Setup Script
+
+Execute the setup script from anywhere:
+
+```powershell
+.\setup-proto.ps1
+```
+
+The script will:
+- Prompt you for a project folder name
+- Create the project folder
+- Clone the `agent-prototyping-system` repository into the folder
+
+### Step 2: Navigate and Start Claude Code
+
+Navigate to your new project folder and start Claude Code:
+
+```powershell
+cd your-project-folder-name
+claude --model claude-4-5-opus
+```
+
+### Step 3: Start the Project Orchestration Agent
+
+Once Claude Code is running, invoke the Project Orchestration Agent using the slash command:
+
+```
+/project-orchestrator
+```
+
+The orchestrator will guide you through the workflow, starting with Phase 1 (Project Foundation).
+
+### Alternative: Run Individual Agent Commands
+
+You can also invoke specific agents directly using their slash commands:
+
+**Phase 1 Commands:**
+- `/project-requirements` - Business requirements gathering
+- `/project-style-token` - Design token extraction
+- `/project-setup` - Application setup
+
+**Phase 2 Commands:**
+- `/prototype-requirement` - Prototype-specific requirements
+- `/prototype-design` - Prototype design brief
+- `/prototype` - Prototype implementation
+- `/code-review` - Code review & compliance gate
+
+**Utility Commands:**
+- `/requirements-document-review` - Review requirements documents
+
+### What to Expect
+
+The orchestrator will:
+1. Check project state and determine the next required step
+2. Guide you through business requirements gathering
+3. Coordinate style token extraction and project setup
+4. Help you create as many prototypes as needed, each following the structured cycle
+5. Ensure all dependencies are met before proceeding to the next phase
+
 ## Detailed Workflow
 
-The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md) coordinates five specialized agents through a two-phase workflow:
+The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md) coordinates specialized agents through a two-phase workflow defined in [prototype-project.workflow.json](.claude/workflows/prototype-project.workflow.json):
 
 ### Phase 1: Project Foundation (One-Time Setup)
 
 Complete these steps once at the beginning of the project:
 
 #### 1. Business Requirements Gathering
-**Agent**: [Business Requirements Agent](.claude/agents/project-requirements-agent.md)
+**Agent**: [Project Requirements Agent](.claude/agents/project-requirements-agent.md)
+**Command**: `/project-requirements`
 
 The agent will:
 - Request your organization's website URL and analyze it
 - Ask for any project briefs or meeting notes (optional)
-- Conduct sequential Q&A to clarify business intent and project purpose
+- Invoke the requirement clarification skill for sequential Q&A
+- Clarify business intent and project purpose
+- Invoke the requirements-review skill to validate the document
 - Generate a business requirements document in `docs/project-docs/`
 
 **What you'll answer:**
@@ -105,7 +163,8 @@ The agent will:
 **User Action Required**: Review and approve the document before proceeding
 
 #### 2. Design Token Extraction
-**Agent**: [Style Token Extraction Agent](.claude/agents/project-style-token-agent.md)
+**Agent**: [Project Style Token Agent](.claude/agents/project-style-token-agent.md)
+**Command**: `/project-style-token`
 
 The agent will:
 - Extract colors, fonts, and brand assets from your website
@@ -115,7 +174,8 @@ The agent will:
 **Output**: `prototypes/shared/styles/design-tokens.css`
 
 #### 3. Application Setup
-**Agent**: [Project Setup Agent](.claude/agents/project-docs-agent.md)
+**Agent**: [Project Setup Agent](.claude/agents/project-setup-agent.md)
+**Command**: `/project-setup`
 
 The agent will:
 - Initialize React application in `prototypes/` folder
@@ -144,8 +204,9 @@ The agent will:
 
 Complete these steps for each prototype you create:
 
-#### 1. Brief & Wireframes Review
-**Agent**: [Requirements Research Agent](.claude/agents/prototype-requirements-agent.md)
+#### 1. Prototype Requirements Research
+**Agent**: [Prototype Requirements Agent](.claude/agents/prototype-requirements-agent.md)
+**Command**: `/prototype-requirement`
 
 **Before starting**: Create a brief file at `docs/[prototype-name]/brief.md`
 
@@ -155,12 +216,13 @@ The agent will:
 - Identify what's unclear or missing
 - Prepare focused clarification questions
 
-#### 2. Requirements Q&A
-
 The agent will:
-- Invoke the requirement clarification skill
-- Ask sequential questions to eliminate ambiguity
-- Clarify prototype-specific requirements needed for implementation
+- Read your brief document and wireframes
+- Identify gaps and unclear requirements
+- Invoke the requirement clarification skill for sequential Q&A
+- Ask focused questions to eliminate ambiguity
+- Invoke the requirements-review skill to validate the document
+- Create prototype requirements document
 
 **What you'll answer:**
 - Problem to be validated
@@ -169,60 +231,106 @@ The agent will:
 - Workflow boundaries and constraints
 - Explicit non-goals
 
-#### 3. Requirements Documentation
-
-The agent will:
-- Create prototype requirements document
-- Include acceptance criteria and documented assumptions
-- Save to `docs/[prototype-name]/prototype-requirements.md`
-
 **Output**: `docs/[prototype-name]/prototype-requirements.md`
 
 **User Action Required**: Review and approve the document before proceeding
 
-#### 4. Prototype Implementation
-**Agent**: [Prototype Agent](.claude/agents/prototype-agent.md)
+#### 2. Prototype Design
+**Agent**: [Prototype Design Agent](.claude/agents/prototype-design-agent.md)
+**Command**: `/prototype-design`
 
 The agent will:
-- Read all requirement documents and create implementation checklist
+- Review prototype requirements and business goals
+- Clarify prototype purpose and relationship to business objectives
+- Define user tasks and document user stories
+- Define views, UI patterns, and task flows
+- Recommend appropriate UI patterns and controls
+- Explore architecture alternatives
+- Define MVP scope and boundaries
+- Create design brief document
+
+**Output**: `docs/[prototype-name]/prototype-design-brief.md`
+
+**User Action Required**: Review and approve the design brief before proceeding
+
+#### 3. Prototype Implementation
+**Agent**: [Prototype Agent](.claude/agents/prototype-agent.md)
+**Command**: `/prototype`
+
+The agent will:
+- Read requirements document and design brief
+- Create implementation checklist
 - Review existing shared components for reuse
 - Create new shared components in `prototypes/shared/components/` as needed
 - Build prototype structure in `prototypes/[prototype-name]/`
 - Implement UI screens using shared components and styling
 - Assemble screens into fully clickable prototype
 - **Update landing page** with link to new prototype
-- Run comprehensive code review checklist
+- Run comprehensive self-review checklist
 
 **Output**:
 - Prototype code in `prototypes/[prototype-name]/`
 - New shared components (if created)
 - Updated landing page with prototype link
 
+#### 4. Code Review & Compliance Gate
+**Agent**: [Code Review Agent](.claude/agents/code-review-agent.md)
+**Command**: `/code-review`
+
+The agent will:
+- Review code against all specifications and rules
+- Evaluate 6 mandatory review dimensions:
+  - Specification Adherence
+  - Rule Compliance (CSS, components, architecture)
+  - Architectural Integrity
+  - Code Quality
+  - Safety & Risk
+  - Maintainability
+- Produce verdict: Acceptable / Conditionally Acceptable / Unacceptable
+- Generate Rule-by-Rule Compliance Table
+- Create Problem List with IDs (if issues found)
+- **Orchestrate fixes**: Invoke prototype agent with Problem List
+- Verify fixes and produce final verdict
+
+**Output**:
+- Code review report with verdict
+- Problem List (if issues found)
+- Rule-by-Rule Compliance Table
+
 **User Action Required**:
 1. Start dev server (if not running): `npm start`
 2. Test the prototype thoroughly
 3. Provide feedback or type 'approve' to complete
 
-#### 5. Validation & Revision
+#### 5. Validation & Revision (Optional)
 
-If issues are found:
-- Report specific issues to the agent
+If issues are found during user testing:
+- Report specific issues to the orchestrator
 - Agent will fix issues in tightly scoped changes
-- Agent will re-run code review checklist
 - Test again until approved
 
-**Focus**: One round of feedback and fixes per prototype
+**Focus**: Address user feedback after passing code review gate
 
 ---
 
 ### Managed Skills
 
-Agents may invoke skills during their workflow:
+Agents invoke skills during their workflow:
 
 **requirement-clarification**
 - Purpose: Sequential Q&A to eliminate requirement ambiguity
-- Used by: Business Requirements Agent, Requirements Research Agent
-- Automatically invoked when needed during agent workflow
+- Used by: Project Requirements Agent, Prototype Requirements Agent
+- Timing: Before creating requirement documents
+- Automatically invoked by agents
+
+**requirements-review**
+- Purpose: Review requirements documents against framework rules and guidance
+- Used by: Project Requirements Agent, Prototype Requirements Agent
+- Timing: After creating requirement documents, before presenting to user
+- Automatically invoked by agents
+
+Users can also invoke skills directly:
+- `/requirements-document-review` - Review any requirements document
 
 ### Key Rules
 
@@ -238,15 +346,33 @@ Agents may invoke skills during their workflow:
 ```
 .
 ├── .claude/
-│   └── agents/               # Agent definition files
-│       ├── project-orchestration-agent.md
-│       ├── project-requirements-agent.md
-│       ├── project-style-token-agent.md
-│       ├── prototype-requirements-agent.md
-│       └── prototype-agent.md
-├── docs/                     # Documentation and guidelines
-├── setup-proto.ps1          # Setup script
-└── README.md               # This file
+│   ├── agents/                         # Agent definition files
+│   │   ├── project-orchestration-agent.md
+│   │   ├── project-requirements-agent.md
+│   │   ├── project-style-token-agent.md
+│   │   ├── project-setup-agent.md
+│   │   ├── prototype-requirements-agent.md
+│   │   ├── prototype-design-agent.md
+│   │   ├── prototype-agent.md
+│   │   └── code-review-agent.md
+│   ├── commands/                       # Slash command files
+│   │   ├── project-orchestrator.md
+│   │   ├── project-requirements.md
+│   │   ├── project-style-token.md
+│   │   ├── project-setup.md
+│   │   ├── prototype-requirement.md
+│   │   ├── prototype-design.md
+│   │   ├── prototype.md
+│   │   ├── code-review.md
+│   │   └── requirements-document-review.md
+│   ├── skills/                         # Reusable skill definitions
+│   │   ├── requirement-clarification-skill.md
+│   │   └── requirements-review-skill.md
+│   └── workflows/                      # Workflow definitions
+│       └── prototype-project.workflow.json
+├── docs/                               # Documentation and guidelines
+├── setup-proto.ps1                     # Setup script
+└── README.md                           # This file
 ```
 
 ## Requirements
