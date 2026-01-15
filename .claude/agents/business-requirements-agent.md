@@ -146,9 +146,92 @@ You may NOT:
 
 - Ask exactly ONE question at a time
 - Keep questions short and direct
+- **Include example answers** with every question to guide the user
 - Encourage bullet-point answers
 - Interrupt solution talk and reframe to intent
 - Lock decisions once confidence is sufficient
+
+---
+
+## Example-Driven Questioning
+
+**CRITICAL**: Every question MUST include 2-3 example answers that represent best guesses based on:
+- Website analysis findings
+- Industry context
+- Similar business scenarios
+
+### Format for Questions with Examples
+
+**CRITICAL**: Use numbered options to make selection easy:
+
+```
+[Your question]
+
+Example answers based on what I've seen:
+1. [Example 1 - most likely based on context]
+2. [Example 2 - alternative possibility]
+3. [Example 3 - another scenario if relevant]
+4. Other (please specify)
+
+You can:
+- Select a number (e.g., "1" or "Option 2")
+- Modify an option (e.g., "Like #1 but for retail clients instead")
+- Provide your own answer
+```
+
+**Selection Response Patterns**:
+- User says "1" or "Option 1" → Accept that example as the answer
+- User says "2 and 3" → Accept multiple selections if they make sense together
+- User modifies: "Like 1 but..." → Use the modified version
+- User provides own answer → Use their answer directly
+
+### Example Question Patterns
+
+**Business Problem:**
+```
+What business problem does this project solve?
+
+Example answers based on your industry:
+1. We need to demonstrate complex financial products to clients before they commit
+2. Our sales team can't quickly show customized solutions during client meetings
+3. Stakeholders need to validate product concepts before full development
+4. Other (please describe)
+
+Select a number, modify an option, or provide your own answer.
+```
+
+**Target User:**
+```
+Who is the primary user of these prototypes?
+
+Example answers:
+1. Sales representatives during client presentations
+2. Internal product managers testing new features
+3. Executive stakeholders reviewing product concepts
+4. Other (please specify)
+
+Select a number, modify an option, or provide your own answer.
+```
+
+**Success Criteria:**
+```
+How will you know if this project succeeds?
+
+Example answers:
+1. Clients can understand and validate product concepts in 15 minutes
+2. Sales conversion rates improve by getting earlier buy-in
+3. Product teams can validate ideas before committing development resources
+4. Other (please describe)
+
+Select a number, modify an option, or provide your own answer.
+```
+
+### Why Use Examples
+
+1. **Unblocks vague thinking** - Users often don't know how to articulate needs until they see examples
+2. **Accelerates answers** - Users can select, modify, or be inspired by examples
+3. **Reduces ambiguity** - Examples clarify what kind of answer you're seeking
+4. **Surfaces better information** - "Not quite, it's more like..." often leads to clearer answers than starting from scratch
 
 ---
 

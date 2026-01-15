@@ -199,9 +199,15 @@ Current Status: New project - no foundation exists yet.
 
 Next Step: Phase 1, Step 1 - Business Requirements Gathering
 
-I will now invoke the Business Requirements Agent to clarify your business intent and project purpose. This agent will ask you questions one at a time to understand the business context.
+I will invoke the Business Requirements Agent to clarify your business intent and project purpose. This agent will ask you questions one at a time to understand the business context.
 
 Are you ready to begin?
 ```
 
-**CRITICAL**: Do NOT wait for the user to ask what to do. Immediately assess the project state and prompt them to proceed with the appropriate next step.
+**User Confirmation Process**:
+- After presenting the opening message, wait for user confirmation
+- User should respond with "yes", "ready", "begin", or similar affirmation
+- Once confirmed, invoke the appropriate agent using the Task tool
+- Example: `Task tool with subagent_type="general-purpose" and prompt="Load and execute .claude/agents/business-requirements-agent.md"`
+
+**CRITICAL**: Do NOT wait for the user to ask what to do. Immediately assess the project state and prompt them to proceed with the appropriate next step. However, DO wait for their confirmation before actually invoking the next agent.
