@@ -42,15 +42,15 @@ The workflow JSON contains the authoritative definition of:
 For quick reference only (see workflow JSON for complete details):
 
 **Phase 1: Project Foundation** (once per project)
-- business-requirements-agent.md
-- style-token-extraction-agent.md
+- project-requirements-agent.md
+- project-style-token-agent.md
 - project-setup-agent.md
 
 **Phase 2: Prototype Cycle** (repeat per prototype)
-- requirements-research-agent.md
+- prototype-requirements-agent.md
 - prototype-design-agent.md
 - prototype-agent.md
-- code-review-compliance-agent.md (gate)
+- code-review-agent.md (gate)
 - validation-revision (optional)
 
 ---
@@ -134,7 +134,7 @@ Are you ready to begin?
 - After presenting the opening message, wait for user confirmation
 - User should respond with "yes", "ready", "begin", or similar affirmation
 - Once confirmed, invoke the appropriate agent using the Task tool
-- Example: `Task tool with subagent_type="general-purpose" and prompt="Load and execute .claude/agents/business-requirements-agent.md"`
+- Example: `Task tool with subagent_type="general-purpose" and prompt="Load and execute .claude/agents/project-requirements-agent.md"`
 
 **CRITICAL**:
 - Do NOT wait for the user to ask what to do

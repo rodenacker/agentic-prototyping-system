@@ -15,7 +15,7 @@ This is a **review-only command**: it does **not** modify documents or introduce
 ---
 
 ## Skill
-requirements-review.md
+requirements-review-skill.md
 
 ---
 

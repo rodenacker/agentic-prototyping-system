@@ -86,7 +86,7 @@ The [Project Orchestration Agent](.claude/agents/project-orchestration-agent.md)
 Complete these steps once at the beginning of the project:
 
 #### 1. Business Requirements Gathering
-**Agent**: [Business Requirements Agent](.claude/agents/business-requirements-agent.md)
+**Agent**: [Business Requirements Agent](.claude/agents/project-requirements-agent.md)
 
 The agent will:
 - Request your organization's website URL and analyze it
@@ -105,7 +105,7 @@ The agent will:
 **User Action Required**: Review and approve the document before proceeding
 
 #### 2. Design Token Extraction
-**Agent**: [Style Token Extraction Agent](.claude/agents/style-token-extraction-agent.md)
+**Agent**: [Style Token Extraction Agent](.claude/agents/project-style-token-agent.md)
 
 The agent will:
 - Extract colors, fonts, and brand assets from your website
@@ -145,7 +145,7 @@ The agent will:
 Complete these steps for each prototype you create:
 
 #### 1. Brief & Wireframes Review
-**Agent**: [Requirements Research Agent](.claude/agents/requirements-research-agent.md)
+**Agent**: [Requirements Research Agent](.claude/agents/prototype-requirements-agent.md)
 
 **Before starting**: Create a brief file at `docs/[prototype-name]/brief.md`
 
@@ -240,9 +240,9 @@ Agents may invoke skills during their workflow:
 ├── .claude/
 │   └── agents/               # Agent definition files
 │       ├── project-orchestration-agent.md
-│       ├── business-requirements-agent.md
-│       ├── style-token-extraction-agent.md
-│       ├── requirements-research-agent.md
+│       ├── project-requirements-agent.md
+│       ├── project-style-token-agent.md
+│       ├── prototype-requirements-agent.md
 │       └── prototype-agent.md
 ├── docs/                     # Documentation and guidelines
 ├── setup-proto.ps1          # Setup script

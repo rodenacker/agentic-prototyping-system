@@ -3,7 +3,7 @@
 ## Description
 Clarify and document prototype-specific requirements through focused, confidence-aware research.
 
-This command invokes the **requirements-research-agent** to:
+This command invokes the **prototype-requirements-agent** to:
 - Explore prototype-specific intent
 - Reduce ambiguity without over-analysis
 - Produce a clear, non-technical requirements snapshot
@@ -12,7 +12,7 @@ This command invokes the **requirements-research-agent** to:
 ---
 
 ## Agent
-requirements-research-agent.md
+prototype-requirements-agent.md
 
 ---
 
@@ -70,7 +70,7 @@ When this command is invoked, the agent will:
 2. Ask one question at a time to clarify prototype intent
 3. Use examples to guide answers
 4. Apply confidence scoring to avoid over-questioning
-5. Stop once requirements are “good enough to proceed”
+5. Stop once requirements are "good enough to proceed"
 6. Present the document for approval
 
 ---

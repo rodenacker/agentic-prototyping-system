@@ -12,7 +12,7 @@
         {
           "id": "business-requirements",
           "name": "Business Requirements Gathering",
-          "agent": "business-requirements-agent.md",
+          "agent": "project-requirements-agent.md",
           "description": "Clarify customer needs, business intent, and project purpose",
           "inputs": {
             "required": [
@@ -36,7 +36,7 @@
         {
           "id": "style-tokens",
           "name": "Design Token Extraction",
-          "agent": "style-token-extraction-agent.md",
+          "agent": "project-style-token-agent.md",
           "description": "Extract shared CSS design tokens for visual consistency",
           "requires": ["business-requirements"],
           "inputs": {
@@ -105,7 +105,7 @@
         {
           "id": "requirements-research",
           "name": "Prototype Requirements Research",
-          "agent": "requirements-research-agent.md",
+          "agent": "prototype-requirements-agent.md",
           "description": "Clarify prototype-specific requirements through brief review and Q&A",
           "inputs": {
             "required": [
@@ -365,7 +365,7 @@
         {
           "id": "code-review-compliance",
           "name": "Code Review & Compliance Gate",
-          "agent": "code-review-compliance-agent.md",
+          "agent": "code-review-agent.md",
           "description": "Strict code review against specifications and rules with automated fix orchestration",
           "requires": ["prototype-implementation"],
           "inputs": {
@@ -499,11 +499,23 @@
       "name": "Requirement Clarification (Sequential Q&A)",
       "purpose": "Eliminate ambiguity in requirements through controlled, sequential Q&A",
       "usedBy": [
-        "business-requirements-agent",
-        "requirements-research-agent"
+        "project-requirements-agent",
+        "prototype-requirements-agent"
       ],
       "timing": "Before creating requirement documents",
       "output": "Requirement Clarification Summary",
+      "invocation": "Agents use the Skill tool during their workflow"
+    },
+    {
+      "id": "requirements-review",
+      "name": "Requirements Review",
+      "purpose": "Review requirements documents against established rules and framework guidance, report issues clearly and concisely",
+      "usedBy": [
+        "project-requirements-agent",
+        "prototype-requirements-agent"
+      ],
+      "timing": "After creating requirement documents, before presenting to user for approval",
+      "output": "Requirements Review Report",
       "invocation": "Agents use the Skill tool during their workflow"
     }
   ],

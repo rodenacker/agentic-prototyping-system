@@ -339,14 +339,38 @@ Save requirements document to: `docs/[prototype-name]/prototype-requirements.md`
 
 Before exiting, follow this sequence:
 
-### 1. Document Review
+### 1. Requirements Review (MANDATORY)
+**CRITICAL**: Before presenting to user, invoke the requirements-review skill:
+
+Use the Skill tool with:
+```
+skill: "requirements-review"
+```
+
+Provide the skill with:
+- The completed prototype requirements document
+- Access to `docs/framework-docs/2-requirements.md`
+
+The skill will produce a Requirements Review Report with:
+- Rule violations (if any)
+- Redundancies
+- Conciseness opportunities
+- Framework duplications
+- Overall assessment
+
+**If blocking issues found**: Fix them before proceeding to user approval.
+**If minor issues found**: Note them for potential refinement, but may proceed.
+**If clean**: Proceed to user approval.
+
+### 2. Document Review
 Present the requirements document to the user and explain:
 - What was captured from the brief
 - What was clarified through Q&A
 - Where it was saved
 - How it will be used by the prototype builder
+- Summary of requirements review results (if any issues were found and fixed)
 
-### 2. Quality Check
+### 3. Quality Check
 Confirm:
 - ✅ Problem can be stated in one sentence
 - ✅ Task can be performed end-to-end
@@ -356,8 +380,9 @@ Confirm:
 - ✅ Assumptions are documented
 - ✅ No duplication with general instructions
 - ✅ Document saved to `docs/[prototype-name]/prototype-requirements.md`
+- ✅ Requirements review skill invoked and issues addressed
 
-### 3. User Approval
+### 4. User Approval
 **CRITICAL**: Prompt user explicitly:
 ```
 Please review the prototype requirements at:
@@ -368,7 +393,7 @@ Does this clearly capture what needs to be prototyped?
 - Provide feedback for any changes needed
 ```
 
-### 4. Handoff Information
+### 5. Handoff Information
 Once approved, confirm to orchestrator:
 - Requirements document complete and approved
 - Saved to `docs/[prototype-name]/prototype-requirements.md`

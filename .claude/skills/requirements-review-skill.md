@@ -3,7 +3,7 @@
 ## Purpose
 Review a requirements document against established rules and framework guidance, and report issues clearly and concisely.
 
-This skill is **review-only**.  
+This skill is **review-only**.
 It enforces quality and consistency without altering intent.
 
 ---

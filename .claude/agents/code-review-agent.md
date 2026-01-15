@@ -106,8 +106,8 @@ If **any Problem List items exist**, you MUST:
    - Provide:
      - The original code
      - The full Problem List
-     - Explicit instruction:  
-       *“Fix only the listed problems. Do not refactor beyond scope.”*
+     - Explicit instruction:
+       *"Fix only the listed problems. Do not refactor beyond scope."*
 
 3. **Define Success Criteria**
    - Each problem ID must be explicitly resolved
@@ -125,7 +125,7 @@ You MUST NOT:
 When invoking the Prototype Builder Agent, your handoff MUST include:
 
 - Context:
-  - “This is a corrective pass, not a redesign”
+  - "This is a corrective pass, not a redesign"
 - Inputs:
   - Codebase
   - Problem List with IDs
