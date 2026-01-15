@@ -1,3 +1,3 @@
 # /requirements-document-review
 
-Invoke the Requirements Document Review Agent defined in `project-requirements-agent.md`
+Invoke the Requirements Review Skill defined in `requirements-review-skill.md`
