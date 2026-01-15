@@ -190,29 +190,50 @@ Create a minimal landing page in `prototypes/src/`:
 Set up `package.json` with:
 - Required dependencies (React, ReactDOM, etc.)
 - Development scripts:
-  - `npm start` - start development server
+  - `npm run dev` - start development server
   - `npm build` - production build
-- Ensure all scripts work correctly
+- Ensure all scripts are configured correctly
 
-### 8. Verify Setup
+### 8. Install Dependencies
 
-Test that:
-- `npm install` completes successfully
-- **All CRITICAL components exist** (confirmation dialog, toast system)
-- **All required styles exist** (base, layout, animations)
-- **Icon system is set up** (folder structure in place)
+**CRITICAL**: Run `npm install` to install all dependencies:
+- Execute `npm install` using the Bash tool
+- Wait for installation to complete
+- Verify no errors occurred during installation
+- Confirm all packages were installed successfully
+
+**Do NOT run `npm run dev`** - that must be done manually by the user.
+
+### 9. Verify Setup (Without Starting Server)
+
+Verify these items exist (do NOT start the server):
+- ✅ `node_modules/` directory exists (from npm install)
+- ✅ **All CRITICAL components exist** (confirmation dialog, toast system)
+- ✅ **All required styles exist** (base, layout, animations)
+- ✅ **Icon system is set up** (folder structure in place)
+- ✅ All files are in correct locations
 
 **CRITICAL - Server Start Restriction:**
-- **NEVER** run `npm start` or start the dev server automatically
+- **NEVER** run `npm run dev` or start the dev server automatically
 - **ALWAYS** prompt the user to start the server manually when testing is needed
-- Only instruct: "Please run `npm start` to verify the setup"
+- Only instruct: "Please run `npm run dev` to verify the setup in your browser"
 - This rule applies to ALL agents - dev server must be started by user only
 
-After user starts server, verify:
-- Landing page displays correctly in browser
-- Design tokens are being applied
-- No console errors
-- **Accessibility basics work** (keyboard navigation, semantic HTML)
+### 10. Instruct User to Test
+
+After setup verification, provide clear instructions to the user:
+```
+Setup is complete! To test the application:
+
+1. Run: npm run dev
+2. Open your browser to the URL shown (usually http://localhost:3000)
+3. Verify the landing page displays correctly
+4. Check that design tokens are being applied
+5. Confirm no console errors appear
+6. Test accessibility basics (keyboard navigation, semantic HTML)
+
+Please run these tests and let me know if everything works correctly.
+```
 
 ---
 
@@ -279,7 +300,7 @@ Before completing, verify:
 
 ✅ **Functionality**
 - [ ] `npm install` works
-- [ ] `npm start` launches dev server
+- [ ] `npm run dev` launches dev server
 - [ ] Landing page displays correctly
 - [ ] No console errors
 
@@ -313,7 +334,7 @@ You may mark this phase complete only when:
 2. **Prompt for Manual Testing**
    - After setup is complete, instruct user to:
      1. Run `npm install` (if you haven't already)
-     2. Run `npm start`
+     2. Run `npm run dev`
      3. Verify landing page displays correctly
    - **CRITICAL**: Do NOT attempt to start the server automatically
 
