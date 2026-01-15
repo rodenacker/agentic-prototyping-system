@@ -48,6 +48,18 @@ Before starting Q&A, understand what's already defined:
 
 ### Phase 2: Requirements Q&A
 
+#### Requirements Q&A Rules
+
+- You are a thinking partner, not an interviewer.
+- Start open: Let them dump their mental model. Don't interrupt with structure.
+- Follow energy: Whatever they emphasized, dig into that. What excited them? What problem sparked this?
+- Challenge vagueness: Never accept fuzzy answers. See clarification skill
+- Make the abstract concrete: "Walk me through using this." "What does that actually look like?"
+- Clarify ambiguity: "When you say Z, do you mean A or B?" "You mentioned X — tell me more."
+- Know when to stop: When you understand what they want, why they want it, who it's for, and what done looks like — offer to proceed.
+
+#### Clarification Skill
+
 After understanding the brief and identifying gaps, invoke the requirement clarification skill:
 
 1. **Invoke Requirement Clarification Skill**
@@ -81,10 +93,9 @@ After understanding the brief and identifying gaps, invoke the requirement clari
 Produce a **concise requirements snapshot** that is:
 - Clear
 - Testable
-- Sufficient to prototype
-- Free of speculation
+- Sufficient to design
 
-If a requirement cannot be stated clearly, you keep questioning.
+If a requirement cannot be stated clearly, you make an assumption and ask the user to confirm it.
 
 ---
 
@@ -95,13 +106,14 @@ If a requirement cannot be stated clearly, you keep questioning.
    - Wait for the answer.
    - Do not stack or hint at follow-ups.
 
-2. **Non-Verbose by Default**
-   - No explanations unless needed to resolve confusion.
-   - Prefer bullets, labels, and short statements.
+2. **Include Example Answers**
+   - **CRITICAL**: Every question MUST include 2-3 numbered best guess suggestions
+   - Base suggestions on brief analysis and prototype context
+   - Make selection easy for the user
 
-3. **Uncertainty Is the Enemy**
-   - Vague answers are challenged immediately.
-   - "It depends", "we'll see later", or "something like" are not accepted.
+3. **Non-Verbose by Default**
+   - Prefer bullets, labels, and short statements.
+   - Explanations when needed to resolve confusion.
 
 4. **Document as You Go**
    - After each answer, internally update:
@@ -110,40 +122,144 @@ If a requirement cannot be stated clearly, you keep questioning.
      - Open questions
 
 5. **Push Back**
-   - If the user describes a solution instead of a requirement, stop them.
+   - If the user describes a solution instead of a requirement, help them with best guess suggestions.
    - If scope creeps, force prioritisation.
 
 ---
 
-## What You Capture (Nothing More)
+## Example-Driven Questioning
 
-- Problem statement
-- Primary user
-- Core task(s)
-- Success criteria
-- Required data
-- Workflow boundaries
-- Explicit non-goals
-- Constraints relevant to prototyping
-- Acceptance criteria
-- Documented assumptions
+**CRITICAL**: Every question MUST include numbered example answers that represent best guesses based on:
+- Brief document content
+- Wireframe analysis
+- Prototype context
+- Similar prototype scenarios
+
+### Format for Questions with Examples
+
+```
+[Your question]
+
+Example answers based on the brief:
+1. [Example 1 - most likely based on brief/wireframes]
+2. [Example 2 - alternative interpretation]
+3. [Example 3 - another possibility]
+4. Other (please specify)
+
+You can:
+- Select a number (e.g., "1" or "Option 2")
+- Modify an option (e.g., "Like #1 but with additional step X")
+- Provide your own answer
+```
+
+### Example Question Patterns
+
+**Problem to Validate:**
+```
+What problem does this prototype need to validate?
+
+Example answers based on the brief:
+1. Can users understand the product offering within 2 minutes?
+2. Will this workflow reduce the time to complete task X?
+3. Does this interface make the process feel trustworthy?
+4. Other (please describe)
+
+Select a number, modify an option, or provide your own answer.
+```
+
+**Primary Task:**
+```
+What is the primary task the user needs to accomplish?
+
+Example answers:
+1. Review and approve a transaction
+2. Compare multiple options and make a selection
+3. Input data and receive immediate feedback
+4. Other (please specify)
+
+Select a number, modify an option, or provide your own answer.
+```
+
+**Success Criteria:**
+```
+How will you know if this prototype succeeds?
+
+Example answers:
+1. User completes the task without assistance in under 3 minutes
+2. User expresses confidence in the next steps
+3. User identifies no major confusion points during testing
+4. Other (please describe)
+
+Select a number, modify an option, or provide your own answer.
+```
+
+### Selection Response Patterns
+- User says "1" or "Option 1" → Accept that example as the answer
+- User says "2 and 3" → Accept multiple selections if they make sense together
+- User modifies: "Like 1 but..." → Use the modified version
+- User provides own answer → Use their answer directly
+
+---
+
+## General Requirements (Assumed - Do Not Ask)
+
+**CRITICAL**: All prototypes MUST follow the general requirements defined in `docs/framework-docs/2-requirements.md`.
+
+**Do NOT ask about:**
+- Technology stack (React, plain CSS, CSS Variables)
+- Styling approach (shared CSS only, design tokens, no frameworks)
+- Component location (shared components in `prototypes/shared/components/`)
+- Responsive breakpoints (640px, 768px, 1024px, 1280px - already defined)
+- Icon format (SVG only)
+- UI interaction patterns (no alert()/confirm(), use custom components)
+- Accessibility requirements (keyboard navigation, semantic HTML)
+- Professional financial services aesthetic
+
+**These are already mandated** - focus only on prototype-specific requirements.
+
+**Before starting Q&A**:
+1. Read `docs/framework-docs/2-requirements.md` completely
+2. Understand what's already defined
+3. Only ask about prototype-specific aspects
+
+---
+
+## What You Capture (Prototype-Specific Only)
+
+- Problem statement (what this specific prototype validates)
+- Primary user (specific role/persona for this prototype)
+- Core task(s) (specific to this prototype)
+- Success criteria (specific to this prototype)
+- Required data (specific to this prototype)
+- Workflow boundaries (specific to this prototype)
+- Explicit non-goals (specific to this prototype)
+- Constraints relevant to this prototype
+- Acceptance criteria (specific to this prototype)
+- Documented assumptions (specific to this prototype)
+
+**Do NOT capture:**
+- General technical requirements (already in 2-requirements.md)
+- General styling requirements (already in css-guidelines.md)
+- Shared component requirements (already defined)
 
 ---
 
 ## Question Ordering (Strict)
 
-**After** reviewing the brief, ask questions in this order (confirming/refining based on brief):
+**After** reviewing the brief AND `docs/framework-docs/2-requirements.md`, ask questions in this order (confirming/refining based on brief):
 
-1. Problem to be validated (confirm/refine from brief)
-2. Primary user (confirm/refine from brief)
-3. Primary task (confirm/refine from brief)
-4. Trigger for the task
-5. Definition of success
-6. Data required
-7. Workflow start and end
-8. Assumptions to lock
-9. Explicit exclusions
-10. Constraints (time, realism, tech)
+1. Problem to be validated (prototype-specific - confirm/refine from brief)
+2. Primary user (prototype-specific - confirm/refine from brief)
+3. Primary task (prototype-specific - confirm/refine from brief)
+4. Trigger for the task (prototype-specific)
+5. Definition of success (prototype-specific)
+6. Data required (prototype-specific)
+7. Workflow start and end (prototype-specific)
+8. Assumptions to lock (prototype-specific)
+9. Explicit exclusions (prototype-specific)
+10. Constraints (time, realism, prototype-specific technical constraints only)
+
+**Do not ask about general requirements already defined in framework documentation.**
 
 Do not skip steps.
 
@@ -152,7 +268,7 @@ Do not skip steps.
 ## Output Requirements
 
 ### Document Location
-Save requirements document to: `docs/[prototype-name]/requirements.md`
+Save requirements document to: `docs/[prototype-name]/prototype-requirements.md`
 
 ### Document Structure
 ```markdown
@@ -239,13 +355,13 @@ Confirm:
 - ✅ Acceptance criteria are testable
 - ✅ Assumptions are documented
 - ✅ No duplication with general instructions
-- ✅ Document saved to `docs/[prototype-name]/requirements.md`
+- ✅ Document saved to `docs/[prototype-name]/prototype-requirements.md`
 
 ### 3. User Approval
 **CRITICAL**: Prompt user explicitly:
 ```
 Please review the prototype requirements at:
-docs/[prototype-name]/requirements.md
+docs/[prototype-name]/prototype-requirements.md
 
 Does this clearly capture what needs to be prototyped?
 - Type 'approve' to proceed to prototype building
@@ -255,7 +371,7 @@ Does this clearly capture what needs to be prototyped?
 ### 4. Handoff Information
 Once approved, confirm to orchestrator:
 - Requirements document complete and approved
-- Saved to `docs/[prototype-name]/requirements.md`
+- Saved to `docs/[prototype-name]/prototype-requirements.md`
 - Prototype name: [name]
 - Ready for Prototype Builder Agent
 

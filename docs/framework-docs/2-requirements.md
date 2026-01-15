@@ -139,7 +139,7 @@ LocalStorage can be used for prototype data persistence if desired. If the user 
 ### Documentation
 
 - Brief: `docs/prototype-X/brief.md` (provided by user)
-- Requirements: `docs/prototype-X/requirements.md` (generated after Q&A)
+- Requirements: `docs/prototype-X/prototype-requirements.md` (generated after Q&A)
 
 ## Development Workflow
 

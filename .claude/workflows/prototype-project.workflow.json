@@ -1,0 +1,526 @@
+{
+  "name": "Prototype Project Workflow",
+  "version": "1.0",
+  "description": "Structured workflow for creating consistent, defensible prototypes through coordinated AI agents",
+  "strict": true,
+  "phases": [
+    {
+      "name": "Phase 1: Project Foundation",
+      "description": "One-time setup - establishes shared foundation for all prototypes",
+      "runOnce": true,
+      "steps": [
+        {
+          "id": "business-requirements",
+          "name": "Business Requirements Gathering",
+          "agent": "business-requirements-agent.md",
+          "description": "Clarify customer needs, business intent, and project purpose",
+          "inputs": {
+            "required": [
+              "Organization website URL"
+            ],
+            "optional": [
+              "Project briefs",
+              "Workshop notes",
+              "Strategy documents"
+            ]
+          },
+          "outputs": [
+            "docs/project-docs/business-requirements.md"
+          ],
+          "userApprovalRequired": true,
+          "blocking": true,
+          "skills": [
+            "requirement-clarification"
+          ]
+        },
+        {
+          "id": "style-tokens",
+          "name": "Design Token Extraction",
+          "agent": "style-token-extraction-agent.md",
+          "description": "Extract shared CSS design tokens for visual consistency",
+          "requires": ["business-requirements"],
+          "inputs": {
+            "required": [
+              "Customer website URL (from business-requirements)"
+            ]
+          },
+          "outputs": [
+            "prototypes/shared/styles/design-tokens.css"
+          ],
+          "optionalOutputs": [
+            "docs/project-docs/design-tokens-notes.md"
+          ],
+          "userApprovalRequired": true,
+          "blocking": true
+        },
+        {
+          "id": "project-setup",
+          "name": "Application Setup",
+          "agent": "project-setup-agent.md",
+          "description": "Initialize React application, create shared systems structure, and generate landing page",
+          "requires": ["business-requirements", "style-tokens"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/business-requirements.md",
+              "prototypes/shared/styles/design-tokens.css"
+            ]
+          },
+          "outputs": [
+            "prototypes/package.json",
+            "prototypes/src/App.jsx",
+            "prototypes/shared/components/",
+            "prototypes/shared/styles/",
+            "prototypes/shared/assets/",
+            "prototypes/shared/utils/"
+          ],
+          "actions": [
+            "Initialize React application",
+            "Create shared systems structure",
+            "Set up core UI components (confirmation dialog, toast notifications)",
+            "Generate landing page with empty state placeholder",
+            "Run npm install",
+            "Configure development environment"
+          ],
+          "userActions": [
+            "Manually start dev server: npm run dev",
+            "Verify application runs successfully"
+          ],
+          "blocking": true
+        }
+      ],
+      "completionCriteria": [
+        "Business requirements documented and approved",
+        "Design tokens extracted and approved",
+        "React application initialized",
+        "Development environment verified working",
+        "Landing page created and accessible"
+      ]
+    },
+    {
+      "name": "Phase 2: Prototype Cycle",
+      "description": "Repeat for each prototype - builds on shared foundation",
+      "repeatable": true,
+      "requiresPhase": "Phase 1: Project Foundation",
+      "steps": [
+        {
+          "id": "requirements-research",
+          "name": "Prototype Requirements Research",
+          "agent": "requirements-research-agent.md",
+          "description": "Clarify prototype-specific requirements through brief review and Q&A",
+          "inputs": {
+            "required": [
+              "docs/[prototype-name]/brief.md",
+              "docs/framework-docs/2-requirements.md"
+            ],
+            "optional": [
+              "Wireframes",
+              "Supporting materials"
+            ],
+            "context": [
+              "docs/project-docs/business-requirements.md",
+              "prototypes/shared/styles/design-tokens.css"
+            ]
+          },
+          "phases": [
+            {
+              "name": "Phase 1: Brief & Wireframes Review",
+              "activities": [
+                "Read brief document completely",
+                "Review any wireframes provided",
+                "Understand proposed user flows",
+                "Identify gaps and unclear requirements"
+              ]
+            },
+            {
+              "name": "Phase 2: Requirements Q&A",
+              "activities": [
+                "Invoke requirement-clarification skill",
+                "Ask sequential questions to eliminate ambiguity",
+                "Provide numbered example answers for easy selection",
+                "Focus on prototype-specific requirements only",
+                "Do NOT ask about general requirements (already in 2-requirements.md)"
+              ]
+            }
+          ],
+          "outputs": [
+            "docs/[prototype-name]/prototype-requirements.md"
+          ],
+          "userApprovalRequired": true,
+          "blocking": true,
+          "skills": [
+            "requirement-clarification"
+          ],
+          "assumptions": [
+            "General technical requirements from framework-docs/2-requirements.md",
+            "Styling requirements from framework-docs/css-guidelines.md",
+            "Shared component patterns already established"
+          ]
+        },
+        {
+          "id": "prototype-design",
+          "name": "Prototype Design",
+          "agent": "prototype-design-agent.md",
+          "description": "Shape clear, defensible prototype design and translate user intent into UI design guidance",
+          "requires": ["requirements-research"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/business-requirements.md",
+              "docs/[prototype-name]/prototype-requirements.md"
+            ],
+            "context": [
+              "docs/framework-docs/2-requirements.md",
+              "prototypes/shared/styles/design-tokens.css"
+            ]
+          },
+          "workflow": [
+            {
+              "step": "Clarify Prototype Purpose",
+              "activities": [
+                "Identify what prototype demonstrates or validates",
+                "Define primary purpose (learning, demo, validation, alignment)"
+              ]
+            },
+            {
+              "step": "Define User Tasks",
+              "activities": [
+                "Derive tasks from requirements and context",
+                "Focus on user intent, not features",
+                "Confirm tasks with user",
+                "Identify primary and secondary users"
+              ]
+            },
+            {
+              "step": "Document User Stories",
+              "activities": [
+                "Create concise, outcome-focused stories",
+                "Capture assumptions explicitly where certainty is low"
+              ]
+            },
+            {
+              "step": "Define Views",
+              "activities": [
+                "Suggest set of views mapped to confirmed tasks",
+                "Avoid speculative or future-state screens"
+              ]
+            },
+            {
+              "step": "Recommend UI Patterns",
+              "activities": [
+                "Suggest appropriate UI patterns for each view",
+                "Flag any unconventional or risky patterns"
+              ]
+            },
+            {
+              "step": "Explore Architecture Alternatives",
+              "activities": [
+                "Present at least one viable alternative",
+                "Explain trade-offs at conceptual level"
+              ]
+            },
+            {
+              "step": "Define Task Flows",
+              "activities": [
+                "Describe how users move between views",
+                "Focus on core scenarios only"
+              ]
+            },
+            {
+              "step": "Identify Controls",
+              "activities": [
+                "Identify controls required for each task",
+                "Separate common controls from custom controls",
+                "Flag custom controls as higher-risk assumptions"
+              ]
+            },
+            {
+              "step": "Define MVP Scope",
+              "activities": [
+                "Define essential features to support core tasks",
+                "Explicitly exclude non-essential functionality",
+                "Ask user for additional features (label as out of scope)"
+              ]
+            },
+            {
+              "step": "Document Design Brief",
+              "activities": [
+                "Document user stories",
+                "Document MVP scope and exclusions",
+                "Document view list and task flows",
+                "Document UI patterns and controls",
+                "Document identified users",
+                "Document assumptions and risks",
+                "Document prototype purpose and success signals",
+                "Document relationship to business goals"
+              ]
+            }
+          ],
+          "outputs": [
+            "docs/[prototype-name]/prototype-design-brief.md"
+          ],
+          "mandatoryCaptures": [
+            "Prototype Purpose - why it exists, what decision/learning it supports",
+            "Relationship to Business Goals - how prototype supports business objectives",
+            "Assumptions - areas where decisions based on incomplete information",
+            "Success Signals - observable outcomes if prototype succeeds"
+          ],
+          "userApprovalRequired": true,
+          "blocking": true
+        },
+        {
+          "id": "prototype-implementation",
+          "name": "Prototype Implementation",
+          "agent": "prototype-agent.md",
+          "description": "Build the prototype based on all requirement documents",
+          "requires": ["requirements-research", "prototype-design"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/business-requirements.md",
+              "prototypes/shared/styles/design-tokens.css",
+              "docs/[prototype-name]/prototype-requirements.md",
+              "docs/[prototype-name]/prototype-design-brief.md",
+              "docs/framework-docs/2-requirements.md",
+              "docs/framework-docs/css-guidelines.md"
+            ]
+          },
+          "workflow": [
+            {
+              "step": "Read Requirements",
+              "activities": [
+                "Read all requirement documents",
+                "Create implementation checklist",
+                "Understand acceptance criteria"
+              ]
+            },
+            {
+              "step": "Review Shared Components",
+              "activities": [
+                "Review existing shared components for reuse",
+                "Identify gaps requiring new components"
+              ]
+            },
+            {
+              "step": "Create Shared Components",
+              "activities": [
+                "Build new shared components in prototypes/shared/components/",
+                "Follow CSS guidelines and design tokens",
+                "Ensure reusability across prototypes"
+              ]
+            },
+            {
+              "step": "Build Prototype Structure",
+              "activities": [
+                "Create prototype folder structure",
+                "Set up routing and navigation",
+                "Implement prototype-specific logic"
+              ]
+            },
+            {
+              "step": "Implement UI Screens",
+              "activities": [
+                "Build screens using shared components",
+                "Apply design tokens for styling",
+                "Implement user interactions",
+                "Add proper accessibility attributes"
+              ]
+            },
+            {
+              "step": "Assemble Prototype",
+              "activities": [
+                "Connect screens into complete workflow",
+                "Ensure prototype is fully clickable",
+                "Test all user paths"
+              ]
+            },
+            {
+              "step": "Update Landing Page",
+              "activities": [
+                "Add link to new prototype",
+                "Include prototype name and description",
+                "Ensure clear navigation"
+              ],
+              "critical": true
+            },
+            {
+              "step": "Code Review",
+              "activities": [
+                "Run comprehensive code review checklist",
+                "Verify all requirements met",
+                "Check acceptance criteria"
+              ]
+            }
+          ],
+          "outputs": [
+            "prototypes/[prototype-name]/",
+            "prototypes/shared/components/ (updated as needed)",
+            "prototypes/src/App.jsx (updated with prototype link)"
+          ],
+          "userActions": [
+            "Start dev server (if not running): npm run dev",
+            "Test prototype thoroughly",
+            "Provide feedback or type 'approve'"
+          ],
+          "userApprovalRequired": true,
+          "blocking": true
+        },
+        {
+          "id": "code-review-compliance",
+          "name": "Code Review & Compliance Gate",
+          "agent": "code-review-compliance-agent.md",
+          "description": "Strict code review against specifications and rules with automated fix orchestration",
+          "requires": ["prototype-implementation"],
+          "inputs": {
+            "required": [
+              "prototypes/[prototype-name]/",
+              "prototypes/shared/components/",
+              "docs/framework-docs/2-requirements.md",
+              "docs/framework-docs/css-guidelines.md",
+              "docs/[prototype-name]/prototype-requirements.md",
+              "docs/[prototype-name]/prototype-design-brief.md"
+            ]
+          },
+          "reviewDimensions": [
+            "Specification Adherence - missing, incorrect, or extra behavior",
+            "Rule Compliance - explicit evaluation of every rule",
+            "Architectural Integrity - layer violations, coupling errors, responsibility leaks",
+            "Code Quality - readability, duplication, hidden complexity",
+            "Safety & Risk - error handling, edge cases, security issues",
+            "Maintainability - change cost, clarity of intent, future extensibility"
+          ],
+          "workflow": [
+            {
+              "step": "Review Code Against Rules",
+              "activities": [
+                "Evaluate all review dimensions",
+                "Check specification adherence",
+                "Verify rule compliance with evidence",
+                "Assess architectural integrity",
+                "Review code quality",
+                "Identify safety and risk issues",
+                "Evaluate maintainability"
+              ]
+            },
+            {
+              "step": "Produce Verdict",
+              "activities": [
+                "Generate Summary Verdict (Acceptable/Conditionally Acceptable/Unacceptable)",
+                "Create Rule-by-Rule Compliance Table",
+                "Compile Problem List with IDs if verdict ≠ Acceptable",
+                "Document Non-Blocking Issues (optional fixes)"
+              ]
+            },
+            {
+              "step": "Orchestrate Fixes (If Problems Found)",
+              "activities": [
+                "Freeze scope - no new improvements",
+                "Invoke prototype-agent with Problem List",
+                "Provide explicit instruction: Fix only listed problems",
+                "Define success criteria: Each problem ID resolved, no new violations"
+              ],
+              "conditional": "Only if Problem List items exist"
+            },
+            {
+              "step": "Verify Fixes",
+              "activities": [
+                "Re-review corrected code",
+                "Verify each problem ID resolved",
+                "Ensure no new violations introduced",
+                "Produce final verdict"
+              ],
+              "conditional": "After fixes applied"
+            }
+          ],
+          "outputs": [
+            "Code review report with verdict",
+            "Problem List (if issues found)",
+            "Rule-by-Rule Compliance Table"
+          ],
+          "fixOrchestration": {
+            "agent": "prototype-agent.md",
+            "constraints": [
+              "Fix strictly to spec",
+              "Preserve existing behavior unless violating a rule",
+              "No refactoring beyond scope",
+              "No speculative improvements"
+            ],
+            "handoff": {
+              "context": "This is a corrective pass, not a redesign",
+              "inputs": ["Codebase", "Problem List with IDs"],
+              "output": "Updated code with Problem ID → Fix mapping"
+            }
+          },
+          "behavioralConstraints": [
+            "Do NOT assume intent",
+            "Do NOT soften findings",
+            "Do NOT rewrite code directly",
+            "Do NOT merge review and build roles",
+            "Do NOT allow speculative fixes",
+            "Surface ambiguity, do not resolve silently"
+          ],
+          "blocking": true,
+          "gate": true
+        },
+        {
+          "id": "validation-revision",
+          "name": "Validation & Revision",
+          "description": "Address issues found during user testing",
+          "optional": true,
+          "triggeredBy": "user feedback",
+          "requires": ["code-review-compliance"],
+          "workflow": [
+            "User reports specific issues",
+            "Agent fixes issues in tightly scoped changes",
+            "Agent re-runs code review checklist",
+            "User tests again",
+            "Repeat until approved"
+          ],
+          "focus": "One round of feedback and fixes per prototype"
+        }
+      ],
+      "completionCriteria": [
+        "Prototype requirements documented and approved",
+        "Prototype design brief documented and approved",
+        "Prototype implemented and tested",
+        "Code review gate passed (verdict: Acceptable)",
+        "All compliance violations resolved",
+        "Landing page updated with prototype link",
+        "User has approved the prototype",
+        "All acceptance criteria met"
+      ],
+      "notes": [
+        "This cycle is independent for each prototype",
+        "Shared components may be created/updated during implementation",
+        "Foundation elements (tokens, business requirements) are reused, not recreated"
+      ]
+    }
+  ],
+  "managedSkills": [
+    {
+      "id": "requirement-clarification",
+      "name": "Requirement Clarification (Sequential Q&A)",
+      "purpose": "Eliminate ambiguity in requirements through controlled, sequential Q&A",
+      "usedBy": [
+        "business-requirements-agent",
+        "requirements-research-agent"
+      ],
+      "timing": "Before creating requirement documents",
+      "output": "Requirement Clarification Summary",
+      "invocation": "Agents use the Skill tool during their workflow"
+    }
+  ],
+  "orchestrationRules": [
+    "Strict Ordering: No agent may start before its dependencies are complete",
+    "One Active Agent at a Time: Do not interleave agent conversations",
+    "Skill Invocation: Skills are invoked by agents, not by the orchestrator directly",
+    "Document Handoffs: Each agent's output is treated as immutable input for the next agent",
+    "No Shortcuts: If a user attempts to skip an agent, stop and redirect",
+    "Multiple Prototypes: Foundation work is reused, prototype cycles are isolated",
+    "User Approvals: Requirement documents must be explicitly approved before proceeding",
+    "Manual Server Start: Dev server must always be started manually by user, never automatically"
+  ],
+  "failureConditions": [
+    "Foundation phase is incomplete",
+    "An agent output is missing or unclear",
+    "User attempts to collapse phases",
+    "Required user approval not obtained"
+  ]
+}

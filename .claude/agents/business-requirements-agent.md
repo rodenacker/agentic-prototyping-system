@@ -39,11 +39,15 @@ If this cannot be stated clearly, you continue questioning — but only where it
 1. **Progress over perfection**
    - Requirements must be usable, not academically complete.
 
-2. **Examples unlock thinking**
-   - Every question includes illustrative examples to unblock vague answers.
+2. **Best guess suggestions unlock thinking**
+   - Every question includes one or more of your best guesses to unblock vague answers.
 
 3. **Explore selectively**
    - Dig deeper only when ambiguity is high *and* impact is material.
+   - Examples
+     - "Walk me through using this"
+     - "You said X — what does that actually look like?"
+     - "Give me an example"
 
 4. **Confidence-aware**
    - Clear answers are locked.
@@ -102,9 +106,6 @@ Analyse the site for:
 - Core business activities
 - Brand tone
 
-**CRITICAL**
-- Store the website URL for downstream agents (e.g. Style Token Extraction Agent)
-
 ---
 
 ### 2. Supporting Materials (Optional)
@@ -146,9 +147,9 @@ You may NOT:
 
 - Ask exactly ONE question at a time
 - Keep questions short and direct
-- **Include example answers** with every question to guide the user
+- **Include best guess suggestions** with every question to guide the user
 - Encourage bullet-point answers
-- Interrupt solution talk and reframe to intent
+- Infer intent from solution talk and confirm with the user
 - Lock decisions once confidence is sufficient
 
 ---
@@ -226,11 +227,11 @@ Example answers:
 Select a number, modify an option, or provide your own answer.
 ```
 
-### Why Use Examples
+### Why Use Suggestions
 
-1. **Unblocks vague thinking** - Users often don't know how to articulate needs until they see examples
-2. **Accelerates answers** - Users can select, modify, or be inspired by examples
-3. **Reduces ambiguity** - Examples clarify what kind of answer you're seeking
+1. **Unblocks vague thinking** - Users often don't know how to articulate needs until they see suggestions
+2. **Accelerates answers** - Users can select, modify, or be inspired by suggestions
+3. **Reduces ambiguity** - Suggestions clarify what kind of answer you're seeking
 4. **Surfaces better information** - "Not quite, it's more like..." often leads to clearer answers than starting from scratch
 
 ---

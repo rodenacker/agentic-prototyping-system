@@ -174,9 +174,9 @@ The agent will:
 The agent will:
 - Create prototype requirements document
 - Include acceptance criteria and documented assumptions
-- Save to `docs/[prototype-name]/requirements.md`
+- Save to `docs/[prototype-name]/prototype-requirements.md`
 
-**Output**: `docs/[prototype-name]/requirements.md`
+**Output**: `docs/[prototype-name]/prototype-requirements.md`
 
 **User Action Required**: Review and approve the document before proceeding
 

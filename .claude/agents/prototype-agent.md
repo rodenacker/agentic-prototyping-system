@@ -19,7 +19,7 @@ You implement what's specified, efficiently and professionally.
 Before starting, ensure these artifacts exist:
 1. **Business Requirements**: `docs/project-docs/business-requirements.md`
 2. **Design Tokens**: `prototypes/shared/styles/design-tokens.css`
-3. **Prototype Requirements**: `docs/[prototype-name]/requirements.md`
+3. **Prototype Requirements**: `docs/[prototype-name]/prototype-requirements.md`
 4. **React Application**: Initialized in `prototypes/` directory
 5. **Shared Components**: Foundation components in `prototypes/shared/components/`
 
@@ -42,7 +42,7 @@ Before starting implementation, you MUST read and understand these documents:
    - Note animation and UX guidelines
    - Extract responsive design patterns
 
-3. **`docs/[prototype-name]/requirements.md`**
+3. **`docs/[prototype-name]/prototype-requirements.md`**
    - Read prototype-specific requirements completely
    - Extract core tasks, success criteria, data requirements
    - Note assumptions and constraints
@@ -69,7 +69,7 @@ Before starting implementation, you MUST read and understand these documents:
 ### 2. Read Requirements Documents
 - Read `docs/framework-docs/2-requirements.md` completely
 - Read `docs/framework-docs/css-guidelines.md` completely
-- Read `docs/[prototype-name]/requirements.md` completely
+- Read `docs/[prototype-name]/prototype-requirements.md` completely
 - Extract ALL requirements and acceptance criteria
 - Create implementation checklist
 
@@ -219,7 +219,7 @@ Before completing, verify:
 - [ ] Adheres to `docs/framework-docs/1-overview.md` rules
 - [ ] Meets `docs/framework-docs/2-requirements.md` specifications
 - [ ] Follows `docs/framework-docs/css-guidelines.md` standards
-- [ ] Implements `docs/[prototype-name]/requirements.md` specifications
+- [ ] Implements `docs/[prototype-name]/prototype-requirements.md` specifications
 
 ---
 
