@@ -3,23 +3,16 @@
 A structured, agent-based system for creating consistent, defensible prototypes through coordinated AI workflows.
 
 ## Table of Contents
-- [Quick Start](#quick-start)
-- [Purpose](#purpose)
-- [How It Works](#how-it-works)
-  - [The Workflow](#the-workflow)
-  - [Design Philosophy](#design-philosophy)
-  - [Modularization: Breaking Your System Into Prototypes](#modularization-breaking-your-system-into-prototypes)
-- [Using The Framework](#using-the-framework)
-- [Detailed Workflow](#detailed-workflow)
-  - [Phase 1: Project Foundation](#phase-1-project-foundation-one-time-setup)
-  - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype)
-- [Managed Skills](#managed-skills)
-- [Key Rules](#key-rules)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [Notes](#notes)
+1. [Quick Start](#1-quick-start)
+2. [Purpose](#2-purpose)
+3. [How It Works](#3-how-it-works)
+   - [3.1 Design Philosophy](#31-design-philosophy)
+   - [3.2 Modularization: Breaking Your System Into Prototypes](#32-modularization-breaking-your-system-into-prototypes)
+   - [3.3 The Workflow](#33-the-workflow)
+4. [Using The Framework](#4-using-the-framework)
+5. [Requirements](#5-requirements)
 
-## Quick Start
+## 1. Quick Start
 
 1. **Run setup script:**
    ```powershell
@@ -39,7 +32,7 @@ A structured, agent-based system for creating consistent, defensible prototypes 
 
 The orchestrator will guide you through Phase 1 (Project Foundation) and then help you create prototypes through Phase 2 cycles.
 
-## Purpose
+## 2. Purpose
 
 This framework provides a systematic approach to prototype development by orchestrating specialized AI agents, each responsible for a specific phase of the prototyping process. The goal is to ensure:
 
@@ -48,9 +41,9 @@ This framework provides a systematic approach to prototype development by orches
 - **Defensibility**: Clear documentation and rationale at every step
 - **Efficiency**: Reusable foundation work across multiple prototypes
 
-## How It Works
+## 3. How It Works
 
-### Design Philosophy
+### 3.1 Design Philosophy
 
 This framework is built on three core principles:
 
@@ -90,7 +83,7 @@ Each prototype cycle is designed to be **fast and repeatable**, encouraging expe
 - Rapidly incorporate user feedback
 - Build momentum through frequent, tangible progress
 
-### Modularization: Breaking Your System Into Prototypes
+### 3.2 Modularization: Breaking Your System Into Prototypes
 
 **When to Modularize**: After Phase 1 is complete (business requirements, design tokens, and project setup), but before starting any prototype cycles, break your system into smaller modules.
 
@@ -108,7 +101,7 @@ Think about your system as a collection of independent features or workflows:
 
 Each prototype should be small enough to build, review, and test in a focused session.
 
-### The Workflow
+### 3.3 The Workflow
 
 The framework implements prototypes in a **two-phase approach**:
 
@@ -121,7 +114,7 @@ The framework implements prototypes in a **two-phase approach**:
    - Research requirements → Design → Implement → Code review → Validate
    - Each cycle produces a clickable prototype linked from the landing page
 
-## Using The Framework
+## 4. Using The Framework
 
 ### Step 1: Run the Setup Script
 
@@ -173,18 +166,9 @@ You can also invoke specific agents directly using their slash commands:
 **Utility Commands:**
 - `/requirements-document-review` - Review requirements documents
 
-### What to Expect
-
-The orchestrator will:
-1. Check project state and determine the next required step
-2. Guide you through business requirements gathering
-3. Coordinate style token extraction and project setup
-4. Help you create as many prototypes as needed, each following the structured cycle
-5. Ensure all dependencies are met before proceeding to the next phase
-
 ---
 
-## Requirements
+## 5. Requirements
 
 - [Claude Code CLI](https://claude.com/claude-code)
 - PowerShell (for running setup-proto.ps1)
