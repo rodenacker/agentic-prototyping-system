@@ -18,7 +18,7 @@ You exist to make prototyping possible and defensible.
 
 Before starting, receive from orchestrator:
 - **Prototype/module name**
-- **Location of brief file**: `docs/project-docs/[prototype-name]/brief.md`
+- **Location of brief file**: `docs/project-docs/prototype-[prototype-name]/brief.md`
 - Any wireframes or supporting materials provided by user
 
 If the brief file is missing, **stop immediately** and request it.
@@ -32,7 +32,7 @@ If the brief file is missing, **stop immediately** and request it.
 Before starting Q&A, understand what's already defined:
 
 1. **Read Brief Document**
-   - Read `docs/project-docs/[prototype-name]/brief.md` completely
+   - Read `docs/project-docs/prototype-[prototype-name]/brief.md` completely
    - Extract key information already provided
    - Identify module purpose and goals
 
@@ -258,7 +258,7 @@ Do not skip steps.
 ## Output Requirements
 
 ### Document Location
-Save requirements document to: `docs/project-docs/[prototype-name]/prototype-requirements.md`
+Save requirements document to: `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md`
 
 ### Document Structure
 ```markdown
@@ -309,7 +309,7 @@ Save requirements document to: `docs/project-docs/[prototype-name]/prototype-req
 - [ ] [Testable criterion 3]
 
 ## Reference Materials
-- Brief: docs/project-docs/[prototype-name]/brief.md
+- Brief: docs/project-docs/prototype-[prototype-name]/brief.md
 - Wireframes: [if provided]
 ```
 
@@ -369,14 +369,14 @@ Confirm:
 - ✅ Acceptance criteria are testable
 - ✅ Assumptions are documented
 - ✅ No duplication with general instructions
-- ✅ Document saved to `docs/project-docs/[prototype-name]/prototype-requirements.md`
+- ✅ Document saved to `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md`
 - ✅ Requirements review skill invoked and issues addressed
 
 ### 4. User Approval
 **CRITICAL**: Prompt user explicitly:
 ```
 Please review the prototype requirements at:
-docs/project-docs/[prototype-name]/prototype-requirements.md
+docs/project-docs/prototype-[prototype-name]/prototype-requirements.md
 
 Does this clearly capture what needs to be prototyped?
 - Type 'approve' to proceed to prototype building
@@ -386,7 +386,7 @@ Does this clearly capture what needs to be prototyped?
 ### 5. Handoff Information
 Once approved, confirm to orchestrator:
 - Requirements document complete and approved
-- Saved to `docs/project-docs/[prototype-name]/prototype-requirements.md`
+- Saved to `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md`
 - Prototype name: [name]
 - Ready for Prototype Builder Agent
 
@@ -467,7 +467,7 @@ Begin by following this sequence:
 
 1. **Verify Prerequisites**
    - Confirm prototype/module name
-   - Check for brief file at `docs/project-docs/[prototype-name]/brief.md`
+   - Check for brief file at `docs/project-docs/prototype-[prototype-name]/brief.md`
    - Note any wireframes or materials
    - Stop if brief is missing
 

@@ -109,7 +109,7 @@
           "description": "Clarify prototype-specific requirements through brief review and Q&A",
           "inputs": {
             "required": [
-              "docs/project-docs/[prototype-name]/brief.md",
+              "docs/project-docs/prototype-[prototype-name]/brief.md",
               "docs/framework-docs/2-requirements.md"
             ],
             "optional": [
@@ -143,7 +143,7 @@
             }
           ],
           "outputs": [
-            "docs/project-docs/[prototype-name]/prototype-requirements.md"
+            "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md"
           ],
           "userApprovalRequired": true,
           "blocking": true,
@@ -165,7 +165,7 @@
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
-              "docs/project-docs/[prototype-name]/prototype-requirements.md"
+              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md"
             ],
             "context": [
               "docs/framework-docs/2-requirements.md",
@@ -255,7 +255,7 @@
             }
           ],
           "outputs": [
-            "docs/project-docs/[prototype-name]/prototype-design-brief.md"
+            "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md"
           ],
           "mandatoryCaptures": [
             "Prototype Purpose - why it exists, what decision/learning it supports",
@@ -276,8 +276,8 @@
             "required": [
               "docs/project-docs/business-requirements.md",
               "prototypes/shared/styles/design-tokens.css",
-              "docs/project-docs/[prototype-name]/prototype-requirements.md",
-              "docs/project-docs/[prototype-name]/prototype-design-brief.md",
+              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
+              "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md",
               "docs/framework-docs/2-requirements.md",
               "docs/framework-docs/css-guidelines.md"
             ]
@@ -374,8 +374,8 @@
               "prototypes/shared/components/",
               "docs/framework-docs/2-requirements.md",
               "docs/framework-docs/css-guidelines.md",
-              "docs/project-docs/[prototype-name]/prototype-requirements.md",
-              "docs/project-docs/[prototype-name]/prototype-design-brief.md"
+              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
+              "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md"
             ]
           },
           "reviewDimensions": [

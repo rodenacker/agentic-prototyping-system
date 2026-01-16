@@ -97,8 +97,8 @@ Determine current phase by checking for key output files from workflow:
 - `prototypes/package.json` (Step 3 output)
 
 **Phase 2 outputs to check** (if Phase 1 complete):
-- `docs/project-docs/[prototype-name]/prototype-requirements.md`
-- `docs/project-docs/[prototype-name]/prototype-design-brief.md`
+- `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md`
+- `docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md`
 - `prototypes/[prototype-name]/` (prototype implementation)
 
 ### 3. Determine Next Step
