@@ -9,7 +9,7 @@ A structured, agent-based system for creating consistent, defensible prototypes 
   - [Phase 1: Project Foundation](#phase-1-project-foundation-once-per-project)
   - [Modularization: Breaking Your System Into Prototypes](#modularization-breaking-your-system-into-prototypes)
   - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype)
-- [Getting Started](#getting-started)
+- [Using The Framework](#using-the-framework)
 - [Detailed Workflow](#detailed-workflow)
   - [Phase 1: Project Foundation](#phase-1-project-foundation-one-time-setup)
   - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype-1)
@@ -101,7 +101,7 @@ For each individual prototype:
 
 Each prototype cycle is independent, but all prototypes share the same foundational elements.
 
-## Getting Started
+## Using The Framework
 
 ### Step 1: Run the Setup Script
 
