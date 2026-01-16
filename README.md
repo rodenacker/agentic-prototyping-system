@@ -50,23 +50,6 @@ This framework provides a systematic approach to prototype development by orches
 
 ## How It Works
 
-### The Workflow
-
-The framework follows a **two-phase approach**:
-
-1. **Phase 1: Project Foundation** (once per project)
-   - Gather business requirements
-   - Extract design tokens from your brand
-   - Set up the React application and landing page
-
-2. **Modularization** (before prototyping)
-   - Break your system into small, focused modules
-   - Identify individual features or workflows to prototype
-
-3. **Phase 2: Prototype Cycle** (repeat for each module)
-   - Research requirements → Design → Implement → Code review → Validate
-   - Each cycle produces a clickable prototype linked from the landing page
-
 ### Design Philosophy
 
 This framework is built on three core principles:
@@ -124,6 +107,19 @@ Think about your system as a collection of independent features or workflows:
 - ✅ Do: "Invoice approval workflow", "Profile settings page", "Dashboard overview"
 
 Each prototype should be small enough to build, review, and test in a focused session.
+
+### The Workflow
+
+The framework implements prototypes in a **two-phase approach**:
+
+1. **Phase 1: Project Foundation**
+   - Gather business requirements
+   - Extract design tokens from your brand
+   - Set up the React application and landing page
+
+2. **Phase 2: Prototype Cycle** (repeat for each module)
+   - Research requirements → Design → Implement → Code review → Validate
+   - Each cycle produces a clickable prototype linked from the landing page
 
 ## Using The Framework
 
