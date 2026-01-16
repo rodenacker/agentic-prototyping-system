@@ -14,8 +14,9 @@ A structured, agent-based system for creating consistent, defensible prototypes 
    - [4.2 Define The Project](#42-define-the-project)
    - [4.3 Start Claude Code](#43-start-claude-code)
    - [4.4 Invoke The Project Orchestration Agent](#44-invoke-the-project-orchestration-agent)
-   - [4.5 Optional: Run Individual Agent Commands](#45-optional-run-individual-agent-commands)
-5. [Requirements](#5-requirements)
+   - [4.5 Identify Modules To Prototype](#45-identify-modules-to-prototype)
+5. [Optional: Run Individual Agent Commands](#5-optional-run-individual-agent-commands)
+6. [Requirements](#6-requirements)
 
 ## 1. Quick Start
 
@@ -160,9 +161,19 @@ Once Claude Code is running, invoke the Project Orchestration Agent using the sl
 /project-orchestrator
 ```
 
-The orchestrator will guide you through the workflow.
+The orchestrator will guide you through the project setup workflow.
 
-### 4.5 Optional: Run Individual Agent Commands
+### 4.5 Identify Modules To Prototype
+
+Identify a module you want to prototype and add any or all of these to the `docs/project-docs` folder:
+
+- A module brief
+- Wireframes
+- Data models
+
+The orchestrator will guide you through the prototype workflow.
+
+## 5. Optional: Run Individual Agent Commands
 
 You can invoke specific agents directly using their slash commands:
 
@@ -182,7 +193,7 @@ You can invoke specific agents directly using their slash commands:
 
 ---
 
-## 5. Requirements
+## 6. Requirements
 
 - [Claude Code CLI](https://claude.com/claude-code)
 - PowerShell (for running setup-proto.ps1)
