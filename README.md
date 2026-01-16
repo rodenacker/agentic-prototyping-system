@@ -6,6 +6,7 @@ A structured, agent-based system for creating consistent, defensible prototypes 
 - [Quick Start](#quick-start)
 - [Purpose](#purpose)
 - [How It Works](#how-it-works)
+  - [Modularization: Breaking Your System Into Prototypes](#modularization-breaking-your-system-into-prototypes)
 - [Getting Started](#getting-started)
 - [Detailed Workflow](#detailed-workflow)
   - [Phase 1: Project Foundation](#phase-1-project-foundation-one-time-setup)
@@ -58,6 +59,33 @@ Before any prototype work begins, the system establishes a shared foundation:
 3. **Project Setup** - Initializes the React application, creates shared systems structure, and generates the landing page
 
 This foundation is created once and reused across all prototypes in the project.
+
+### Modularization: Breaking Your System Into Prototypes
+
+**IMPORTANT**: This framework is designed for creating **multiple small, focused prototypes**, not one massive prototype of your entire system.
+
+**When to Modularize**: After Phase 1 is complete (business requirements, design tokens, and project setup), but before starting any prototype cycles, you should break your system into smaller modules or features to prototype.
+
+**Why Small Modules?**
+- **Faster iteration**: Small prototypes can be generated and tested quickly
+- **More experimentation**: Test multiple approaches to the same problem
+- **Better feedback**: Focused prototypes are easier to evaluate and critique
+- **Lower risk**: Failed experiments are smaller and cheaper
+- **Clearer decisions**: Each prototype validates a specific hypothesis or design choice
+
+**How to Modularize**:
+Think about your system as a collection of independent features or workflows:
+- Individual user tasks or journeys
+- Specific features or capabilities
+- Critical interaction patterns
+- Alternative approaches to solve the same problem
+- High-risk or uncertain design decisions
+
+**Examples**:
+- ❌ Don't: "Customer portal prototype" (too broad)
+- ✅ Do: "Invoice approval workflow", "Profile settings page", "Dashboard overview"
+
+Each prototype should be small enough to build, review, and test in a focused session.
 
 ### Phase 2: Prototype Cycle (Repeat Per Prototype)
 
