@@ -10,6 +10,11 @@ A structured, agent-based system for creating consistent, defensible prototypes 
    - [3.2 Modularization](#32-modularization)
    - [3.3 The Workflow](#33-the-workflow)
 4. [Using The Framework](#4-using-the-framework)
+   - [4.1 Run the Setup Script](#41-run-the-setup-script)
+   - [4.2 Define The Project](#42-define-the-project)
+   - [4.3 Start Claude Code](#43-start-claude-code)
+   - [4.4 Invoke The Project Orchestration Agent](#44-invoke-the-project-orchestration-agent)
+   - [4.5 Optional: Run Individual Agent Commands](#45-optional-run-individual-agent-commands)
 5. [Requirements](#5-requirements)
 
 ## 1. Quick Start
@@ -116,7 +121,7 @@ The framework implements prototypes in a **two-phase approach**:
 
 ## 4. Using The Framework
 
-### Step 1: Run the Setup Script
+### 4.1 Run the Setup Script
 
 Execute the setup script from anywhere:
 
@@ -129,16 +134,25 @@ The script will:
 - Create the project folder
 - Clone the `agent-prototyping-system` repository into the folder
 
-### Step 2: Navigate and Start Claude Code
+### 4.2 Define The Project
 
-Navigate to your new project folder and start Claude Code:
+Navigate to your new project folder and add any or all of these to the `docs/project-docs` folder:
+
+- A project brief
+- Meeting notes
+- Wireframes
+- Data models
+
+### 4.3 Start Claude Code
+
+Start Claude Code
 
 ```powershell
 cd your-project-folder-name
 claude --model claude-4-5-opus
 ```
 
-### Step 3: Start the Project Orchestration Agent
+### 4.4 Invoke The Project Orchestration Agent
 
 Once Claude Code is running, invoke the Project Orchestration Agent using the slash command:
 
@@ -146,11 +160,11 @@ Once Claude Code is running, invoke the Project Orchestration Agent using the sl
 /project-orchestrator
 ```
 
-The orchestrator will guide you through the workflow, starting with Phase 1 (Project Foundation).
+The orchestrator will guide you through the workflow.
 
-### Alternative: Run Individual Agent Commands
+### 4.5 Optional: Run Individual Agent Commands
 
-You can also invoke specific agents directly using their slash commands:
+You can invoke specific agents directly using their slash commands:
 
 **Phase 1 Commands:**
 - `/project-requirements` - Business requirements gathering
