@@ -112,7 +112,7 @@ Within `prototypes/`, create:
 
 ### 3. Data Storage Setup (Optional)
 
-**Prompt the user**: "Would you like to use LocalStorage for data persistence across prototypes? This will automatically save and share data between all prototypes."
+**Prompt the user**: "Would you like to use LocalStorage for data persistence across prototypes? **This will automatically save and share data between all prototypes.**"
 
 **If user says YES**:
 - Create a shared storage utility in `shared/utils/storage.js`
