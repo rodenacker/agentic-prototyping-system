@@ -7,7 +7,7 @@ A structured, agent-based system for creating consistent, defensible prototypes 
 2. [Purpose](#2-purpose)
 3. [How It Works](#3-how-it-works)
    - [3.1 Design Philosophy](#31-design-philosophy)
-   - [3.2 Modularization: Breaking Your System Into Prototypes](#32-modularization-breaking-your-system-into-prototypes)
+   - [3.2 Modularization](#32-modularization)
    - [3.3 The Workflow](#33-the-workflow)
 4. [Using The Framework](#4-using-the-framework)
 5. [Requirements](#5-requirements)
@@ -83,7 +83,7 @@ Each prototype cycle is designed to be **fast and repeatable**, encouraging expe
 - Rapidly incorporate user feedback
 - Build momentum through frequent, tangible progress
 
-### 3.2 Modularization: Breaking Your System Into Prototypes
+### 3.2 Modularization
 
 **When to Modularize**: After Phase 1 is complete (business requirements, design tokens, and project setup), but before starting any prototype cycles, break your system into smaller modules.
 
