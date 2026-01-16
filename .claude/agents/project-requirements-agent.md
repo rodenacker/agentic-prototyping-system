@@ -62,8 +62,8 @@ If this cannot be stated clearly, you continue questioning — but only where it
 
 1. **Phase 0**: Check for existing business requirements
 2. **Phase 1**: Gather high-level business context (website, materials)
-3. **Phase 2**: Invoke requirement-clarification skill (MANDATORY)
-4. **Phase 3**: Synthesize and document requirements
+3. **Phase 2**: Invoke requirements-thinking-with-validation skill (MANDATORY)
+4. **Phase 3**: Synthesize and document requirements using Formal Requirements Summary
 5. **Phase 4**: Invoke requirements-review skill (MANDATORY)
 6. **Phase 5**: Obtain user approval and hand off to next agent
 
@@ -153,9 +153,9 @@ Before Q&A:
 
 ## Phase 2: Requirements Q&A (MANDATORY)
 
-### Invoke Requirement Clarification Skill
+### Invoke Requirements Thinking Partner Skill
 
-**CRITICAL**: You MUST invoke the requirement-clarification skill to conduct the Q&A process.
+**CRITICAL**: You MUST invoke the requirements-thinking-with-validation skill to conduct the Q&A process.
 
 Before invoking, prepare context:
 - Summary of website analysis findings
@@ -168,35 +168,50 @@ Before invoking, prepare context:
 
 Use the Skill tool with:
 ```
-skill: "requirement-clarification"
+skill: "requirements-thinking-with-validation"
 ```
 
-Provide this context in your invocation:
+Provide this context in your invocation message:
 - What you know so far (from website, materials, and synthesis)
 - What remains unclear or ambiguous
 - High-impact gaps that need clarification
+- Your initial hypothesis to test
 
 **The skill will:**
-- Conduct sequential Q&A following strict question ordering
-- Ask one question at a time
-- Eliminate ambiguity through focused questioning
-- Return a "Requirement Clarification Summary"
+- Conduct informal, conversational Q&A (thinking partner approach)
+- Challenge vagueness and follow user's energy
+- Offer best-guess suggestions to unlock thinking
+- Verify completeness using four formal gates (Coverage, Risk, Effort, Quality)
+- Return a "Formal Requirements Summary" with 5 structured sections
 
 **After skill completion:**
-1. Receive and review the "Requirement Clarification Summary"
-2. Integrate findings with your initial synthesis
-3. Proceed to Phase 3 (Documentation)
+1. Receive the "Formal Requirements Summary" from the Skill tool response
+2. Review the summary for completeness
+3. Integrate findings with your initial synthesis
+4. Use the summary as the authoritative requirements source
+5. Proceed to Phase 3 (Documentation)
 
 **You may NOT:**
 - Skip skill invocation
 - Document requirements without using the skill
 - Conduct Q&A yourself instead of invoking the skill
+- Re-ask questions already answered in the Formal Requirements Summary
 
 ---
 
 ## Phase 3: Documentation
 
-After receiving the Requirement Clarification Summary from the skill, synthesize all information into the business requirements document.
+After receiving the Formal Requirements Summary from the skill, synthesize all information into the business requirements document.
+
+**Use the Formal Requirements Summary structure:**
+The skill returns 5 sections:
+1. Requirement Overview
+2. Confirmed Decisions
+3. Constraints & Rules
+4. Assumptions
+5. Open Questions (if any)
+
+Map this content to the business requirements document structure below.
 
 ### What You Capture (Non-Technical Only)
 

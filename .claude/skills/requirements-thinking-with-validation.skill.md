@@ -264,6 +264,30 @@ When exiting, produce a **Formal Requirements Summary** with exactly these secti
 
 ---
 
+## Output Return Mechanism (Critical)
+
+**How the skill returns results to the invoking agent:**
+
+When this skill completes, it returns the **Formal Requirements Summary** directly to the invoking agent through the Skill tool's response.
+
+**Format**: The summary is returned as structured markdown text containing all 5 sections.
+
+**What the invoking agent receives:**
+- Complete Formal Requirements Summary with all 5 sections
+- Formatted as markdown text
+- Ready to be used directly or integrated into documentation
+
+**What the invoking agent should do:**
+1. Receive the Formal Requirements Summary from the skill completion
+2. Review the summary for completeness
+3. Integrate findings with any existing context or initial synthesis
+4. Use the summary as the authoritative requirements source
+5. Proceed to documentation phase using this output
+
+**Critical**: The invoking agent must NOT re-ask questions already answered in the summary. The summary is the final, authoritative output and should be used as-is.
+
+---
+
 ## Traceability Requirement (Hard Rule)
 
 Every item in the final summary must be traceable to:

@@ -30,7 +30,7 @@
           "userApprovalRequired": true,
           "blocking": true,
           "skills": [
-            "requirement-clarification"
+            "requirements-thinking-with-validation"
           ]
         },
         {
@@ -134,11 +134,13 @@
             {
               "name": "Phase 2: Requirements Q&A",
               "activities": [
-                "Invoke requirement-clarification skill",
-                "Ask sequential questions to eliminate ambiguity",
-                "Provide numbered example answers for easy selection",
+                "Invoke requirements-thinking-with-validation skill",
+                "Conduct informal conversational Q&A (thinking partner approach)",
+                "Challenge vagueness and follow user's energy",
+                "Offer best-guess suggestions to unlock thinking",
                 "Focus on prototype-specific requirements only",
-                "Do NOT ask about general requirements (already in 2-requirements.md)"
+                "Do NOT ask about general requirements (already in 2-requirements.md)",
+                "Receive Formal Requirements Summary with 5 structured sections"
               ]
             }
           ],
@@ -148,7 +150,7 @@
           "userApprovalRequired": true,
           "blocking": true,
           "skills": [
-            "requirement-clarification"
+            "requirements-thinking-with-validation"
           ],
           "assumptions": [
             "General technical requirements from framework-docs/2-requirements.md",
@@ -495,16 +497,17 @@
   ],
   "managedSkills": [
     {
-      "id": "requirement-clarification",
-      "name": "Requirement Clarification (Sequential Q&A)",
-      "purpose": "Eliminate ambiguity in requirements through controlled, sequential Q&A",
+      "id": "requirements-thinking-with-validation",
+      "name": "Requirements Thinking Partner (Validated & Traceable)",
+      "purpose": "Help users express requirements naturally through informal conversation while ensuring formal, complete, traceable output",
       "usedBy": [
         "project-requirements-agent",
         "prototype-requirements-agent"
       ],
-      "timing": "Before creating requirement documents",
-      "output": "Requirement Clarification Summary",
-      "invocation": "Agents use the Skill tool during their workflow"
+      "timing": "During requirements gathering phase (before creating requirement documents)",
+      "output": "Formal Requirements Summary (5 sections: Overview, Confirmed Decisions, Constraints & Rules, Assumptions, Open Questions)",
+      "invocation": "Agents use the Skill tool during their workflow",
+      "approach": "Informal conversational Q&A with formal structured output"
     },
     {
       "id": "requirements-review",

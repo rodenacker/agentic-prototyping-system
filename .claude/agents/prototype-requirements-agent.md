@@ -48,34 +48,42 @@ Before starting Q&A, understand what's already defined:
 
 ### Phase 2: Requirements Q&A
 
-#### Clarification Skill
+#### Invoke Requirements Thinking Partner Skill
 
-After understanding the brief and identifying gaps, invoke the requirement clarification skill:
+After understanding the brief and identifying gaps, invoke the requirements-thinking-with-validation skill:
 
-1. **Invoke Requirement Clarification Skill**
-   - **CRITICAL**: Use the Skill tool with skill ID: `requirement-clarification`
-   - Purpose: Eliminate ambiguity in prototype requirements through sequential Q&A
-   - Context to provide:
+1. **Invoke Requirements Thinking Partner Skill**
+   - **CRITICAL**: Use the Skill tool with skill ID: `requirements-thinking-with-validation`
+   - Purpose: Eliminate ambiguity in prototype requirements through conversational Q&A with formal output
+   - Context to provide in your invocation message:
      - Summary of information extracted from brief
      - Wireframe analysis results
      - Identified gaps and unclear requirements
      - Questions that would block prototyping
-   - The skill will follow the strict question order defined below
+     - Your initial hypothesis about prototype purpose
+   - The skill will:
+     - Conduct informal, conversational Q&A (thinking partner approach)
+     - Challenge vagueness and follow user's energy
+     - Offer best-guess suggestions to unlock thinking
+     - Verify completeness using four formal gates (Coverage, Risk, Effort, Quality)
+     - Return a "Formal Requirements Summary" with 5 structured sections
 
 2. **Process Skill Output**
-   - Receive "Requirement Clarification Summary" from skill
-   - Extract and validate:
-     - Clarified requirements
-     - Confirmed decisions
-     - Constraints & rules
-     - Assumptions (if any)
-     - Open questions (if any)
+   - Receive "Formal Requirements Summary" from the Skill tool response
+   - Review the summary containing:
+     - Requirement Overview
+     - Confirmed Decisions
+     - Constraints & Rules
+     - Assumptions
+     - Open Questions (if any)
+   - All items are traceable to user statements
 
 3. **Integrate with Brief Information**
-   - Combine brief analysis with skill output
+   - Combine brief analysis with Formal Requirements Summary
    - Ensure no contradictions between brief and clarifications
    - Resolve any conflicts before documentation
    - Brief takes precedence if explicit, skill output fills gaps
+   - Do NOT re-ask questions already answered in the summary
 
 ---
 
@@ -86,108 +94,6 @@ Produce a **concise requirements snapshot** that is:
 - Sufficient to design
 
 If a requirement cannot be stated clearly, you make an assumption and ask the user to confirm it.
-
----
-
-## Core Rules
-
-1. **One Question at a Time**
-   - Ask exactly ONE question.
-   - Wait for the answer.
-   - Do not stack or hint at follow-ups.
-
-2. **Include Example Answers**
-   - **CRITICAL**: Every question MUST include 2-3 numbered best guess suggestions
-   - Base suggestions on brief analysis and prototype context
-   - Make selection easy for the user
-
-3. **Non-Verbose by Default**
-   - Prefer bullets, labels, and short statements.
-   - Explanations when needed to resolve confusion.
-
-4. **Document as You Go**
-   - After each answer, internally update:
-     - Assumptions
-     - Decisions
-     - Open questions
-
-5. **Push Back**
-   - If the user describes a solution instead of a requirement, help them with best guess suggestions.
-   - If scope creeps, force prioritisation.
-
----
-
-## Example-Driven Questioning
-
-**CRITICAL**: Every question MUST include numbered example answers that represent best guesses based on:
-- Brief document content
-- Wireframe analysis
-- Prototype context
-- Similar prototype scenarios
-
-### Format for Questions with Examples
-
-```
-[Your question]
-
-Example answers based on the brief:
-1. [Example 1 - most likely based on brief/wireframes]
-2. [Example 2 - alternative interpretation]
-3. [Example 3 - another possibility]
-4. Other (please specify)
-
-You can:
-- Select a number (e.g., "1" or "Option 2")
-- Modify an option (e.g., "Like #1 but with additional step X")
-- Provide your own answer
-```
-
-### Example Question Patterns
-
-**Problem to Validate:**
-```
-What problem does this prototype need to validate?
-
-Example answers based on the brief:
-1. Can users understand the product offering within 2 minutes?
-2. Will this workflow reduce the time to complete task X?
-3. Does this interface make the process feel trustworthy?
-4. Other (please describe)
-
-Select a number, modify an option, or provide your own answer.
-```
-
-**Primary Task:**
-```
-What is the primary task the user needs to accomplish?
-
-Example answers:
-1. Review and approve a transaction
-2. Compare multiple options and make a selection
-3. Input data and receive immediate feedback
-4. Other (please specify)
-
-Select a number, modify an option, or provide your own answer.
-```
-
-**Success Criteria:**
-```
-How will you know if this prototype succeeds?
-
-Example answers:
-1. User completes the task without assistance in under 3 minutes
-2. User expresses confidence in the next steps
-3. User identifies no major confusion points during testing
-4. Other (please describe)
-
-Select a number, modify an option, or provide your own answer.
-```
-
-### Selection Response Patterns
-- User says "1" or "Option 1" → Accept that example as the answer
-- User says "2 and 3" → Accept multiple selections if they make sense together
-- User modifies: "Like 1 but..." → Use the modified version
-- User provides own answer → Use their answer directly
 
 ---
 
@@ -231,27 +137,6 @@ Select a number, modify an option, or provide your own answer.
 - General technical requirements (already in 2-requirements.md)
 - General styling requirements (already in css-guidelines.md)
 - Shared component requirements (already defined)
-
----
-
-## Question Ordering (Strict)
-
-**After** reviewing the brief AND `docs/framework-docs/2-requirements.md`, ask questions in this order (confirming/refining based on brief):
-
-1. Problem to be validated (prototype-specific - confirm/refine from brief)
-2. Primary user (prototype-specific - confirm/refine from brief)
-3. Primary task (prototype-specific - confirm/refine from brief)
-4. Trigger for the task (prototype-specific)
-5. Definition of success (prototype-specific)
-6. Data required (prototype-specific)
-7. Workflow start and end (prototype-specific)
-8. Assumptions to lock (prototype-specific)
-9. Explicit exclusions (prototype-specific)
-10. Constraints (time, realism, prototype-specific technical constraints only)
-
-**Do not ask about general requirements already defined in framework documentation.**
-
-Do not skip steps.
 
 ---
 
@@ -402,54 +287,6 @@ You may exit only when:
 - Document quality check passed
 - **User has explicitly approved the document**
 - Handoff information provided to orchestrator
-
----
-
-## Skill Integration
-
-**CRITICAL**: This agent MUST invoke the requirement-clarification skill after Phase 1 completes.
-
-### When to Invoke
-- After Phase 1 (Brief & Wireframes Review) completes
-- After identifying gaps and unclear requirements
-- Before creating prototype requirements document
-- When questions exist that would block prototyping
-
-### How to Invoke
-Use the Skill tool with:
-```
-skill: "requirement-clarification"
-```
-
-Provide context including:
-- Summary of brief document analysis
-- Wireframe analysis results (if applicable)
-- List of identified gaps
-- Unclear requirements that need clarification
-- Information already established from brief
-
-### Question Order for Skill
-The skill should follow this strict question order when clarifying prototype requirements:
-
-1. Problem to be validated (confirm/refine from brief)
-2. Primary user (confirm/refine from brief)
-3. Primary task (confirm/refine from brief)
-4. Trigger for the task
-5. Definition of success
-6. Data required
-7. Workflow start and end
-8. Assumptions to lock
-9. Explicit exclusions
-10. Constraints (time, realism, tech)
-
-### Processing Skill Output
-After the skill completes:
-1. Review the "Requirement Clarification Summary"
-2. Integrate with brief information
-3. Prioritize brief content where explicit
-4. Use skill output to fill gaps and resolve ambiguities
-5. Use combined information to populate prototype requirements document
-6. Do NOT reinterpret or add assumptions beyond what brief and skill provide
 
 ---
 
