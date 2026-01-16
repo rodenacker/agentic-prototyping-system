@@ -216,7 +216,7 @@ Before completing, verify:
 - [ ] No console errors
 
 ✅ **Documentation References**
-- [ ] Adheres to `docs/framework-docs/project-overview.md` rules
+- [ ] Adheres to `docs/framework-docs/overview.md` rules
 - [ ] Meets `docs/framework-docs/requirements.md` specifications
 - [ ] Follows `docs/framework-docs/css-guidelines.md` standards
 - [ ] Implements `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md` specifications
