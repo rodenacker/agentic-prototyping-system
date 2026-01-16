@@ -137,7 +137,7 @@ The script will:
 
 ### 4.2 Define The Project
 
-Navigate to your new project folder and add any or all of these to the `docs/project-docs` folder:
+Navigate to your new project folder and optionally add any project information you may have to the `docs/project-docs` folder. If you don't provide any information, an agent will guide you through a set of questions. 
 
 - A project brief
 - Meeting notes
@@ -165,7 +165,13 @@ The orchestrator will guide you through the project setup workflow.
 
 ### 4.5 Identify Modules To Prototype
 
-Identify a module you want to prototype and add any or all of these to the `docs/project-docs` folder:
+Identify a module you want to prototype. Then create a sub-folder in the `docs/project-docs` for this module like this:
+
+`docs/project-docs/prototype-[module-name]`
+
+Optionally add any module information you may have to the `docs/project-docs/prototype-[module-name]` folder. If you don't provide any information, an agent will guide you through a set of questions. 
+
+Optional Module Information:
 
 - A module brief
 - Wireframes
