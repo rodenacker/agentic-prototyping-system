@@ -305,7 +305,7 @@ Before completing, verify:
 - [ ] No console errors
 
 ✅ **Compliance**
-- [ ] Follows `docs/framework-docs/overview.md` rules
+- [ ] Follows `docs/framework-docs/project-overview.md` rules
 - [ ] Meets `docs/framework-docs/requirements.md` specifications
 - [ ] Adheres to `docs/framework-docs/css-guidelines.md` standards
 - [ ] No unnecessary documentation files created

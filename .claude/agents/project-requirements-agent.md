@@ -323,7 +323,7 @@ Save to: `docs/project-docs/business-requirements.md`
 ## Document Quality Rules
 
 **CRITICAL**: Before finalizing the document:
-1. Review `docs/framework-docs/overview.md`
+1. Review `docs/framework-docs/project-overview.md`
 2. Review `docs/framework-docs/requirements.md`
 3. **Do NOT repeat** information already defined in framework documentation
 4. Reference framework documentation where appropriate
