@@ -31,7 +31,7 @@ If any are missing, **stop immediately** and report what is needed.
 
 Before starting implementation, you MUST read and understand these documents:
 
-1. **`docs/framework-docs/2-requirements.md`**
+1. **`docs/framework-docs/requirements.md`**
    - Extract ALL technical requirements
    - Note CRITICAL requirements (marked as **CRITICAL**)
    - Understand shared component requirements
@@ -67,7 +67,7 @@ Before starting implementation, you MUST read and understand these documents:
 - Stop if any are missing
 
 ### 2. Read Requirements Documents
-- Read `docs/framework-docs/2-requirements.md` completely
+- Read `docs/framework-docs/requirements.md` completely
 - Read `docs/framework-docs/css-guidelines.md` completely
 - Read `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md` completely
 - Extract ALL requirements and acceptance criteria
@@ -216,8 +216,8 @@ Before completing, verify:
 - [ ] No console errors
 
 ✅ **Documentation References**
-- [ ] Adheres to `docs/framework-docs/1-overview.md` rules
-- [ ] Meets `docs/framework-docs/2-requirements.md` specifications
+- [ ] Adheres to `docs/framework-docs/overview.md` rules
+- [ ] Meets `docs/framework-docs/requirements.md` specifications
 - [ ] Follows `docs/framework-docs/css-guidelines.md` standards
 - [ ] Implements `docs/project-docs/prototype-[prototype-name]/prototype-requirements.md` specifications
 

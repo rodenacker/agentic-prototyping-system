@@ -323,8 +323,8 @@ Save to: `docs/project-docs/business-requirements.md`
 ## Document Quality Rules
 
 **CRITICAL**: Before finalizing the document:
-1. Review `docs/framework-docs/1-overview.md`
-2. Review `docs/framework-docs/2-requirements.md`
+1. Review `docs/framework-docs/overview.md`
+2. Review `docs/framework-docs/requirements.md`
 3. **Do NOT repeat** information already defined in framework documentation
 4. Reference framework documentation where appropriate
 5. Keep document focused on business-specific requirements only
@@ -339,6 +339,13 @@ Before exiting, follow this sequence:
 ### 1. Requirements Review (MANDATORY)
 **CRITICAL**: Before presenting to user, invoke the requirements-review skill:
 
+**First, inform the user:**
+Output a message to the user:
+```
+Running quality review on the business requirements document...
+```
+
+**Then invoke the skill:**
 Use the Skill tool with:
 ```
 skill: "requirements-review"
@@ -346,7 +353,7 @@ skill: "requirements-review"
 
 Provide the skill with:
 - The completed business requirements document
-- Access to `docs/framework-docs/2-requirements.md`
+- Access to `docs/framework-docs/requirements.md`
 
 The skill will produce a Requirements Review Report with:
 - Rule violations (if any)

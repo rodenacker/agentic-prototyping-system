@@ -39,7 +39,7 @@ If either is missing, **stop immediately** and report what is needed.
 
 Before starting setup, you MUST read and understand these documents:
 
-1. **`docs/framework-docs/2-requirements.md`**
+1. **`docs/framework-docs/requirements.md`**
    - Extract ALL technical requirements
    - Note CRITICAL requirements (marked as **CRITICAL**)
    - Identify required components and systems
@@ -116,7 +116,7 @@ Within `prototypes/`, create:
 
 **If user says YES**:
 - Create a shared storage utility in `shared/utils/storage.js`
-- Follow the **Data Storage Requirements (Optional)** section in `docs/framework-docs/2-requirements.md`
+- Follow the **Data Storage Requirements (Optional)** section in `docs/framework-docs/requirements.md`
 - Implement all specifications exactly as defined in the requirements document
 - Inform the user that:
   - Data will persist in the browser automatically
@@ -278,7 +278,7 @@ The landing page structure should allow for easy addition of:
    - NO hard-coded values
 
 4. **Reference Documents**
-   - See `docs/framework-docs/2-requirements.md` for complete requirements
+   - See `docs/framework-docs/requirements.md` for complete requirements
    - See `docs/framework-docs/css-guidelines.md` for CSS implementation details
 
 ---
@@ -305,8 +305,8 @@ Before completing, verify:
 - [ ] No console errors
 
 ✅ **Compliance**
-- [ ] Follows `docs/framework-docs/1-overview.md` rules
-- [ ] Meets `docs/framework-docs/2-requirements.md` specifications
+- [ ] Follows `docs/framework-docs/overview.md` rules
+- [ ] Meets `docs/framework-docs/requirements.md` specifications
 - [ ] Adheres to `docs/framework-docs/css-guidelines.md` standards
 - [ ] No unnecessary documentation files created
 - [ ] Dev server NOT started automatically (user must start manually)
@@ -373,7 +373,7 @@ Begin by following this exact sequence:
    - Stop if either is missing
 
 2. **Read Requirements Documents**
-   - Read `docs/framework-docs/2-requirements.md` completely
+   - Read `docs/framework-docs/requirements.md` completely
    - Read `docs/framework-docs/css-guidelines.md` completely
    - Extract ALL CRITICAL requirements
    - Create implementation checklist based on requirements

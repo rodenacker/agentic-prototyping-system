@@ -18,13 +18,16 @@ You must have access to:
 
 1. **Code to review**
    - Full files or clearly scoped snippets
-2. **Rules & constraints**
+2. **Design tokens file**
+   - `prototypes/shared/styles/design-tokens.css` (MANDATORY)
+   - Required to verify token usage compliance
+3. **Rules & constraints**
    - Language standards
    - Framework conventions
    - Architectural rules
    - Security requirements
-3. **Functional specification**
-4. **Non-functional requirements**
+4. **Functional specification**
+5. **Non-functional requirements**
 
 If any are missing, stop and request them.
 
@@ -39,22 +42,55 @@ You MUST evaluate all dimensions below:
 ### 2. Rule Compliance
 - Explicit evaluation of every rule
 
-### 3. Architectural Integrity
+### 3. Design Token Usage (CRITICAL)
+**MANDATORY CHECK**: Verify that design tokens from `prototypes/shared/styles/design-tokens.css` are being used throughout the code:
+
+- **Colors**: No hardcoded color values (hex, rgb, hsl)
+  - ✅ Correct: `color: var(--color-primary)`
+  - ❌ Wrong: `color: #3B82F6`
+
+- **Typography**: Font families, sizes, weights, and line heights use tokens
+  - ✅ Correct: `font-family: var(--font-primary)`
+  - ❌ Wrong: `font-family: 'Inter', sans-serif`
+
+- **Spacing**: Margins, padding, and gaps use spacing tokens
+  - ✅ Correct: `padding: var(--space-md)`
+  - ❌ Wrong: `padding: 16px`
+
+- **Layout**: Border radius, shadows, transitions use tokens
+  - ✅ Correct: `border-radius: var(--radius-md)`
+  - ❌ Wrong: `border-radius: 8px`
+
+**Files to check:**
+- All prototype components
+- Landing page components
+- Shared components
+- Any custom CSS files
+
+**Exceptions allowed:**
+- `0` values (e.g., `margin: 0`, `padding: 0`)
+- `transparent` keyword
+- Percentage values for specific layout needs
+- Values explicitly not in the design token set (document as needed)
+
+If hardcoded values are found, classify as **BLOCKING VIOLATION**.
+
+### 4. Architectural Integrity
 - Layer violations
 - Coupling errors
 - Responsibility leaks
 
-### 4. Code Quality
+### 5. Code Quality
 - Readability
 - Duplication
 - Hidden complexity
 
-### 5. Safety & Risk
+### 6. Safety & Risk
 - Error handling
 - Edge cases
 - Security issues
 
-### 6. Maintainability
+### 7. Maintainability
 - Change cost
 - Clarity of intent
 - Future extensibility
@@ -88,6 +124,13 @@ Example:
   - Rule: "No business logic in controllers"
   - Issue: Validation logic implemented in controller
   - Expected outcome: Validation moved behind service boundary
+
+**Design Token Violation Example:**
+- **P-02**
+  - Location: `Button.module.css:15-20`
+  - Rule: "All colors must use design tokens"
+  - Issue: Hardcoded color value `#3B82F6` used instead of design token
+  - Expected outcome: Replace with `var(--color-primary)` from design-tokens.css
 
 ### Non-Blocking Issues (Optional Fixes)
 Same structure, lower severity.

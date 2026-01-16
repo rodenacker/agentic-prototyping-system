@@ -34,11 +34,33 @@
           ]
         },
         {
+          "id": "cleanup-after-business-requirements",
+          "name": "Structure Cleanup (Post Business Requirements)",
+          "agent": "folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after business requirements documentation",
+          "requires": ["business-requirements"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/business-requirements.md"
+            ]
+          },
+          "workflow": [
+            "Scan project structure",
+            "Detect violations",
+            "Propose corrective actions (if violations found)",
+            "Execute changes after user approval",
+            "Update references",
+            "Verify and report completion"
+          ],
+          "userApprovalRequired": true,
+          "blocking": false
+        },
+        {
           "id": "style-tokens",
           "name": "Design Token Extraction",
           "agent": "project-style-token-agent.md",
           "description": "Extract shared CSS design tokens for visual consistency",
-          "requires": ["business-requirements"],
+          "requires": ["cleanup-after-business-requirements"],
           "inputs": {
             "required": [
               "Customer website URL (from business-requirements)"
@@ -54,11 +76,33 @@
           "blocking": true
         },
         {
+          "id": "cleanup-after-design-tokens",
+          "name": "Structure Cleanup (Post Design Tokens)",
+          "agent": "folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after design token extraction",
+          "requires": ["style-tokens"],
+          "inputs": {
+            "required": [
+              "prototypes/shared/styles/design-tokens.css"
+            ]
+          },
+          "workflow": [
+            "Scan project structure",
+            "Detect violations",
+            "Propose corrective actions (if violations found)",
+            "Execute changes after user approval",
+            "Update references",
+            "Verify and report completion"
+          ],
+          "userApprovalRequired": true,
+          "blocking": false
+        },
+        {
           "id": "project-setup",
           "name": "Application Setup",
           "agent": "project-setup-agent.md",
           "description": "Initialize React application, create shared systems structure, and generate landing page",
-          "requires": ["business-requirements", "style-tokens"],
+          "requires": ["cleanup-after-design-tokens"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
@@ -110,7 +154,7 @@
           "inputs": {
             "required": [
               "docs/project-docs/prototype-[prototype-name]/brief.md",
-              "docs/framework-docs/2-requirements.md"
+              "docs/framework-docs/requirements.md"
             ],
             "optional": [
               "Wireframes",
@@ -139,7 +183,7 @@
                 "Challenge vagueness and follow user's energy",
                 "Offer best-guess suggestions to unlock thinking",
                 "Focus on prototype-specific requirements only",
-                "Do NOT ask about general requirements (already in 2-requirements.md)",
+                "Do NOT ask about general requirements (already in requirements.md)",
                 "Receive Formal Requirements Summary with 5 structured sections"
               ]
             }
@@ -153,24 +197,46 @@
             "requirements-thinking-with-validation"
           ],
           "assumptions": [
-            "General technical requirements from framework-docs/2-requirements.md",
+            "General technical requirements from framework-docs/requirements.md",
             "Styling requirements from framework-docs/css-guidelines.md",
             "Shared component patterns already established"
           ]
+        },
+        {
+          "id": "cleanup-after-prototype-requirements",
+          "name": "Structure Cleanup (Post Prototype Requirements)",
+          "agent": "folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after prototype requirements documentation",
+          "requires": ["requirements-research"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md"
+            ]
+          },
+          "workflow": [
+            "Scan project structure",
+            "Detect violations",
+            "Propose corrective actions (if violations found)",
+            "Execute changes after user approval",
+            "Update references",
+            "Verify and report completion"
+          ],
+          "userApprovalRequired": true,
+          "blocking": false
         },
         {
           "id": "prototype-design",
           "name": "Prototype Design",
           "agent": "prototype-design-agent.md",
           "description": "Shape clear, defensible prototype design and translate user intent into UI design guidance",
-          "requires": ["requirements-research"],
+          "requires": ["cleanup-after-prototype-requirements"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
               "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md"
             ],
             "context": [
-              "docs/framework-docs/2-requirements.md",
+              "docs/framework-docs/requirements.md",
               "prototypes/shared/styles/design-tokens.css"
             ]
           },
@@ -269,18 +335,41 @@
           "blocking": true
         },
         {
+          "id": "cleanup-after-prototype-design",
+          "name": "Structure Cleanup (Post Prototype Design)",
+          "agent": "folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after prototype design documentation",
+          "requires": ["prototype-design"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/prototype-[prototype-name]/design-brief.md",
+              "docs/project-docs/prototype-[prototype-name]/user-verification-tasks.md"
+            ]
+          },
+          "workflow": [
+            "Scan project structure",
+            "Detect violations",
+            "Propose corrective actions (if violations found)",
+            "Execute changes after user approval",
+            "Update references",
+            "Verify and report completion"
+          ],
+          "userApprovalRequired": true,
+          "blocking": false
+        },
+        {
           "id": "prototype-implementation",
           "name": "Prototype Implementation",
           "agent": "prototype-agent.md",
           "description": "Build the prototype based on all requirement documents",
-          "requires": ["requirements-research", "prototype-design"],
+          "requires": ["cleanup-after-prototype-design"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
               "prototypes/shared/styles/design-tokens.css",
               "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
               "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md",
-              "docs/framework-docs/2-requirements.md",
+              "docs/framework-docs/requirements.md",
               "docs/framework-docs/css-guidelines.md"
             ]
           },
@@ -374,7 +463,7 @@
             "required": [
               "prototypes/[prototype-name]/",
               "prototypes/shared/components/",
-              "docs/framework-docs/2-requirements.md",
+              "docs/framework-docs/requirements.md",
               "docs/framework-docs/css-guidelines.md",
               "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
               "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md"

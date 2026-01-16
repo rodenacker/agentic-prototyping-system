@@ -23,7 +23,7 @@ It is designed to be reusable by multiple agents.
 The invoking agent must provide:
 - The requirements document to be reviewed
 - Access to framework documentation, specifically:
-  - `docs/framework-docs/2-requirements.md`
+  - `docs/framework-docs/requirements.md`
 
 The skill assumes the document already exists and is complete.
 
@@ -35,7 +35,7 @@ The skill MUST perform the following tasks:
 
 1. **Apply Requirements Rules**
    - Locate and apply rules pertaining to requirement documents
-   - Use `docs/framework-docs/2-requirements.md` as the authoritative reference
+   - Use `docs/framework-docs/requirements.md` as the authoritative reference
 
 2. **Rule Compliance Check**
    - Compare the requirements document against the applicable rules
@@ -53,7 +53,7 @@ The skill MUST perform the following tasks:
      - Unnecessary qualifiers
 
 5. **Framework Duplication Detection**
-   - Identify content duplicated from `docs/framework-docs/2-requirements.md`
+   - Identify content duplicated from `docs/framework-docs/requirements.md`
    - Recommend replacing duplicated content with references instead of repetition
 
 ---
@@ -92,7 +92,7 @@ The skill MUST produce a **Requirements Review Report** containing the following
 - Do NOT provide rewritten text — describe the issue only
 
 ### 4. Framework Duplications
-- List of content duplicating `docs/framework-docs/2-requirements.md`
+- List of content duplicating `docs/framework-docs/requirements.md`
 - Suggest replacement with references (do not draft the reference text)
 
 ### 5. Overall Assessment
