@@ -153,10 +153,10 @@
           "description": "Clarify prototype-specific requirements through brief review and Q&A",
           "inputs": {
             "required": [
-              "docs/project-docs/prototype-[prototype-name]/brief.md",
               "docs/framework-docs/requirements.md"
             ],
             "optional": [
+              "docs/project-docs/prototype-[prototype-name]/brief.md",
               "Wireframes",
               "Supporting materials"
             ],
@@ -323,7 +323,8 @@
             }
           ],
           "outputs": [
-            "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md"
+            "docs/project-docs/prototype-[prototype-name]/design-brief.md",
+            "docs/project-docs/prototype-[prototype-name]/user-verification-tasks.md"
           ],
           "mandatoryCaptures": [
             "Prototype Purpose - why it exists, what decision/learning it supports",
@@ -368,7 +369,7 @@
               "docs/project-docs/business-requirements.md",
               "prototypes/shared/styles/design-tokens.css",
               "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
-              "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md",
+              "docs/project-docs/prototype-[prototype-name]/design-brief.md",
               "docs/framework-docs/requirements.md",
               "docs/framework-docs/css-guidelines.md"
             ]
@@ -466,7 +467,7 @@
               "docs/framework-docs/requirements.md",
               "docs/framework-docs/css-guidelines.md",
               "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
-              "docs/project-docs/prototype-[prototype-name]/prototype-design-brief.md"
+              "docs/project-docs/prototype-[prototype-name]/design-brief.md"
             ]
           },
           "reviewDimensions": [
@@ -604,9 +605,10 @@
       "purpose": "Review requirements documents against established rules and framework guidance, report issues clearly and concisely",
       "usedBy": [
         "project-requirements-agent",
-        "prototype-requirements-agent"
+        "prototype-requirements-agent",
+        "prototype-design-agent"
       ],
-      "timing": "After creating requirement documents, before presenting to user for approval",
+      "timing": "After creating requirement or design documents, before presenting to user for approval",
       "output": "Requirements Review Report",
       "invocation": "Agents use the Skill tool during their workflow"
     }
