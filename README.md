@@ -6,13 +6,13 @@ A structured, agent-based system for creating consistent, defensible prototypes 
 - [Quick Start](#quick-start)
 - [Purpose](#purpose)
 - [How It Works](#how-it-works)
-  - [Phase 1: Project Foundation](#phase-1-project-foundation-once-per-project)
+  - [The Workflow](#the-workflow)
+  - [Design Philosophy](#design-philosophy)
   - [Modularization: Breaking Your System Into Prototypes](#modularization-breaking-your-system-into-prototypes)
-  - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype)
 - [Using The Framework](#using-the-framework)
 - [Detailed Workflow](#detailed-workflow)
   - [Phase 1: Project Foundation](#phase-1-project-foundation-one-time-setup)
-  - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype-1)
+  - [Phase 2: Prototype Cycle](#phase-2-prototype-cycle-repeat-per-prototype)
 - [Managed Skills](#managed-skills)
 - [Key Rules](#key-rules)
 - [Project Structure](#project-structure)
@@ -50,30 +50,66 @@ This framework provides a systematic approach to prototype development by orches
 
 ## How It Works
 
-The framework uses a **two-phase approach**:
+### The Workflow
 
-### Phase 1: Project Foundation (Once Per Project)
+The framework follows a **two-phase approach**:
 
-Before any prototype work begins, the system establishes a shared foundation:
+1. **Phase 1: Project Foundation** (once per project)
+   - Gather business requirements
+   - Extract design tokens from your brand
+   - Set up the React application and landing page
 
-1. **Business Requirements Gathering** - Clarifies customer needs, business intent, and project purpose
-2. **Style Token Extraction** - Creates shared CSS design tokens for visual consistency
-3. **Project Setup** - Initializes the React application, creates shared systems structure, and generates the landing page
+2. **Modularization** (before prototyping)
+   - Break your system into small, focused modules
+   - Identify individual features or workflows to prototype
 
-This foundation is created once and reused across all prototypes in the project.
+3. **Phase 2: Prototype Cycle** (repeat for each module)
+   - Research requirements → Design → Implement → Code review → Validate
+   - Each cycle produces a clickable prototype linked from the landing page
+
+### Design Philosophy
+
+This framework is built on three core principles:
+
+#### 1. Modular Complexity Management
+
+Rather than building one massive prototype of your entire system, you create **many small, focused prototypes**—each representing a distinct module or feature.
+
+**The result**: One landing page that links to multiple independent prototypes, each exploring a specific part of your system.
+
+**Benefits**:
+- Complex systems become manageable pieces
+- Each module can be validated independently
+- Failed experiments are isolated and low-cost
+- Successful patterns can be identified and reused
+
+#### 2. Clickable Over Abstract
+
+Prototypes are **fully interactive, clickable experiences**, not wireframes, mockups, or static designs.
+
+**The result**: Users can actually click through workflows, interact with controls, and experience the system tactically.
+
+**Benefits**:
+- Reveals usability issues that static designs miss
+- Provides realistic user testing scenarios
+- Builds confidence in design decisions through hands-on validation
+- Creates shared understanding across stakeholders through concrete artifacts
+
+#### 3. Rapid Iteration Cycles
+
+Each prototype cycle is designed to be **fast and repeatable**, encouraging experimentation and learning.
+
+**The result**: You can quickly test multiple approaches to the same problem, compare alternatives, and iterate based on feedback.
+
+**Benefits**:
+- Test risky ideas cheaply before committing
+- Compare competing design solutions side-by-side
+- Rapidly incorporate user feedback
+- Build momentum through frequent, tangible progress
 
 ### Modularization: Breaking Your System Into Prototypes
 
-**IMPORTANT**: This framework is designed for creating **multiple small, focused prototypes**, not one massive prototype of your entire system.
-
-**When to Modularize**: After Phase 1 is complete (business requirements, design tokens, and project setup), but before starting any prototype cycles, you should break your system into smaller modules or features to prototype.
-
-**Why Small Modules?**
-- **Faster iteration**: Small prototypes can be generated and tested quickly
-- **More experimentation**: Test multiple approaches to the same problem
-- **Better feedback**: Focused prototypes are easier to evaluate and critique
-- **Lower risk**: Failed experiments are smaller and cheaper
-- **Clearer decisions**: Each prototype validates a specific hypothesis or design choice
+**When to Modularize**: After Phase 1 is complete (business requirements, design tokens, and project setup), but before starting any prototype cycles, break your system into smaller modules.
 
 **How to Modularize**:
 Think about your system as a collection of independent features or workflows:
@@ -88,18 +124,6 @@ Think about your system as a collection of independent features or workflows:
 - ✅ Do: "Invoice approval workflow", "Profile settings page", "Dashboard overview"
 
 Each prototype should be small enough to build, review, and test in a focused session.
-
-### Phase 2: Prototype Cycle (Repeat Per Prototype)
-
-For each individual prototype:
-
-1. **Requirements Research** - Clarifies prototype-specific requirements
-2. **Prototype Design** - Creates design brief with user stories, views, and task flows
-3. **Prototype Implementation** - Builds the prototype using the foundation and specifications
-4. **Code Review & Compliance** - Strict review gate with automated fix orchestration
-5. **Validation & Revision** - Optional refinement based on user testing
-
-Each prototype cycle is independent, but all prototypes share the same foundational elements.
 
 ## Using The Framework
 
