@@ -184,34 +184,6 @@ The orchestrator will:
 
 ---
 
-### Managed Skills
-
-Agents invoke skills during their workflow:
-
-**requirement-clarification**
-- Purpose: Sequential Q&A to eliminate requirement ambiguity
-- Used by: Project Requirements Agent, Prototype Requirements Agent
-- Timing: Before creating requirement documents
-- Automatically invoked by agents
-
-**requirements-review**
-- Purpose: Review requirements documents against framework rules and guidance
-- Used by: Project Requirements Agent, Prototype Requirements Agent
-- Timing: After creating requirement documents, before presenting to user
-- Automatically invoked by agents
-
-Users can also invoke skills directly:
-- `/requirements-document-review` - Review any requirements document
-
-### Key Rules
-
-- **Strict ordering**: No agent starts before its dependencies are complete
-- **One agent at a time**: No interleaving of agent conversations
-- **Document handoffs**: Each agent's output becomes immutable input for the next
-- **No shortcuts**: Foundation phase must be completed before prototype work begins
-- **User approvals**: You must explicitly approve requirement documents before implementation
-- **Manual server start**: Dev server must always be started manually by you (never automatically)
-
 ## Requirements
 
 - [Claude Code CLI](https://claude.com/claude-code)
