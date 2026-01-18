@@ -252,16 +252,17 @@ Start: Continue with orchestrator or /research-prototype
 
 ### 4.1 Run the Setup Script
 
-Execute the setup script from anywhere:
+Optionally execute the setup script:
 
 ```powershell
 .\setup-proto.ps1
 ```
 
-The script will:
-- Prompt you for a project folder name
+Alternatively you can also perform these steps manually:
 - Create the project folder
 - Clone the `agent-prototyping-system` repository into the folder
+- Create a `prototypes` folder in the project root
+- Create a `project-docs` in the `docs/` folder
 
 ### 4.2 Define The Project
 
