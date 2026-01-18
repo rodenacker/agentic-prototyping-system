@@ -1,3 +1,3 @@
-# /prototype
+# /develop-prototype
 
-Invoke the Prototype Agent defined in `prototype-development-agent.md`
+Invoke the Prototype Development Agent defined in `prototype-development-agent.md`

@@ -169,7 +169,7 @@ Start: /start
 **Phase 2: Prototype Cycle** (Repeatable for each module)
 
 ```
-Start: Continue with orchestrator or /prototype-research
+Start: Continue with orchestrator or /research-prototype
          │
          ↓
 ┌────────────────────────────────────────────────────────────────┐
@@ -311,18 +311,22 @@ The orchestrator will guide you through the prototype workflow.
 
 You can invoke specific agents directly using their slash commands:
 
+**Primary Command:**
+- `/start` - Start the project orchestrator (guides you through entire workflow)
+
 **Phase 1 Commands:**
 - `/project-requirements` - Business requirements gathering
-- `/project-style-token` - Design token extraction
-- `/project-setup` - Application setup
+- `/style-tokens` - Design token extraction
+- `/setup-project` - Application setup
 
 **Phase 2 Commands:**
-- `/prototype-research` - Combined requirements research and design workflow (produces 3 documents)
-- `/prototype` - Prototype implementation
-- `/code-review` - Code review & compliance gate
+- `/research-prototype` - Combined requirements research and design workflow (produces 3 documents)
+- `/develop-prototype` - Prototype implementation
+- `/review-code` - Code review & compliance gate
 
 **Utility Commands:**
-- `/requirements-document-review` - Review requirements documents
+- `/review-requirements-document` - Review requirements documents
+- `/cleanup-folders` - Verify and enforce project structure compliance
 
 ---
 
