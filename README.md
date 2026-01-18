@@ -111,14 +111,142 @@ Each prototype should be small enough to build, review, and test in a focused se
 
 The framework implements prototypes in a **two-phase approach**:
 
-1. **Phase 1: Project Foundation**
+#### High-Level Overview
+
+1. **Phase 1: Project Foundation** (run once)
    - Gather business requirements
    - Extract design tokens from your brand
    - Set up the React application and landing page
+   - Verify project structure compliance
 
 2. **Phase 2: Prototype Cycle** (repeat for each module)
-   - Research requirements → Design → Implement → Code review → Validate
+   - Research-to-Design → Implement → Code review → Validate
+   - Verify project structure compliance
    - Each cycle produces a clickable prototype linked from the landing page
+
+#### Detailed Workflow Visualization
+
+**Phase 1: Project Foundation** (One-time setup)
+
+```
+Start: /project-orchestrator
+         │
+         ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 1. Business Requirements Gathering                            │
+│    Agent: project-requirements-agent                           │
+│    Input: Website URL, optional project briefs/notes          │
+│    Output: docs/project-docs/business-requirements.md         │
+│    ✋ User approval required                                   │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 2. Design Token Extraction                                    │
+│    Agent: project-style-token-agent                           │
+│    Input: Customer website                                     │
+│    Output: prototypes/shared/styles/design-tokens.css         │
+│    ✋ User approval required                                   │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 3. Application Setup                                          │
+│    Agent: project-setup-agent                                 │
+│    Output: React app + shared components + landing page       │
+│    👤 Manual action: Run npm run dev                          │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 4. Structure Cleanup (Phase 1 Complete)                       │
+│    Agent: general-folder-cleanup-agent                        │
+│    Verifies canonical project structure                        │
+│    ✋ User approval if corrections needed                      │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+         Phase 1 Complete
+         Ready for prototypes
+```
+
+**Phase 2: Prototype Cycle** (Repeatable for each module)
+
+```
+Start: Continue with orchestrator or /prototype-research
+         │
+         ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 1. Research-to-Design (Combined BA + UX)                      │
+│    Agent: prototype-research-design-agent                     │
+│                                                                │
+│    Workflow 1: Requirements Research                          │
+│      • Brief & materials review                               │
+│      • Complexity check (stops if too complex)                │
+│      • Requirements Q&A (conversational skill)                │
+│      • Document prototype requirements                        │
+│      ✋ User approval required                                │
+│                                                                │
+│    Workflow 2: Design Intent (after approval)                 │
+│      • Clarify purpose, compile user tasks                    │
+│      • Suggest views, patterns, architecture                  │
+│      • Define flows, controls, MVP features                   │
+│      ✋ User approval required                                │
+│                                                                │
+│    Outputs:                                                    │
+│      • prototype-requirements.md                              │
+│      • design-brief.md                                         │
+│      • user-verification-tasks.md                             │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 2. Prototype Implementation                                   │
+│    Agent: prototype-development-agent                         │
+│    Input: All 3 docs + design tokens + business requirements  │
+│    Output: Working prototype in prototypes/[name]/            │
+│    Updates: Landing page with link to new prototype           │
+│    👤 Manual action: Test prototype, provide feedback         │
+│    ✋ User approval required                                   │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 3. Code Review & Compliance Gate                              │
+│    Agent: general-code-review-agent                           │
+│    Reviews code against specs and rules                        │
+│    Produces Problem List if issues found                       │
+│    Orchestrates fixes via prototype-development-agent          │
+│    Re-reviews until verdict: Acceptable                        │
+│    ✋ User approval required                                   │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 4. Validation & Revision (Optional)                           │
+│    Triggered by: User feedback during testing                 │
+│    Agent fixes issues in tightly scoped changes               │
+│    Focus: One round of feedback per prototype                 │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 5. Structure Cleanup (Prototype Cycle Complete)               │
+│    Agent: general-folder-cleanup-agent                        │
+│    Verifies canonical project structure                        │
+│    ✋ User approval if corrections needed                      │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+         Prototype Complete
+              │
+              ├─→ Build another prototype? → Repeat Phase 2
+              │
+              └─→ Done? → Project complete
+```
+
+**Legend:**
+- ✋ = User approval gate (workflow pauses for your decision)
+- 👤 = Manual user action required
+- ↓ = Automatic progression to next step
+
+**Key Points:**
+- Phase 1 runs once, Phase 2 repeats for each prototype
+- Each approval gate requires explicit user confirmation
+- Cleanup agents verify structure compliance at end of each phase
+- All prototypes share the foundation (business requirements, design tokens)
+- Each prototype cycle is independent and produces 3 documents + working code
 
 ## 4. Using The Framework
 
@@ -189,8 +317,7 @@ You can invoke specific agents directly using their slash commands:
 - `/project-setup` - Application setup
 
 **Phase 2 Commands:**
-- `/prototype-requirement` - Prototype-specific requirements
-- `/prototype-design` - Prototype design brief
+- `/prototype-research` - Combined requirements research and design workflow (produces 3 documents)
 - `/prototype` - Prototype implementation
 - `/code-review` - Code review & compliance gate
 

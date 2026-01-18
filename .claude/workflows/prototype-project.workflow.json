@@ -34,33 +34,11 @@
           ]
         },
         {
-          "id": "cleanup-after-business-requirements",
-          "name": "Structure Cleanup (Post Business Requirements)",
-          "agent": "general-folder-cleanup-agent.md",
-          "description": "Enforce canonical structure after business requirements documentation",
-          "requires": ["business-requirements"],
-          "inputs": {
-            "required": [
-              "docs/project-docs/business-requirements.md"
-            ]
-          },
-          "workflow": [
-            "Scan project structure",
-            "Detect violations",
-            "Propose corrective actions (if violations found)",
-            "Execute changes after user approval",
-            "Update references",
-            "Verify and report completion"
-          ],
-          "userApprovalRequired": true,
-          "blocking": false
-        },
-        {
           "id": "style-tokens",
           "name": "Design Token Extraction",
           "agent": "project-style-token-agent.md",
           "description": "Extract shared CSS design tokens for visual consistency",
-          "requires": ["cleanup-after-business-requirements"],
+          "requires": ["business-requirements"],
           "inputs": {
             "required": [
               "Customer website URL (from business-requirements)"
@@ -76,33 +54,11 @@
           "blocking": true
         },
         {
-          "id": "cleanup-after-design-tokens",
-          "name": "Structure Cleanup (Post Design Tokens)",
-          "agent": "general-folder-cleanup-agent.md",
-          "description": "Enforce canonical structure after design token extraction",
-          "requires": ["style-tokens"],
-          "inputs": {
-            "required": [
-              "prototypes/shared/styles/design-tokens.css"
-            ]
-          },
-          "workflow": [
-            "Scan project structure",
-            "Detect violations",
-            "Propose corrective actions (if violations found)",
-            "Execute changes after user approval",
-            "Update references",
-            "Verify and report completion"
-          ],
-          "userApprovalRequired": true,
-          "blocking": false
-        },
-        {
           "id": "project-setup",
           "name": "Application Setup",
           "agent": "project-setup-agent.md",
           "description": "Initialize React application, create shared systems structure, and generate landing page",
-          "requires": ["cleanup-after-design-tokens"],
+          "requires": ["style-tokens"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
@@ -130,6 +86,30 @@
             "Verify application runs successfully"
           ],
           "blocking": true
+        },
+        {
+          "id": "cleanup-phase-1",
+          "name": "Structure Cleanup (Phase 1 Complete)",
+          "agent": "general-folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after Phase 1 completion",
+          "requires": ["project-setup"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/business-requirements.md",
+              "prototypes/shared/styles/design-tokens.css",
+              "prototypes/package.json"
+            ]
+          },
+          "workflow": [
+            "Scan project structure",
+            "Detect violations",
+            "Propose corrective actions (if violations found)",
+            "Execute changes after user approval",
+            "Update references",
+            "Verify and report completion"
+          ],
+          "userApprovalRequired": true,
+          "blocking": false
         }
       ],
       "completionCriteria": [
@@ -137,7 +117,8 @@
         "Design tokens extracted and approved",
         "React application initialized",
         "Development environment verified working",
-        "Landing page created and accessible"
+        "Landing page created and accessible",
+        "Project structure verified and compliant"
       ]
     },
     {
@@ -233,35 +214,11 @@
           ]
         },
         {
-          "id": "cleanup-after-prototype-design",
-          "name": "Structure Cleanup (Post Prototype Design)",
-          "agent": "general-folder-cleanup-agent.md",
-          "description": "Enforce canonical structure after prototype research-to-design completion",
-          "requires": ["prototype-research-design"],
-          "inputs": {
-            "required": [
-              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
-              "docs/project-docs/prototype-[prototype-name]/design-brief.md",
-              "docs/project-docs/prototype-[prototype-name]/user-verification-tasks.md"
-            ]
-          },
-          "workflow": [
-            "Scan project structure",
-            "Detect violations",
-            "Propose corrective actions (if violations found)",
-            "Execute changes after user approval",
-            "Update references",
-            "Verify and report completion"
-          ],
-          "userApprovalRequired": true,
-          "blocking": false
-        },
-        {
           "id": "prototype-implementation",
           "name": "Prototype Implementation",
           "agent": "prototype-development-agent.md",
           "description": "Build the prototype based on all requirement documents",
-          "requires": ["cleanup-after-prototype-design"],
+          "requires": ["prototype-research-design"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
@@ -464,6 +421,31 @@
             "Repeat until approved"
           ],
           "focus": "One round of feedback and fixes per prototype"
+        },
+        {
+          "id": "cleanup-phase-2",
+          "name": "Structure Cleanup (Prototype Cycle Complete)",
+          "agent": "general-folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after prototype cycle completion",
+          "requires": ["code-review-compliance"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
+              "docs/project-docs/prototype-[prototype-name]/design-brief.md",
+              "docs/project-docs/prototype-[prototype-name]/user-verification-tasks.md",
+              "prototypes/[prototype-name]/"
+            ]
+          },
+          "workflow": [
+            "Scan project structure",
+            "Detect violations",
+            "Propose corrective actions (if violations found)",
+            "Execute changes after user approval",
+            "Update references",
+            "Verify and report completion"
+          ],
+          "userApprovalRequired": true,
+          "blocking": false
         }
       ],
       "completionCriteria": [
@@ -474,7 +456,8 @@
         "All compliance violations resolved",
         "Landing page updated with prototype link",
         "User has approved the prototype",
-        "All acceptance criteria met"
+        "All acceptance criteria met",
+        "Project structure verified and compliant"
       ],
       "notes": [
         "This cycle is independent for each prototype",
