@@ -266,12 +266,14 @@ Alternatively you can also perform these steps manually:
 
 ### 4.2 Define The Project
 
-Navigate to your new project folder and optionally add any project information you may have to the `docs/project-docs` folder. If you don't provide any information, an agent will guide you through a set of questions. 
+Navigate to the project folder and optionally add any project information you may have to the `docs/project-docs` folder. If you don't provide any information, an agent will guide you through a set of questions. 
 
+Project information examples:
 - A project brief
 - Meeting notes
 - Wireframes
 - Data models
+- Customer documents
 
 ### 4.3 Start Claude Code
 
