@@ -258,7 +258,7 @@ Execute the setup script:
 .\setup-proto.ps1
 ```
 
-Alternatively, you can also perform these steps manually:
+Or perform these steps manually:
 - Create the project folder
 - Clone the `agent-prototyping-system` repository into the folder
 - Create a `prototypes` folder in the project root
