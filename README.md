@@ -15,7 +15,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
    3. [Start Claude Code](#43-start-claude-code)
    4. [Invoke The Project Orchestration Agent](#44-invoke-the-project-orchestration-agent)
    5. [Identify Modules To Prototype](#45-identify-modules-to-prototype)
-5. [Optional: Run Individual Agent Commands](#5-optional-run-individual-agent-commands)
+5. [Individual Agent Commands](#5-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
 ## 1. Quick Start
@@ -307,7 +307,7 @@ Optional Module Information:
 
 The orchestrator will guide you through the prototype workflow.
 
-## 5. Optional: Run Individual Agent Commands
+## 5. Individual Agent Commands
 
 You can invoke specific agents directly using their slash commands:
 
