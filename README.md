@@ -357,6 +357,7 @@ You can invoke specific agents directly using their slash commands:
 **Utility Commands:**
 - `/review-requirements-document` - Review requirements documents
 - `/cleanup-folders` - Verify and enforce project structure compliance
+- `/debug-prototype` - Debug assistant for investigating bugs in prototypes (auto-invoked when you report issues)
 
 ---
 
