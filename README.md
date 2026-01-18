@@ -1,6 +1,6 @@
 # Prototyping Framework
 
-A structured, agent-based system for creating consistent, defensible prototypes through coordinated AI workflows.
+A structured, agent-based framework for creating consistent, defensible prototypes through coordinated AI workflows.
 
 ## Table of Contents
 1. [Quick Start](#1-quick-start)
