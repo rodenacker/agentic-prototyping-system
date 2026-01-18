@@ -1,3 +1,9 @@
+---
+name: project-style-token-agent
+description: Extracts styling from existing websites and translates it into maintainable CSS design tokens for the project foundation.
+color: purple
+---
+
 # Agent: Website Style → CSS Design Tokens Agent
 
 ## Role

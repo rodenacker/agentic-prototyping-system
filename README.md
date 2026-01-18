@@ -260,6 +260,21 @@ Start: Continue with orchestrator or /research-prototype
 - All prototypes share the foundation (business requirements, design tokens)
 - Each prototype cycle is independent and produces 3 documents + working code
 
+**Bug Reporting During Testing:**
+If you encounter issues while testing a prototype, simply describe what's wrong in natural language. The orchestrator will automatically detect bug reports and invoke the Debug Assistant to help diagnose the issue.
+
+Example trigger phrases:
+- "This doesn't work"
+- "I found a bug"
+- "When I click X, Y happens instead"
+- "Something's wrong with [feature]"
+
+The Debug Assistant will:
+- Help you understand what's happening
+- Narrow down the likely cause
+- Suggest focused next steps or fixes
+- Route to the appropriate fix agent if needed
+
 ## 4. Using The Framework
 
 ### 4.1 Run the Setup Script

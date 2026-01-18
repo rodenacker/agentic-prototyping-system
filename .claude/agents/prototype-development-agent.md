@@ -1,3 +1,9 @@
+---
+name: prototype-development-agent
+description: Builds high-quality functional prototypes based on approved requirements, design briefs, and verification tasks.
+color: cyan
+---
+
 # Agent: Prototype Builder Agent
 
 ## Role
