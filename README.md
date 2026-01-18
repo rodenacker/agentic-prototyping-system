@@ -33,7 +33,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 3. **Start the orchestrator:**
    ```
-   /project-orchestrator
+   /start
    ```
 
 The orchestrator will guide you through Phase 1 (Project Foundation) and then help you create prototypes through Phase 2 cycles.
@@ -129,7 +129,7 @@ The framework implements prototypes in a **two-phase approach**:
 **Phase 1: Project Foundation** (One-time setup)
 
 ```
-Start: /project-orchestrator
+Start: /start
          │
          ↓
 ┌────────────────────────────────────────────────────────────────┐
@@ -286,7 +286,7 @@ claude --model claude-4-5-opus
 Once Claude Code is running, invoke the Project Orchestration Agent using the slash command:
 
 ```
-/project-orchestrator
+/start
 ```
 
 The orchestrator will guide you through the project setup workflow.
