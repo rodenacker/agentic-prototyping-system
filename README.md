@@ -14,7 +14,7 @@ A structured, agent-based system for creating consistent, defensible prototypes 
    2. [Define The Project](#42-define-the-project)
    3. [Start Claude Code](#43-start-claude-code)
    4. [Invoke The Project Orchestration Agent](#44-invoke-the-project-orchestration-agent)
-   - 4.5 [Identify Modules To Prototype](#45-identify-modules-to-prototype)
+   5. [Identify Modules To Prototype](#45-identify-modules-to-prototype)
 5. [Optional: Run Individual Agent Commands](#5-optional-run-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
