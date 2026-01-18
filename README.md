@@ -262,7 +262,7 @@ Or perform these steps manually:
 - Create the project folder
 - Clone the `agent-prototyping-system` repository into the folder
 - Create a `prototypes` folder in the project root
-- Create a `project-docs` in the `docs/` folder
+- Create a `project-docs` folder in the `docs/` folder
 
 ### 4.2 Define The Project
 
