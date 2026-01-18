@@ -88,11 +88,112 @@
           "blocking": true
         },
         {
+          "id": "code-review-foundation",
+          "name": "Code Review & Compliance Gate (Foundation)",
+          "agent": "general-code-review-agent.md",
+          "description": "Review scaffolding, shared components, and landing page for code quality and design token compliance",
+          "requires": ["project-setup"],
+          "inputs": {
+            "required": [
+              "prototypes/",
+              "prototypes/shared/components/",
+              "prototypes/shared/styles/design-tokens.css",
+              "docs/framework-docs/requirements.md",
+              "docs/framework-docs/css-guidelines.md"
+            ],
+            "context": [
+              "docs/project-docs/business-requirements.md"
+            ]
+          },
+          "reviewDimensions": [
+            "Design Token Usage - verify all styling uses tokens from design-tokens.css",
+            "Architectural Integrity - proper component structure and separation of concerns",
+            "Code Quality - readability, maintainability of foundational code",
+            "Rule Compliance - adherence to framework requirements and CSS guidelines"
+          ],
+          "workflow": [
+            {
+              "step": "Review Foundation Code",
+              "activities": [
+                "Review landing page implementation",
+                "Review shared component structure",
+                "Verify design token usage throughout",
+                "Check architectural setup and patterns",
+                "Evaluate code quality and maintainability"
+              ],
+              "note": "Phase 1: No prototypes exist yet - reviewing scaffolding only"
+            },
+            {
+              "step": "Produce Verdict",
+              "activities": [
+                "Generate Summary Verdict (Acceptable/Conditionally Acceptable/Unacceptable)",
+                "Create Rule-by-Rule Compliance Table",
+                "Compile Problem List with IDs if verdict ≠ Acceptable",
+                "Document Non-Blocking Issues (optional fixes)"
+              ]
+            },
+            {
+              "step": "Orchestrate Fixes (If Problems Found)",
+              "activities": [
+                "Freeze scope - no new improvements",
+                "Invoke project-setup-agent with Problem List",
+                "Provide explicit instruction: Fix only listed problems",
+                "Define success criteria: Each problem ID resolved, no new violations"
+              ],
+              "conditional": "Only if Problem List items exist"
+            },
+            {
+              "step": "Verify Fixes",
+              "activities": [
+                "Re-review corrected code",
+                "Verify each problem ID resolved",
+                "Ensure no new violations introduced",
+                "Produce final verdict"
+              ],
+              "conditional": "After fixes applied"
+            }
+          ],
+          "outputs": [
+            "Code review report with verdict",
+            "Problem List (if issues found)",
+            "Rule-by-Rule Compliance Table"
+          ],
+          "fixOrchestration": {
+            "agent": "project-setup-agent.md",
+            "constraints": [
+              "Fix strictly to spec",
+              "Preserve existing behavior unless violating a rule",
+              "No refactoring beyond scope",
+              "No speculative improvements"
+            ],
+            "handoff": {
+              "context": "This is a corrective pass for foundation code, not a redesign",
+              "inputs": ["Foundation codebase", "Problem List with IDs"],
+              "output": "Updated code with Problem ID → Fix mapping"
+            }
+          },
+          "behavioralConstraints": [
+            "Do NOT assume intent",
+            "Do NOT soften findings",
+            "Do NOT rewrite code directly",
+            "Do NOT merge review and build roles",
+            "Do NOT allow speculative fixes",
+            "Surface ambiguity, do not resolve silently"
+          ],
+          "blocking": true,
+          "gate": true,
+          "notes": [
+            "This is Phase 1 review - no prototypes exist yet",
+            "Focus on foundational code quality and design token compliance",
+            "Business requirements provide context only (not functional spec)"
+          ]
+        },
+        {
           "id": "cleanup-phase-1",
           "name": "Structure Cleanup (Phase 1 Complete)",
           "agent": "general-folder-cleanup-agent.md",
           "description": "Enforce canonical structure after Phase 1 completion",
-          "requires": ["project-setup"],
+          "requires": ["code-review-foundation"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
@@ -118,6 +219,8 @@
         "React application initialized",
         "Development environment verified working",
         "Landing page created and accessible",
+        "Code review gate passed (verdict: Acceptable)",
+        "All foundation code compliance violations resolved",
         "Project structure verified and compliant"
       ]
     },

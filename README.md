@@ -117,6 +117,7 @@ The framework implements prototypes in a **two-phase approach**:
    - Gather business requirements
    - Extract design tokens from your brand
    - Set up the React application and landing page
+   - Code review foundation code (scaffolding, landing page)
    - Verify project structure compliance
 
 2. **Phase 2: Prototype Cycle** (repeat for each module)
@@ -156,7 +157,18 @@ Start: /start
 └────────────────┬───────────────────────────────────────────────┘
                  ↓
 ┌────────────────────────────────────────────────────────────────┐
-│ 4. Structure Cleanup (Phase 1 Complete)                       │
+│ 4. Code Review & Compliance Gate (Foundation)                 │
+│    Agent: general-code-review-agent                           │
+│    Reviews scaffolding, landing page, shared components       │
+│    Note: No prototypes yet - reviews foundation code only     │
+│    Produces Problem List if issues found                       │
+│    Orchestrates fixes via project-setup-agent                  │
+│    Re-reviews until verdict: Acceptable                        │
+│    ✋ User approval required                                   │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 5. Structure Cleanup (Phase 1 Complete)                       │
 │    Agent: general-folder-cleanup-agent                        │
 │    Verifies canonical project structure                        │
 │    ✋ User approval if corrections needed                      │
