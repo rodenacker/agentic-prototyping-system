@@ -36,7 +36,7 @@
         {
           "id": "cleanup-after-business-requirements",
           "name": "Structure Cleanup (Post Business Requirements)",
-          "agent": "folder-cleanup-agent.md",
+          "agent": "general-folder-cleanup-agent.md",
           "description": "Enforce canonical structure after business requirements documentation",
           "requires": ["business-requirements"],
           "inputs": {
@@ -78,7 +78,7 @@
         {
           "id": "cleanup-after-design-tokens",
           "name": "Structure Cleanup (Post Design Tokens)",
-          "agent": "folder-cleanup-agent.md",
+          "agent": "general-folder-cleanup-agent.md",
           "description": "Enforce canonical structure after design token extraction",
           "requires": ["style-tokens"],
           "inputs": {
@@ -147,9 +147,9 @@
       "requiresPhase": "Phase 1: Project Foundation",
       "steps": [
         {
-          "id": "ba-ux-research-design",
-          "name": "BA & UX Research-to-Design",
-          "agent": "ba-ux-research-design-agent.md",
+          "id": "prototype-research-design",
+          "name": "Prototype Research-to-Design",
+          "agent": "prototype-research-design-agent.md",
           "description": "Combined BA and UX workflow: gather requirements through discovery, then translate into clear design intent (produces 3 documents)",
           "inputs": {
             "required": [
@@ -233,11 +233,11 @@
           ]
         },
         {
-          "id": "cleanup-after-ba-ux-design",
-          "name": "Structure Cleanup (Post BA & UX Design)",
-          "agent": "folder-cleanup-agent.md",
-          "description": "Enforce canonical structure after BA & UX research-to-design completion",
-          "requires": ["ba-ux-research-design"],
+          "id": "cleanup-after-prototype-design",
+          "name": "Structure Cleanup (Post Prototype Design)",
+          "agent": "general-folder-cleanup-agent.md",
+          "description": "Enforce canonical structure after prototype research-to-design completion",
+          "requires": ["prototype-research-design"],
           "inputs": {
             "required": [
               "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
@@ -259,9 +259,9 @@
         {
           "id": "prototype-implementation",
           "name": "Prototype Implementation",
-          "agent": "prototype-agent.md",
+          "agent": "prototype-development-agent.md",
           "description": "Build the prototype based on all requirement documents",
-          "requires": ["cleanup-after-ba-ux-design"],
+          "requires": ["cleanup-after-prototype-design"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
@@ -355,7 +355,7 @@
         {
           "id": "code-review-compliance",
           "name": "Code Review & Compliance Gate",
-          "agent": "code-review-agent.md",
+          "agent": "general-code-review-agent.md",
           "description": "Strict code review against specifications and rules with automated fix orchestration",
           "requires": ["prototype-implementation"],
           "inputs": {
@@ -402,7 +402,7 @@
               "step": "Orchestrate Fixes (If Problems Found)",
               "activities": [
                 "Freeze scope - no new improvements",
-                "Invoke prototype-agent with Problem List",
+                "Invoke prototype-development-agent with Problem List",
                 "Provide explicit instruction: Fix only listed problems",
                 "Define success criteria: Each problem ID resolved, no new violations"
               ],
@@ -425,7 +425,7 @@
             "Rule-by-Rule Compliance Table"
           ],
           "fixOrchestration": {
-            "agent": "prototype-agent.md",
+            "agent": "prototype-development-agent.md",
             "constraints": [
               "Fix strictly to spec",
               "Preserve existing behavior unless violating a rule",
@@ -467,7 +467,7 @@
         }
       ],
       "completionCriteria": [
-        "BA & UX research-to-design complete (3 documents: requirements, design brief, user verification tasks)",
+        "Prototype research-to-design complete (3 documents: requirements, design brief, user verification tasks)",
         "All documents approved by user",
         "Prototype implemented and tested",
         "Code review gate passed (verdict: Acceptable)",
@@ -490,7 +490,7 @@
       "purpose": "Help users express requirements naturally through informal conversation while ensuring formal, complete, traceable output",
       "usedBy": [
         "project-requirements-agent",
-        "ba-ux-research-design-agent"
+        "prototype-research-design-agent"
       ],
       "timing": "During requirements gathering phase (before creating requirement documents)",
       "output": "Formal Requirements Summary (5 sections: Overview, Confirmed Decisions, Constraints & Rules, Assumptions, Open Questions)",
@@ -503,7 +503,7 @@
       "purpose": "Review requirements documents against established rules and framework guidance, report issues clearly and concisely",
       "usedBy": [
         "project-requirements-agent",
-        "ba-ux-research-design-agent"
+        "prototype-research-design-agent"
       ],
       "timing": "After creating requirement or design documents, before presenting to user for approval",
       "output": "Requirements Review Report",

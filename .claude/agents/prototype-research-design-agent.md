@@ -1,4 +1,4 @@
-# Agent: BA & UX Research-to-Design Agent
+# Agent: Prototype Research-to-Design Agent
 
 ## Role
 

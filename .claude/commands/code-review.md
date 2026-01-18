@@ -1,3 +1,3 @@
 # /code-review
 
-Invoke the Code Review Agent defined in `code-review-agent.md`
+Invoke the Code Review Agent defined in `general-code-review-agent.md`

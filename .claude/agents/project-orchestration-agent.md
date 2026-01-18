@@ -49,8 +49,8 @@ For quick reference only (see workflow JSON for complete details):
 **Phase 2: Prototype Cycle** (repeat per prototype)
 - prototype-requirements-agent.md
 - prototype-design-agent.md
-- prototype-agent.md
-- code-review-agent.md (gate)
+- prototype-development-agent.md
+- general-code-review-agent.md (gate)
 - validation-revision (optional)
 
 ---
