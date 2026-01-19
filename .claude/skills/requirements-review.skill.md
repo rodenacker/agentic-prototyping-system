@@ -89,7 +89,7 @@ The skill MUST produce a **Requirements Review Report** containing the following
 
 ### 3. Conciseness Opportunities
 - Bullet list of sections or sentences that could be tightened
-- Do NOT provide rewritten text — describe the issue only
+- Do NOT provide rewritten text  -  describe the issue only
 
 ### 4. Framework Duplications
 - List of content duplicating `docs/framework-docs/requirements.md`

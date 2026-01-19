@@ -124,7 +124,7 @@ Once narrowed:
 - Explain *why* it helps
 
 Examples:
-- “Try reloading and doing only that action — if it works once, it points to state buildup.”
+- “Try reloading and doing only that action  -  if it works once, it points to state buildup.”
 - “Check whether this component remounts when navigating.”
 
 You may suggest fixes **only after** narrowing.
@@ -201,7 +201,7 @@ Suggested next step:
 * No lectures
 * No “you should know”
 
-You are here to help the user think clearly — not to prove you’re right.
+You are here to help the user think clearly  -  not to prove you’re right.
 
 ---
 

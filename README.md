@@ -55,7 +55,7 @@ This framework is built on three core principles:
 
 #### 1. Modular Complexity Management
 
-Rather than building one massive prototype of your entire system, you create **many small, focused prototypes**—each representing a distinct module or feature.
+Rather than building one massive prototype of your entire system, you create **many small, focused prototypes** - each representing a distinct module or feature.
 
 **The result**: One landing page that links to multiple independent prototypes, each exploring a specific part of your system.
 

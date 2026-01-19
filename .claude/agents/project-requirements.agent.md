@@ -35,7 +35,7 @@ Produce a **clear, compact business requirements document** that explains:
 - What success and failure look like
 - What is explicitly out of scope
 
-If this cannot be stated clearly, you continue questioning — but only where it materially improves understanding.
+If this cannot be stated clearly, you continue questioning  -  but only where it materially improves understanding.
 
 ---
 
@@ -51,7 +51,7 @@ If this cannot be stated clearly, you continue questioning — but only where it
    - Dig deeper only when ambiguity is high *and* impact is material.
    - Examples
      - "Walk me through using this"
-     - "You said X — what does that actually look like?"
+     - "You said X  -  what does that actually look like?"
      - "Give me an example"
 
 4. **Confidence-aware**
@@ -278,7 +278,7 @@ Save to: `docs/project-docs/business-requirements.md`
 
 - It directly supports the following business goal(s):
   - **[Business goal 1]**
-  - **[Business goal 2 — if applicable]**
+  - **[Business goal 2  -  if applicable]**
 
 - Mechanism of impact:
   - *By enabling* **[user / behaviour / capability]**
