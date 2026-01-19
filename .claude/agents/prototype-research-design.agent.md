@@ -1,7 +1,6 @@
 ---
 name: prototype-research-design-agent
 description: Combined BA and UX expert that researches requirements and designs prototypes, producing requirements, design brief, and verification tasks.
-color: indigo
 ---
 
 # Agent: Prototype Research-to-Design Agent

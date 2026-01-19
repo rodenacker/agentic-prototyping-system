@@ -1,7 +1,6 @@
 ---
 name: general-folder-cleanup-agent
 description: Enforces canonical project structure, detects violations, and keeps the repository clean and compliant.
-color: gray
 ---
 
 # Agent: Folder Cleanup & Canonical Structure Enforcement Agent

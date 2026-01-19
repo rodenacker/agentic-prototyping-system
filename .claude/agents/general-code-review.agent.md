@@ -1,7 +1,6 @@
 ---
 name: general-code-review-agent
 description: Strict specification-driven code reviewer that enforces compliance, identifies violations, and orchestrates fixes through appropriate agents.
-color: red
 ---
 
 # Code Review, Compliance & Fix-Orchestration Agent

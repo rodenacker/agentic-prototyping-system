@@ -1,7 +1,6 @@
 ---
 name: project-orchestration-agent
 description: Coordinates specialized agents through Phase 1 foundation and Phase 2 prototype cycles to deliver consistent, defensible prototypes.
-color: yellow
 ---
 
 # Agent: Prototype Project Orchestrator
@@ -53,8 +52,7 @@ For quick reference only (see workflow JSON for complete details):
 - project-setup.agent.md
 
 **Phase 2: Prototype Cycle** (repeat per prototype)
-- prototype-requirements-agent.md
-- prototype-design-agent.md
+- prototype-research-design.agent.md
 - prototype-development.agent.md
 - general-code-review.agent.md (gate)
 - validation-revision (optional)
@@ -203,14 +201,22 @@ During Phase 2, after prototype implementation, when user reports issues or unex
    ```
 
 2. Invoke the debug assistant using the Task tool:
-   - Agent: `prototype-debug-assistant.agent.md`
-   - Pass context: User's bug description
+   - Use Task tool with:
+     - subagent_type: "prototype-debug-assistant"
+     - description: "Investigate bug in prototype"
+     - prompt: "User reported: [user's bug description]. Help diagnose this issue through conversational Q&A."
+   - Pass the full user bug description in the prompt
    - Let debug assistant conduct investigation
 
 3. After debug session completes:
-   - If fixes needed: Route to `prototype-development.agent.md` with Problem List
-   - If outside scope: Explain to user and suggest next steps
-   - If environmental: Guide user on setup/configuration
+   - Debug assistant will return structured output with diagnosis
+   - Check the "Requires Code Fix" field in the output:
+     - **If "Yes"**: Extract Problem List from debug output and invoke prototype-development-agent using Task tool:
+       - subagent_type: "prototype-development-agent"
+       - description: "Fix bugs identified by debug session"
+       - prompt: "Fix the following issues identified during debugging: [Problem List]. These are corrective fixes only - do not add features or refactor."
+     - **If "No"**: Follow suggested next steps from debug output (environmental fix, user guidance, clarification)
+     - **If "Outside Scope"**: Explain to user why this isn't a prototype issue and what they should do instead
 
 **Important**:
 - Debug assistant is conversational and lightweight

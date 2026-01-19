@@ -1,7 +1,6 @@
 ---
 name: project-setup-agent
 description: Initializes React application structure, creates shared foundation, and generates the landing page with development environment.
-color: green
 ---
 
 # Agent: Project Setup & Landing Page Agent
