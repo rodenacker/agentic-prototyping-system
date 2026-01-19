@@ -28,11 +28,9 @@ This agent owns the workflow end to end.
 ├── readme.md
 ├── docs/
 │   └── project-docs/
-│       ├── user-*.md
-│       ├── *.md                      # generated project-level docs
+│       ├── *.md                       # user files (any name) + generated project-level docs
 │       └── prototype-<prototype-name>/
-│           ├── user-*.md
-│           └── prototype-name-*.md    # generated prototype-level docs
+│           └── *.md                   # user files (any name) + generated prototype-level docs
 └── prototypes                         # all code files
 
 ```
@@ -60,32 +58,39 @@ This agent owns the workflow end to end.
    - No cross-prototype mixing is allowed
 
 5. **Prototype Documentation Scope**
-   - `user-*.md` → user-authored prototype docs
+   - User files → Any `.md` files with any name (preserve original names)
    - Standard generated docs (exact names):
      - `prototype-requirements.md`
      - `design-brief.md`
      - `user-verification-tasks.md`
-     - `brief.md` (optional user-created)
-   - Any other filename pattern in a prototype doc folder is invalid
+   - All `.md` files are allowed in prototype doc folders
 
 ---
 
 ## Naming Rules
 
-- All folders and files must be:
+**Generated files and folders** (enforced):
+- All framework-generated folders and files must be:
   - lower case
   - hyphen-separated
-- User-authored documents:
-  - `user-<doc-name>.md`
-- Project-level generated documents:
+  - No spaces, underscores, camelCase, or PascalCase
+
+**Generated document names** (exact, must not be renamed):
+- Project-level:
   - `business-requirements.md`
   - `design-tokens-notes.md` (optional)
-- Prototype-level generated documents (standard names):
+- Prototype-level:
   - `prototype-requirements.md`
   - `design-brief.md`
   - `user-verification-tasks.md`
-  - `brief.md` (optional user-created)
-- No spaces, underscores, camelCase, or PascalCase
+
+**User files** (NOT enforced):
+- User-added files may have any name
+- Preserve original names exactly as the user created them
+- Do NOT rename user files to conform to naming conventions
+- User files must be located in correct folders:
+  - Project-level user files → `docs/project-docs/`
+  - Prototype-level user files → `docs/project-docs/prototype-<prototype-name>/`
 
 ---
 
@@ -149,7 +154,7 @@ The agent must never invent prototype names.
 
 **Preserve always:**
 - `readme.md` (even if minimal)
-- `user-*.md` documents (require explicit confirmation)
+- User-created documents in `docs/project-docs/` (require explicit confirmation before deletion)
 - Configuration files (even if small)
 - Files in `.gitignore`
 - Files with any non-comment/non-placeholder content
@@ -179,19 +184,28 @@ If `.gitignore` is missing:
 
 ---
 
-### 5. Enforce Naming Rules
-Rename files and folders that violate naming rules.
+### 5. Enforce Naming Rules (Generated Files Only)
+Rename **generated** files and folders that violate naming rules.
 
-Special enforcement for prototype documentation folders:
-- Files in `docs/project-docs/prototype-*/` folders must match one of:
-  - `user-*.md` (user-authored)
-  - `prototype-requirements.md` (generated)
-  - `design-brief.md` (generated)
-  - `user-verification-tasks.md` (generated)
-  - `brief.md` (optional user-created)
-- Any other files are invalid and must be renamed or flagged
+**What to rename:**
+- Framework-generated folders (must be lowercase, hyphen-separated)
+- Framework-generated files that don't match expected names
 
-When renaming:
+**What NOT to rename:**
+- User-created files in `docs/project-docs/` - preserve original names
+- User-created files in `docs/project-docs/prototype-*/` - preserve original names
+- Only check that user files are in the correct location, not their names
+
+**How to identify user files:**
+- Any file in `docs/project-docs/` that is NOT a known generated file
+- Known generated files (do NOT preserve if misnamed):
+  - `business-requirements.md`
+  - `design-tokens-notes.md`
+  - `prototype-requirements.md`
+  - `design-brief.md`
+  - `user-verification-tasks.md`
+
+When renaming generated files:
 - Preserve meaning
 - Record changes
 - Trigger reference updates
@@ -349,7 +363,8 @@ This agent succeeds when:
 - The repository exactly matches the canonical structure
 - Code and documentation are strictly separated
 - Every prototype has matching code and documentation folders
-- All files follow naming rules
+- All **generated** files follow naming rules
+- All **user** files are in correct locations (regardless of their names)
 - No junk, null, or temporary files remain
 - All references resolve correctly
 - The structure itself enforces good behavior
