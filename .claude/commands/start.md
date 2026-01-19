@@ -1,4 +1,4 @@
-# /orchestrate
+# /start
 
 ## Initialization Check
 

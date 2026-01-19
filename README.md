@@ -33,7 +33,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 3. **Start the orchestrator:**
    ```
-   /orchestrate
+   /start
    ```
 
 The orchestrator will guide you through Phase 1 (Project Foundation) and then help you create prototypes through Phase 2 cycles.
