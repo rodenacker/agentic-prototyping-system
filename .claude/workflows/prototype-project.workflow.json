@@ -12,7 +12,7 @@
         {
           "id": "business-requirements",
           "name": "Business Requirements Gathering",
-          "agent": "project-requirements-agent.md",
+          "agent": "project-requirements.agent.md",
           "description": "Clarify customer needs, business intent, and project purpose",
           "inputs": {
             "required": [
@@ -36,7 +36,7 @@
         {
           "id": "style-tokens",
           "name": "Design Token Extraction",
-          "agent": "project-style-token-agent.md",
+          "agent": "project-style-token.agent.md",
           "description": "Extract shared CSS design tokens for visual consistency",
           "requires": ["business-requirements"],
           "inputs": {
@@ -56,7 +56,7 @@
         {
           "id": "project-setup",
           "name": "Application Setup",
-          "agent": "project-setup-agent.md",
+          "agent": "project-setup.agent.md",
           "description": "Initialize React application, create shared systems structure, and generate landing page",
           "requires": ["style-tokens"],
           "inputs": {
@@ -90,7 +90,7 @@
         {
           "id": "code-review-foundation",
           "name": "Code Review & Compliance Gate (Foundation)",
-          "agent": "general-code-review-agent.md",
+          "agent": "general-code-review.agent.md",
           "description": "Review scaffolding, shared components, and landing page for code quality and design token compliance",
           "requires": ["project-setup"],
           "inputs": {
@@ -159,7 +159,7 @@
             "Rule-by-Rule Compliance Table"
           ],
           "fixOrchestration": {
-            "agent": "project-setup-agent.md",
+            "agent": "project-setup.agent.md",
             "constraints": [
               "Fix strictly to spec",
               "Preserve existing behavior unless violating a rule",
@@ -191,7 +191,7 @@
         {
           "id": "cleanup-phase-1",
           "name": "Structure Cleanup (Phase 1 Complete)",
-          "agent": "general-folder-cleanup-agent.md",
+          "agent": "general-folder-cleanup.agent.md",
           "description": "Enforce canonical structure after Phase 1 completion",
           "requires": ["code-review-foundation"],
           "inputs": {
@@ -233,7 +233,7 @@
         {
           "id": "prototype-research-design",
           "name": "Prototype Research-to-Design",
-          "agent": "prototype-research-design-agent.md",
+          "agent": "prototype-research-design.agent.md",
           "description": "Combined BA and UX workflow: gather requirements through discovery, then translate into clear design intent (produces 3 documents)",
           "inputs": {
             "required": [
@@ -319,7 +319,7 @@
         {
           "id": "prototype-implementation",
           "name": "Prototype Implementation",
-          "agent": "prototype-development-agent.md",
+          "agent": "prototype-development.agent.md",
           "description": "Build the prototype based on all requirement documents",
           "requires": ["prototype-research-design"],
           "inputs": {
@@ -415,7 +415,7 @@
         {
           "id": "code-review-compliance",
           "name": "Code Review & Compliance Gate",
-          "agent": "general-code-review-agent.md",
+          "agent": "general-code-review.agent.md",
           "description": "Strict code review against specifications and rules with automated fix orchestration",
           "requires": ["prototype-implementation"],
           "inputs": {
@@ -485,7 +485,7 @@
             "Rule-by-Rule Compliance Table"
           ],
           "fixOrchestration": {
-            "agent": "prototype-development-agent.md",
+            "agent": "prototype-development.agent.md",
             "constraints": [
               "Fix strictly to spec",
               "Preserve existing behavior unless violating a rule",
@@ -528,7 +528,7 @@
         {
           "id": "cleanup-phase-2",
           "name": "Structure Cleanup (Prototype Cycle Complete)",
-          "agent": "general-folder-cleanup-agent.md",
+          "agent": "general-folder-cleanup.agent.md",
           "description": "Enforce canonical structure after prototype cycle completion",
           "requires": ["code-review-compliance"],
           "inputs": {
