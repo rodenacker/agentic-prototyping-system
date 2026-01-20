@@ -120,6 +120,7 @@ Before starting implementation, you MUST read and understand these documents:
 ### 8. Update Landing Page (CRITICAL)
 **CRITICAL**: This step is mandatory for every prototype:
 - Open the landing page at `prototypes/src/App.jsx` (or equivalent)
+- **Ensure landing page has a header with the project name** (required for all landing pages)
 - Add a new link to this prototype with its URL path
 - Include prototype name and brief description
 - Ensure navigation is clear and functional
@@ -233,6 +234,7 @@ Before completing, verify:
 - [ ] Prototype-specific components are in prototype folder
 
 ✅ **Landing Page**
+- [ ] Landing page has a header with the project name
 - [ ] Landing page updated with link to new prototype
 - [ ] Prototype name and description added
 - [ ] Navigation clear and functional
