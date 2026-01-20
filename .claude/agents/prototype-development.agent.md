@@ -103,6 +103,14 @@ Before starting implementation, you MUST read and understand these documents:
 - Import shared components and styles from `prototypes/shared/`
 
 ### 6. Implement Prototype Screens
+
+**CRITICAL**: Each prototype MUST have a header containing:
+- **The prototype name** (clearly displayed)
+- **A link back to the landing page** (e.g., "← Back to Home" or "← Prototypes")
+- Link should be clearly visible in the header (typically top-left corner)
+- Use consistent header styling across all prototypes
+
+**Screen Implementation:**
 - Build UI screens using shared components
 - Implement core tasks from requirements
 - Use mock data as specified in requirements
@@ -126,12 +134,7 @@ Before starting implementation, you MUST read and understand these documents:
 - Ensure navigation is clear and functional
 - Update empty state if this is the first prototype
 - Test that landing page displays correctly
-
-**CRITICAL**: Each prototype MUST include a link back to the landing page:
-- Add a "Back to Home" or "← Prototypes" link in the prototype's navigation
-- Link should be clearly visible (typically in header or top-left corner)
-- Use consistent styling across all prototypes
-- Test navigation back to landing page works correctly
+- **Verify bidirectional navigation**: Landing page → Prototype and Prototype → Landing page both work
 
 ---
 
@@ -229,7 +232,9 @@ Before completing, verify:
 - [ ] All prototype-specific code is in prototype subfolder
 - [ ] Top-level prototype component exists
 - [ ] URL matches prototype name and shows in address bar
-- [ ] Link back to landing page is present and functional
+- [ ] Prototype has a header with the prototype name
+- [ ] Prototype header contains a link back to landing page (clearly visible)
+- [ ] Bidirectional navigation works (landing → prototype → landing)
 - [ ] Shared components are imported from shared directory
 - [ ] Prototype-specific components are in prototype folder
 
