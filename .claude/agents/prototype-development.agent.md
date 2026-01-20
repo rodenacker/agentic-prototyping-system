@@ -89,6 +89,10 @@ Before starting implementation, you MUST read and understand these documents:
 - Use design tokens exclusively (no hard-coded values)
 - Ensure components follow requirements document specifications
 - **CRITICAL**: All new components must be in shared directory, never prototype-specific
+- **CRITICAL**: If similar component exists, extend it with feature flags instead of creating new component
+- Use props for optional features (e.g., `enableSearch`, `showActions`, `variant="compact"`)
+- Document feature flags in component comments
+- Keep components focused (max 5-7 feature flags per component)
 
 ### 5. Build Prototype Structure
 
@@ -155,6 +159,55 @@ Before starting implementation, you MUST read and understand these documents:
 - If a component could be reused across prototypes, create it in shared directory
 - If a component is specific to one prototype's logic, keep it in the prototype folder
 
+**Feature Flags for Shared Components (CRITICAL):**
+
+When shared components need different implementations across prototypes, use **feature flags via props**, NOT separate components.
+
+**Use Case Examples:**
+- Table component: One prototype needs search, another doesn't
+- Form component: One prototype needs validation, another doesn't
+- Card component: One prototype needs actions, another doesn't
+
+**Implementation Pattern:**
+```jsx
+// GOOD - Shared component with feature flags
+function Table({ data, enableSearch = false, enablePagination = false }) {
+  return (
+    <div className="table">
+      {enableSearch && <SearchBar />}
+      <TableContent data={data} />
+      {enablePagination && <Pagination />}
+    </div>
+  );
+}
+
+// Usage in Prototype A (needs search)
+<Table data={invoices} enableSearch={true} />
+
+// Usage in Prototype B (no search)
+<Table data={customers} enableSearch={false} />
+```
+
+**BAD - Creating duplicate components:**
+```jsx
+// BAD - Don't do this
+// prototypes/prototype-invoice/TableWithSearch.jsx
+// prototypes/prototype-customer/TableNoSearch.jsx
+```
+
+**Feature Flag Guidelines:**
+- Use boolean props for optional features (e.g., `enableSearch`, `showActions`, `allowEdit`)
+- Use enum props for variations (e.g., `variant="compact|full"`, `mode="view|edit"`)
+- Default to the simplest/most common behavior
+- Document feature flags in component comments
+- Keep feature flags focused and single-purpose
+- Avoid creating "god components" with too many flags (max 5-7 feature flags per component)
+
+**When NOT to use feature flags:**
+- If the component's core purpose is different (create separate components)
+- If the behavior diverges significantly (>50% different code paths)
+- If the component becomes too complex to maintain
+
 ### UI Interactions (CRITICAL)
 - **CRITICAL**: JavaScript `alert()` and `confirm()` are FORBIDDEN
 - Use custom confirmation dialog component from shared components
@@ -193,6 +246,9 @@ Before completing, verify:
 ✅ **Shared Components**
 - [ ] All components used are from `prototypes/shared/components/`
 - [ ] No components copied into prototype directory
+- [ ] No duplicate components created (use feature flags instead)
+- [ ] Feature flags used for component variations (boolean/enum props)
+- [ ] Feature flags are focused and single-purpose (max 5-7 per component)
 - [ ] New shared components properly created and reusable
 - [ ] Components styled using shared CSS
 

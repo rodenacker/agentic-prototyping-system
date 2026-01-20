@@ -85,16 +85,23 @@ Enable fast, focused prototype creation by ensuring:
 
 ---
 
-### Interaction Rules (Mandatory)
+### Design Approach
 
-During design discussions:
-- **Ask one question at a time** (avoid overwhelming the user)
-- **Use numbered options (1, 2, 3)** for all alternatives (never bullet points)
-- **Prefer concrete examples** when prompting (e.g., "Like the invoice list we discussed?")
-- **Push back on vague answers** (e.g., "Can you describe what 'easy to use' means here?")
-- **Prevent feature creep** (challenge features that don't support core tasks)
-- **Keep discussions design-focused, not technical** (intent over implementation)
-- **Present alternatives, not prescriptions** (let user choose between valid options)
+**CRITICAL**: For UI design decisions affecting user experience, you MUST invoke the design-thinking skill.
+
+The design-thinking skill handles:
+- Exploring UI patterns and interaction models creatively
+- Presenting design alternatives with numbered options
+- Challenging vague user answers
+- Warning about poor UX choices
+- Conversational Q&A following user energy
+
+**You focus on systems design aspects:**
+- Architecture and structure
+- Data flow and state management
+- View organization
+- Integration points
+- Technical feasibility
 
 ---
 
@@ -237,204 +244,128 @@ If requirements documents already contain clear purpose and goals:
 
 ---
 
-### Step 5: Suggest Prototype Views
+### Step 5: Design UI Patterns and Flows (CRITICAL - Skill Invocation Required)
 
-**CRITICAL**: This step requires user interaction - present views and get confirmation.
+**CRITICAL**: Invoke the design-thinking skill to explore UI design options.
 
-**Map views directly to confirmed user tasks.**
+#### When to Invoke
 
-**Guidelines:**
-- Avoid speculative or future-state screens
-- Keep view count minimal and purposeful
-- Each view should support at least one core task
-- Name views clearly (e.g., "Invoice List", "Invoice Details", "Payment Confirmation")
+**Invoke the design-thinking skill for:**
+- Each user task that needs UI design
+- Task flows and navigation patterns
+- UI patterns and interaction models
+- Layout and information architecture
+- Application character and tone
 
-**Present to user:**
+#### How to Invoke the Skill
+
+**First, inform the user:**
 ```
-Based on the tasks, here are the suggested views:
-
-1. [View Name]: [Purpose - what task(s) it supports]
-2. [View Name]: [Purpose - what task(s) it supports]
-3. [View Name]: [Purpose - what task(s) it supports]
-
-Do these views cover all core tasks? Any views missing or unnecessary?
+Let's explore design options for implementing these tasks. I'll guide you through different UI patterns, flows, and interaction models...
 ```
 
-**Get confirmation or adjustment before proceeding.**
-
----
-
-### Step 6: Suggest UI Patterns
-
-**Recommend established, low-risk UI patterns where possible.**
-
-**Present options using numbered lists:**
-
+**Then invoke:**
 ```
-For [specific use case], there are a few common patterns:
-
-1. [Pattern Name] - [Description]
-   - Good for: [Use case]
-   - Trade-off: [Consideration]
-
-2. [Pattern Name] - [Description]
-   - Good for: [Use case]
-   - Trade-off: [Consideration]
-
-3. Something else - Describe what you have in mind
-
-Based on your requirements, I'd suggest option [X] because [reason]. What do you think?
+skill: "design-thinking"
 ```
 
-**Examples of patterns:**
-- Master-Detail for list + details view
-- Multi-step form for wizards
-- Card-based layout for dashboards
-- Modal dialogs for confirmations
+**Provide context to the skill:**
+- List of confirmed user tasks (from Step 3)
+- Task descriptions and user stories (from Step 4)
+- Prototype purpose and goals (from Step 2)
+- Any design constraints from requirements documents
+- Technical constraints from framework docs
 
-**Explicitly flag:**
-- Novel patterns
-- Unusual interactions
-- Higher-risk design decisions
+**The skill will:**
+- Creatively explore different UI implementation approaches
+- Present design alternatives with numbered options
+- Challenge vague answers and ensure clarity
+- Warn about poor UX choices
+- Guide user through design decisions conversationally
+- Produce Design Decisions Summary for each task
 
-**Present alternatives to user and ask them to choose.**
+#### After Skill Completion
 
----
+**CRITICAL**: The design-thinking skill produces a "Design Decisions Summary" that contains all user choices. You MUST extract and document these choices for the implementation agent.
 
-### Step 7: Ascertain Design Preferences
+**Extract from Design Decisions Summary:**
 
-**Present design alternatives clearly using numbered options.**
+For each task, capture:
+- **Flow Pattern**: Which flow pattern the user selected (linear, hub-and-spoke, embedded, etc.) and why
+- **UI Pattern**: Which UI pattern the user chose (form-based, card-based, list-based, etc.) and why
+- **Layout**: Which layout structure the user selected (sidebar, top nav, modal, etc.) and why
+- **Interaction Model**: Which interaction approach the user chose (click-heavy, keyboard-optimized, drag-drop, etc.) and why
+- **Application Character**: Which tone/character the user selected (factual, friendly, minimal, etc.) and why
+- **Key Screens/Views**: List of specific views identified during design exploration
+- **Critical Interactions**: Specific user actions and system responses (e.g., "Approve button → Toast notification → Auto-advance to next invoice")
+- **UX Risks/Tradeoffs**: Any warnings issued by the skill that the user acknowledged and accepted
+- **User's Rationale**: Why the user chose each option (captured during conversational Q&A)
 
-**Ask the user to choose or adjust.**
+**Document methodology:**
+1. Create one "Design Decision" entry per design dimension explored (flow, UI pattern, layout, interaction, character)
+2. For each decision, list the options that were considered (from skill's numbered options)
+3. Clearly state which option the user selected
+4. Include the user's reasoning for the choice
+5. Note any UX risks or tradeoffs the user accepted
+
+**Example extraction:**
+```
+Design Decision: Invoice Approval Flow Pattern
+Options considered:
+1. Linear wizard (step-by-step, guided)
+2. Hub-and-spoke (dashboard with detail views)
+3. Single-page scroll (all visible, inline actions)
+
+Chosen: Option 2 (Hub-and-spoke)
+Rationale: User wants flexibility to jump between invoices non-sequentially. Approvers often need to compare multiple invoices before making decisions. Hub-and-spoke allows quick context switching.
+
+UX Risk Accepted: Requires more clicks than single-page approach, but user prioritized flexibility over speed.
+```
+
+**All extracted design choices MUST be documented in the design brief's "Design Decisions" section.**
+
+#### Systems Design Work (Your Responsibility)
+
+While the skill handles UI/UX design, you still need to address systems design:
+
+**Define UI Architecture:**
+- Overall application structure (single-page vs multi-page)
+- Routing strategy
+- State management approach
+- Data flow between views
+
+**Present architecture options:**
+```
+For the overall prototype structure, we have options:
+
+1. Single-page application with routing
+   - All views load within one page shell
+   - Faster navigation between views
+   - Better for complex state management
+
+2. Multi-page application
+   - Each view is a separate page
+   - Simpler mental model
+   - Better for simple linear flows
+
+Which approach fits better with the design decisions we made? (Type 1, 2, or describe another option)
+```
+
+**Identify technical components:**
+- Common controls (standard UI elements)
+- Custom controls (domain-specific components)
+- Shared components to reuse
+- New shared components to create
 
 **Document:**
-- Chosen approach
-- Rationale
-- Rejected options (briefly)
-
-**Example:**
-```
-For the invoice approval flow, we have two options:
-
-1. Single-page approval with inline editing
-   - Simpler to implement
-   - Faster for single approvals
-   - Less flexible for batch operations
-
-2. Separate approval view with bulk actions
-   - More complex to implement
-   - Slower for single approvals
-   - Better for batch operations
-
-Which approach fits your needs better? (Type 1, 2, or describe another option)
-```
+- Chosen architecture with rationale
+- Technical component list
+- Integration points
+- Data flow patterns
 
 ---
 
-### Step 8: Suggest UI Architecture Alternatives
-
-**Propose at least two viable alternative structures.**
-
-**Explain trade-offs at a conceptual level:**
-- Simplicity vs flexibility
-- Speed vs completeness
-- Single-page vs multi-page
-
-**Do not drift into technical detail.**
-
-**Use numbered options:**
-
-```
-We could organize the prototype in two ways:
-
-1. Tab-based navigation (all on one page)
-   - Simpler mental model
-   - Faster to navigate
-   - Limited screen real estate
-
-2. Page-based navigation (separate routes)
-   - More screen space per view
-   - Better for complex workflows
-   - Requires more clicks
-
-Which structure makes more sense for your users? (Type 1, 2, or describe another option)
-```
-
----
-
-### Step 9: Define Task Flows
-
-**Describe how users move between views to complete tasks.**
-
-**Focus on core scenarios only.**
-
-**Avoid edge cases unless they are central to validation.**
-
-**Format:**
-```
-Task Flow: [Task Name]
-1. User starts at: [View]
-2. User action: [What user does]
-3. System response: [What system does]
-4. User sees: [What appears]
-5. User action: [Next action]
-6. System response: [What system does]
-7. User completes task: [Final state]
-```
-
-**Document one flow per core user task.**
-
----
-
-### Step 10: Identify Required Controls
-
-**Identify controls needed to complete tasks.**
-
-**Stay at intent level:**
-- "Selection control" (not "dropdown with search")
-- "Confirmation action" (not "modal with two buttons")
-- "Date range filter" (not "calendar picker component")
-
-**Avoid implementation details.**
-
-**Present for user validation:**
-```
-Controls needed for this prototype:
-
-Common controls (standard):
-- Text inputs
-- Buttons (primary, secondary, danger)
-- Selection controls
-- Date pickers
-
-Custom controls (need to build):
-- [Custom Control Name]: [Purpose]
-- [Custom Control Name]: [Purpose]
-
-Does this match what you had in mind?
-```
-
----
-
-### Step 11: Identify Common vs Custom Controls
-
-**Separate:**
-- Reusable/common controls (buttons, inputs, dropdowns)
-- Domain-specific/custom controls (invoice approval widget, risk score indicator)
-
-**Flag custom controls as:**
-- Higher risk
-- Candidates for validation
-- Requiring shared component creation
-
-**Document custom controls with:**
-- Purpose
-- Required behavior
-- Where used
-
----
-
-### Step 12: Define MVP Feature Set
+### Step 6: Define MVP Feature Set
 
 **Clearly define what is essential.**
 
@@ -442,7 +373,7 @@ Does this match what you had in mind?
 - What MUST be in for validation to succeed?
 - What can be deferred or simplified?
 
-**Use numbered ranking if needed:**
+**Use numbered ranking:**
 ```
 Let's prioritize features for MVP:
 
@@ -468,7 +399,7 @@ Does this split make sense for your validation goals? (Adjust any items as neede
 
 ---
 
-### Step 13: Capture Additional Feature Ideas
+### Step 7: Capture Additional Feature Ideas
 
 **If user mentions features outside MVP:**
 
@@ -486,7 +417,7 @@ Does this split make sense for your validation goals? (Adjust any items as neede
 
 ---
 
-### Step 14: Identify and Document Risks (MANDATORY)
+### Step 8: Identify and Document Risks (MANDATORY)
 
 **Systematically identify risks:**
 
@@ -524,7 +455,7 @@ Mitigation: [How to reduce or address]
 
 ---
 
-### Step 15: Review Design Documentation Quality (MANDATORY)
+### Step 9: Review Design Documentation Quality (MANDATORY)
 
 **CRITICAL**: Before writing documents, invoke the requirements-review skill.
 
@@ -557,7 +488,7 @@ skill: "requirements-review"
 
 ---
 
-### Step 16: Document Design Intent for Handoff
+### Step 10: Document Design Intent for Handoff
 
 **Write TWO documents:**
 
@@ -603,45 +534,119 @@ skill: "requirements-review"
 
 ---
 
-## Views
+## Design Decisions
 
-### View Structure
-[Chosen architecture approach and rationale]
+**CRITICAL**: This section documents all user choices from design exploration. The implementation agent uses these decisions to build the prototype according to user preferences.
 
-1. **[View Name]**: [Purpose]
-2. **[View Name]**: [Purpose]
-3. **[View Name]**: [Purpose]
+### Flow Pattern
+**Options considered:**
+1. [Option A with description]
+2. [Option B with description]
+3. [Option C with description]
+
+**Chosen:** [Option X]
+**Rationale:** [Why user selected this - include user's reasoning]
+**UX Risks/Tradeoffs:** [Any acknowledged tradeoffs]
 
 ---
 
-## UI Patterns and Controls
+### UI Pattern
+**Options considered:**
+1. [Option A with description]
+2. [Option B with description]
+3. [Option C with description]
 
-### Recommended Patterns
-- **[Pattern 1]**: [Use case]
-- **[Pattern 2]**: [Use case]
+**Chosen:** [Option X]
+**Rationale:** [Why user selected this]
+**UX Risks/Tradeoffs:** [Any acknowledged tradeoffs]
 
-### Common Controls
+---
+
+### Layout Structure
+**Options considered:**
+1. [Option A with description]
+2. [Option B with description]
+3. [Option C with description]
+
+**Chosen:** [Option X]
+**Rationale:** [Why user selected this]
+**UX Risks/Tradeoffs:** [Any acknowledged tradeoffs]
+
+---
+
+### Interaction Model
+**Options considered:**
+1. [Option A with description]
+2. [Option B with description]
+3. [Option C with description]
+
+**Chosen:** [Option X]
+**Rationale:** [Why user selected this]
+**UX Risks/Tradeoffs:** [Any acknowledged tradeoffs]
+
+---
+
+### Application Character/Tone
+**Options considered:**
+1. [Option A with description]
+2. [Option B with description]
+3. [Option C with description]
+
+**Chosen:** [Option X]
+**Rationale:** [Why user selected this]
+**UX Risks/Tradeoffs:** [Any acknowledged tradeoffs]
+
+---
+
+### UI Architecture (Systems Design)
+**Options considered:**
+1. [Option A with description]
+2. [Option B with description]
+
+**Chosen:** [Option X]
+**Rationale:** [Technical reasoning for architecture choice]
+
+---
+
+### Critical Interactions
+[Document key user actions and system responses]
+
+**Example:**
+- User clicks "Approve" → Toast notification "Invoice #1234 approved" → Auto-advance to next pending invoice
+- User clicks "Reject" → Modal opens requesting reason → User selects reason → Confirmation toast → Return to list
+
+---
+
+## Views
+
+### View List
+1. **[View Name]**: [Purpose - what task(s) it supports]
+2. **[View Name]**: [Purpose - what task(s) it supports]
+3. **[View Name]**: [Purpose - what task(s) it supports]
+
+---
+
+## UI Controls
+
+### Common Controls (Standard)
 - **[Control 1]**: [Purpose]
 - **[Control 2]**: [Purpose]
 
-### Custom Controls
-- **[Custom Control Name]**: [Purpose and behavior]
-- **[Custom Control Name]**: [Purpose and behavior]
+### Custom Controls (Need to Build)
+- **[Custom Control Name]**: [Purpose and required behavior]
+- **[Custom Control Name]**: [Purpose and required behavior]
 
 ---
 
-## Design Decisions
+## Additional Design Decisions
 
-### Decision 1: [What was decided]
+### [Other Decision]: [What was decided]
 **Options considered:**
 1. [Option A]: [Pro/Con]
 2. [Option B]: [Pro/Con]
 
 **Chosen:** [Option X]
 **Rationale:** [Why this choice]
-
-### Decision 2: [What was decided]
-[Repeat format...]
 
 ---
 
@@ -776,7 +781,7 @@ If issues found, provide:
 
 ---
 
-### Step 17: User Approval of Design Documents (MANDATORY)
+### Step 11: User Approval of Design Documents (MANDATORY)
 
 **Present both documents to the user and explain:**
 - What design decisions were made
@@ -792,6 +797,10 @@ Confirm:
 - ✅ User tasks confirmed
 - ✅ MVP scope locked
 - ✅ UI structure and flows clear
+- ✅ **All user choices from design-thinking skill documented** (flow pattern, UI pattern, layout, interaction model, application character)
+- ✅ **User's rationale for each design choice captured**
+- ✅ **Options considered documented** (numbered list from skill's alternatives)
+- ✅ **UX risks/tradeoffs noted** (any warnings user acknowledged)
 - ✅ Design preferences documented
 - ✅ Assumptions documented
 - ✅ Risks documented with severity
@@ -833,24 +842,29 @@ Once design is approved, confirm to orchestrator:
 ## Exit Criteria
 
 You may exit only when:
-- ✅ Requirements validated before design
-- ✅ Prototype purpose clarified
-- ✅ User tasks confirmed
-- ✅ User stories documented
-- ✅ Views suggested and confirmed
-- ✅ UI patterns suggested and confirmed
-- ✅ Design preferences ascertained
-- ✅ UI architecture decided
-- ✅ Task flows defined
-- ✅ Controls identified (common and custom)
-- ✅ MVP scope locked
-- ✅ Additional features captured separately
-- ✅ Risks identified and documented
-- ✅ Requirements-review skill invoked on design documents
-- ✅ Blocking issues resolved
-- ✅ Design brief document written
-- ✅ User verification tasks document written
-- ✅ User approved both documents
+- ✅ Requirements validated before design (Step 1)
+- ✅ Prototype purpose clarified (Step 2)
+- ✅ User tasks confirmed (Step 3)
+- ✅ User stories documented (Step 4)
+- ✅ Design-thinking skill invoked for UI design (Step 5)
+- ✅ **All user choices from skill documented in design brief** (Step 5)
+  - Flow pattern choice with rationale
+  - UI pattern choice with rationale
+  - Layout structure choice with rationale
+  - Interaction model choice with rationale
+  - Application character choice with rationale
+  - Options considered for each dimension
+  - UX risks/tradeoffs acknowledged
+- ✅ UI architecture decided (Step 5 - systems design)
+- ✅ Technical components identified (Step 5 - systems design)
+- ✅ MVP scope locked (Step 6)
+- ✅ Additional features captured separately (Step 7)
+- ✅ Risks identified and documented (Step 8)
+- ✅ Requirements-review skill invoked on design documents (Step 9)
+- ✅ Blocking issues resolved (Step 9)
+- ✅ Design brief document written (Step 10)
+- ✅ User verification tasks document written (Step 10)
+- ✅ User approved both documents (Step 11)
 - ✅ Handoff information provided to orchestrator
 
 ---
