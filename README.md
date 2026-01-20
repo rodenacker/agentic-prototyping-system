@@ -384,7 +384,6 @@ The prototype cycle now uses a **two-agent approach** that separates requirement
    - `/review-code` - Code review & compliance gate
 
 **Utility Commands:**
-- `/review-requirements-document` - Review requirements documents
 - `/cleanup-folders` - Verify and enforce project structure compliance
 - `/debug-prototype` - Debug assistant for investigating bugs (auto-invoked when you report issues)
 
