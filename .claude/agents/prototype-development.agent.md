@@ -91,10 +91,16 @@ Before starting implementation, you MUST read and understand these documents:
 - **CRITICAL**: All new components must be in shared directory, never prototype-specific
 
 ### 5. Build Prototype Structure
-- Create prototype folder in `prototypes/[prototype-name]/`
-- Set up prototype file structure
-- Configure routing/navigation
-- Import shared components and styles
+
+**CRITICAL Prototype Structure Requirements:**
+- Create prototype folder in `prototypes/prototypes-[prototype-name]/`
+- **Naming convention**: Use kebab-case matching the prototype name (e.g., `prototypes-invoice-approval`, `prototypes-customer-dashboard`)
+- **All prototype-specific code MUST be in this subfolder** (never in shared/)
+- Create a top-level component for the prototype (e.g., `InvoiceApproval.jsx`, `CustomerDashboard.jsx`)
+- Store all prototype-specific sub-components within the prototype folder
+- Configure routing with a URL that reflects the prototype name
+- **URL must be visible in the browser address bar** when users navigate to the prototype
+- Import shared components and styles from `prototypes/shared/`
 
 ### 6. Implement Prototype Screens
 - Build UI screens using shared components
@@ -114,11 +120,17 @@ Before starting implementation, you MUST read and understand these documents:
 ### 8. Update Landing Page (CRITICAL)
 **CRITICAL**: This step is mandatory for every prototype:
 - Open the landing page at `prototypes/src/App.jsx` (or equivalent)
-- Add a new link to this prototype
+- Add a new link to this prototype with its URL path
 - Include prototype name and brief description
 - Ensure navigation is clear and functional
 - Update empty state if this is the first prototype
 - Test that landing page displays correctly
+
+**CRITICAL**: Each prototype MUST include a link back to the landing page:
+- Add a "Back to Home" or "← Prototypes" link in the prototype's navigation
+- Link should be clearly visible (typically in header or top-left corner)
+- Use consistent styling across all prototypes
+- Test navigation back to landing page works correctly
 
 ---
 
@@ -132,9 +144,12 @@ Before starting implementation, you MUST read and understand these documents:
 
 ### Component Usage (CRITICAL)
 - **CRITICAL**: Use shared components - NEVER copy components into prototype directories
-- **CRITICAL**: All new components go in `prototypes/shared/components/`
-- Import components from shared directory
-- If a component doesn't exist, create it in shared directory first
+- **CRITICAL**: All **reusable** components go in `prototypes/shared/components/`
+- **CRITICAL**: All **prototype-specific** components stay in `prototypes/prototype-[prototype-name]/`
+- Each prototype MUST have a top-level component that imports shared components
+- Import shared components using relative paths: `import { Button } from '../shared/components/Button'`
+- If a component could be reused across prototypes, create it in shared directory
+- If a component is specific to one prototype's logic, keep it in the prototype folder
 
 ### UI Interactions (CRITICAL)
 - **CRITICAL**: JavaScript `alert()` and `confirm()` are FORBIDDEN
@@ -208,6 +223,15 @@ Before completing, verify:
 - [ ] Alt text present on images
 - [ ] ARIA labels where appropriate
 
+✅ **Structure & Navigation**
+- [ ] Prototype folder follows naming convention (kebab-case)
+- [ ] All prototype-specific code is in prototype subfolder
+- [ ] Top-level prototype component exists
+- [ ] URL matches prototype name and shows in address bar
+- [ ] Link back to landing page is present and functional
+- [ ] Shared components are imported from shared directory
+- [ ] Prototype-specific components are in prototype folder
+
 ✅ **Landing Page**
 - [ ] Landing page updated with link to new prototype
 - [ ] Prototype name and description added
@@ -240,7 +264,7 @@ Before exiting, follow this sequence:
 ### 2. Present Prototype to User
 Explain to the user:
 - What was built (core features implemented)
-- Where prototype files are located (`prototypes/[prototype-name]/`)
+- Where prototype files are located (`prototypes/prototype-[prototype-name]/`)
 - Which shared components were created or reused
 - Where prototype can be accessed (landing page link)
 - How to start and test the prototype
@@ -274,7 +298,7 @@ Confirm:
 ### 5. Handoff Information
 Once approved, confirm to orchestrator:
 - Prototype complete and approved
-- Prototype location: `prototypes/[prototype-name]/`
+- Prototype location: `prototypes/prototype-[prototype-name]/`
 - Landing page updated
 - Shared components created: [list]
 - Ready for next prototype or revision cycle

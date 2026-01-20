@@ -358,21 +358,37 @@ You can invoke specific agents directly using their slash commands:
 **Primary Command:**
 - `/start` - Start the project orchestrator (guides you through entire workflow)
 
-**Phase 1 Commands:**
+**Phase 1 Commands (Foundation - Run Once):**
 - `/project-requirements` - Business requirements gathering
 - `/style-tokens` - Design token extraction
 - `/setup-project` - Application setup
 
-**Phase 2 Commands:**
-- `/research-prototype` - Requirements research (BA + UX, produces prototype-requirements.md)
-- `/design-prototype` - Design intent (Systems + Interface, produces design-brief.md and user-verification-tasks.md)
-- `/develop-prototype` - Prototype implementation
-- `/review-code` - Code review & compliance gate
+**Phase 2 Commands (Prototype Cycle - Repeat for Each Module):**
+
+The prototype cycle now uses a **two-agent approach** that separates requirements research from design:
+
+1. **Requirements Research** (First Step):
+   - `/research-prototype` - BA + UX research combining business and user perspectives
+   - Produces: `prototype-requirements.md`
+   - No design decisions made at this stage
+   - After approval, orchestrator automatically invokes design agent
+
+2. **Design Intent** (Second Step):
+   - `/design-prototype` - Systems + Interface design based on approved requirements
+   - Produces: `design-brief.md` and `user-verification-tasks.md`
+   - Suggests views, patterns, flows, and controls with numbered options
+   - Requires approved requirements document
+
+3. **Implementation & Review**:
+   - `/develop-prototype` - Build prototype based on all 3 documents
+   - `/review-code` - Code review & compliance gate
 
 **Utility Commands:**
 - `/review-requirements-document` - Review requirements documents
 - `/cleanup-folders` - Verify and enforce project structure compliance
-- `/debug-prototype` - Debug assistant for investigating bugs in prototypes (auto-invoked when you report issues)
+- `/debug-prototype` - Debug assistant for investigating bugs (auto-invoked when you report issues)
+
+**Workflow Note:** When using the orchestrator (`/start`), it automatically sequences the requirements and design agents for you. You only need the individual commands if you want to run specific steps manually.
 
 ---
 
