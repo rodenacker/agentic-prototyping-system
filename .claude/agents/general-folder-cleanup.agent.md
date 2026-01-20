@@ -52,7 +52,7 @@ This agent owns the workflow end to end.
 
 4. **Prototype Parity**
    - For every prototype:
-     - Code exists under `prototypes/<prototype-name>/`
+     - Code exists under `prototypes/prototype-<prototype-name>/`
      - Docs exist under `docs/project-docs/prototype-<prototype-name>/`
    - No cross-prototype mixing is allowed
 
@@ -133,11 +133,36 @@ Empty folders *inside* protected folders may be deleted.
   - Report the ambiguity
 
 #### Documentation
-- Any documentation file outside `docs/project-docs/` must be moved into:
+
+**CRITICAL - Documentation in `prototypes/` folder:**
+- **Rule**: No documentation is allowed inside `prototypes/`
+- **Action**: MOVE (do NOT delete) documentation files from `prototypes/` to `docs/project-docs/`
+- **Documentation file types** include:
+  - `.md` files (markdown)
+  - `.txt` files (text documents)
+  - `.pdf` files (if user-created)
+  - `.doc`, `.docx` files (Word documents)
+  - Any other documentation format
+
+**Moving documentation from prototypes:**
+1. **Identify documentation files** in `prototypes/` directory (recursively search all subdirectories)
+2. **Determine destination:**
+   - If file is in `prototypes/<prototype-name>/` → move to `docs/project-docs/prototype-<prototype-name>/`
+   - If file is in `prototypes/shared/` or `prototypes/` root → move to `docs/project-docs/`
+3. **Preserve original filename** (do not rename)
+4. **Create destination folder** if it doesn't exist
+5. **Move the file** (do not copy - move to avoid duplicates)
+6. **Report the move** to user in cleanup summary
+
+**Other misplaced documentation:**
+- Any documentation file outside `docs/project-docs/` (and not in `prototypes/`) must be moved into:
   - `docs/project-docs/` (project-level)
   - or `docs/project-docs/prototype-<prototype-name>/` (prototype-level)
 
-The agent must never invent prototype names.
+**Important:**
+- The agent must never invent prototype names
+- Always preserve user filenames exactly
+- Never delete documentation files - only move them
 
 ---
 
@@ -287,8 +312,9 @@ List proposed actions with specific counts and details:
   - [List folder paths]
 - Move [N] misplaced code files
   - [old path] → [new path]
-- Move [N] misplaced documentation files
+- **Move [N] misplaced documentation files** (NOT delete)
   - [old path] → [new path]
+  - **IMPORTANT**: Documentation found in `prototypes/` will be moved to `docs/project-docs/`
 - Delete [N] null files
   - [List file paths with reason]
 - Delete [N] temporary files

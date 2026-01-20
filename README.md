@@ -121,7 +121,7 @@ The framework implements prototypes in a **two-phase approach**:
    - Verify project structure compliance
 
 2. **Phase 2: Prototype Cycle** (repeat for each module)
-   - Research-to-Design → Implement → Code review → Validate
+   - Requirements Research → Design Intent → Implement → Code review → Validate
    - Verify project structure compliance
    - Each cycle produces a clickable prototype linked from the landing page
 
@@ -185,30 +185,44 @@ Start: Continue with orchestrator or /research-prototype
          │
          ↓
 ┌────────────────────────────────────────────────────────────────┐
-│ 1. Research-to-Design (Combined BA + UX)                      │
-│    Agent: prototype-research-design-agent                     │
+│ 1. Requirements Research (BA + UX Research)                   │
+│    Agent: prototype-requirements-agent                        │
 │                                                                │
-│    Workflow 1: Requirements Research                          │
-│      • Brief & materials review                               │
-│      • Complexity check (stops if too complex)                │
-│      • Requirements Q&A (conversational skill)                │
-│      • Document prototype requirements                        │
-│      ✋ User approval required                                │
+│    • Module identification & user guidance                    │
+│    • Brief & materials review                                 │
+│    • Complexity check (stops if too complex)                  │
+│    • Read framework requirements                              │
+│    • Requirements Q&A (conversational skill)                  │
+│    • Document combined business and user requirements         │
+│    • Requirements quality review                              │
+│    ✋ User approval required                                  │
 │                                                                │
-│    Workflow 2: Design Intent (after approval)                 │
-│      • Clarify purpose, compile user tasks                    │
-│      • Suggest views, patterns, architecture                  │
-│      • Define flows, controls, MVP features                   │
-│      ✋ User approval required                                │
+│    Output: prototype-requirements.md                          │
+└────────────────┬───────────────────────────────────────────────┘
+                 ↓
+┌────────────────────────────────────────────────────────────────┐
+│ 2. Design Intent (Systems + Interface Design)                 │
+│    Agent: prototype-design-agent                              │
+│                                                                │
+│    • Read and validate requirements                           │
+│    • Clarify prototype purpose                                │
+│    • Extract and organize user tasks                          │
+│    • Suggest views, patterns, architecture (numbered options) │
+│    • Define task flows                                        │
+│    • Identify controls (common vs custom)                     │
+│    • Define MVP feature set                                   │
+│    • Document design intent                                   │
+│    • Create user verification tasks                           │
+│    • Design documentation quality review                      │
+│    ✋ User approval required                                  │
 │                                                                │
 │    Outputs:                                                    │
-│      • prototype-requirements.md                              │
 │      • design-brief.md                                         │
 │      • user-verification-tasks.md                             │
 └────────────────┬───────────────────────────────────────────────┘
                  ↓
 ┌────────────────────────────────────────────────────────────────┐
-│ 2. Prototype Implementation                                   │
+│ 3. Prototype Implementation                                   │
 │    Agent: prototype-development-agent                         │
 │    Input: All 3 docs + design tokens + business requirements  │
 │    Output: Working prototype in prototypes/[name]/            │
@@ -218,7 +232,7 @@ Start: Continue with orchestrator or /research-prototype
 └────────────────┬───────────────────────────────────────────────┘
                  ↓
 ┌────────────────────────────────────────────────────────────────┐
-│ 3. Code Review & Compliance Gate                              │
+│ 4. Code Review & Compliance Gate                              │
 │    Agent: general-code-review-agent                           │
 │    Reviews code against specs and rules                        │
 │    Produces Problem List if issues found                       │
@@ -228,14 +242,14 @@ Start: Continue with orchestrator or /research-prototype
 └────────────────┬───────────────────────────────────────────────┘
                  ↓
 ┌────────────────────────────────────────────────────────────────┐
-│ 4. Validation & Revision (Optional)                           │
+│ 5. Validation & Revision (Optional)                           │
 │    Triggered by: User feedback during testing                 │
 │    Agent fixes issues in tightly scoped changes               │
 │    Focus: One round of feedback per prototype                 │
 └────────────────┬───────────────────────────────────────────────┘
                  ↓
 ┌────────────────────────────────────────────────────────────────┐
-│ 5. Structure Cleanup (Prototype Cycle Complete)               │
+│ 6. Structure Cleanup (Prototype Cycle Complete)               │
 │    Agent: general-folder-cleanup-agent                        │
 │    Verifies canonical project structure                        │
 │    ✋ User approval if corrections needed                      │
@@ -350,7 +364,8 @@ You can invoke specific agents directly using their slash commands:
 - `/setup-project` - Application setup
 
 **Phase 2 Commands:**
-- `/research-prototype` - Combined requirements research and design workflow (produces 3 documents)
+- `/research-prototype` - Requirements research (BA + UX, produces prototype-requirements.md)
+- `/design-prototype` - Design intent (Systems + Interface, produces design-brief.md and user-verification-tasks.md)
 - `/develop-prototype` - Prototype implementation
 - `/review-code` - Code review & compliance gate
 

@@ -42,7 +42,12 @@ If the website URL is missing, **stop immediately** and request it.
 
 2. **Extract Visual Patterns**
    - Identify color palette (primary, secondary, accent, neutral)
-   - Identify typography (fonts, sizes, weights, line heights)
+   - **Identify typography:**
+     - **Body text font**: Analyze `<p>` and content paragraphs - what font renders most often?
+     - **Heading font**: Analyze `<h1>` through `<h6>` - what font renders most often?
+     - Font sizes across heading levels
+     - Font weights used
+     - Line heights
    - Identify spacing patterns (margins, padding, gaps)
    - Identify shape patterns (border radius, border widths)
    - Identify shadows and effects (if present)
@@ -108,11 +113,72 @@ You must attempt to extract, where present:
 - Neutrals (grays, whites, blacks)
 
 **Typography tokens:**
-- Font families
+- Font families (body text and headings - see extraction rules below)
 - Base font size
 - Heading scale (h1-h6)
 - Font weights
 - Line heights
+
+**CRITICAL - Font Family Extraction Rules:**
+
+1. **Analyze Body Text Font:**
+   - Inspect the most common body text elements: `<p>`, `<div>`, `<span>`, article content
+   - Look at multiple paragraphs across different sections
+   - Identify the font-family that appears most frequently for body text
+   - Extract the ACTUAL computed font-family from CSS (not just the first declared font)
+   - Check: "What font is being used for the majority of readable content?"
+
+2. **Analyze Heading Font:**
+   - Inspect heading elements: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`
+   - Look at multiple headings across different sections
+   - Identify the font-family that appears most frequently for headings
+   - Extract the ACTUAL computed font-family from CSS
+   - Check: "What font is being used for the majority of headings?"
+
+3. **Font Family Token Naming:**
+   - `--font-body`: Most common body text font with fallbacks
+   - `--font-heading`: Most common heading font with fallbacks
+   - If body and heading fonts are the same, still create both tokens (they may diverge later)
+   - Preserve the complete font-family stack including fallbacks (e.g., `'Lora', Georgia, serif`)
+
+4. **Common Pitfalls to Avoid:**
+   - ❌ DON'T just take the first font declared on `<body>` or `html`
+   - ❌ DON'T assume the most popular Google Font on the page is the body font
+   - ❌ DON'T extract fonts from navigation, buttons, or UI elements as body/heading fonts
+   - ✅ DO inspect actual paragraphs and headings in the main content area
+   - ✅ DO verify which font is rendering in the browser (computed style)
+   - ✅ DO include the full font-family stack with web-safe fallbacks
+
+5. **Web Font Loading (CRITICAL):**
+
+   **Check if fonts are system-available:**
+   - System fonts: Arial, Helvetica, Times New Roman, Georgia, Courier, Verdana, Tahoma, etc.
+   - No import needed for system fonts
+
+   **For non-system fonts (custom/web fonts):**
+   - Check if the source website uses Google Fonts, Adobe Fonts, or other web font services
+   - If using Google Fonts:
+     - Go to https://fonts.google.com
+     - Search for the extracted font name (e.g., "Lora", "Cormorant Garamond")
+     - Select all required weights (check what weights are used on the site)
+     - Copy the `@import` statement
+     - Add it at the TOP of the design-tokens.css file (before `:root`)
+   - If font is not on Google Fonts:
+     - Search for free alternatives on Google Fonts that match the style
+     - Document the substitution in a comment
+     - Example: `/* Original: CustomFont, Using: Similar Google Font */`
+
+   **Import Format:**
+   ```css
+   /* Web Font Imports */
+   @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+   ```
+
+   **CRITICAL Rules:**
+   - Web font imports MUST be at the very top of the CSS file (before `:root`)
+   - Only import the font weights actually used on the site (check font-weight values)
+   - Always include `&display=swap` in Google Fonts URLs for performance
+   - Include comments explaining which fonts are for body vs headings
 
 **Spacing tokens:**
 - Margin / padding scale
@@ -137,6 +203,7 @@ You must attempt to extract, where present:
 `prototypes/shared/styles/design-tokens.css`
 
 ### CSS File Structure
+- **Web font imports at the top** (before `:root`)
 - Valid CSS only
 - Organized by category
 - Clear comments for each section
@@ -145,6 +212,15 @@ You must attempt to extract, where present:
 Example:
 
 ```css
+/* ============================================
+   WEB FONT IMPORTS
+   ============================================ */
+/* Import web fonts before defining CSS variables */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+/* Lora: Body text font */
+/* Cormorant Garamond: Heading font */
+
 :root {
   /* ============================================
      COLOR TOKENS
@@ -181,9 +257,9 @@ Example:
      ============================================ */
 
   /* Font Families */
-  --font-primary: system-ui, sans-serif;
-  --font-heading: system-ui, sans-serif;
-  --font-mono: monospace;
+  --font-body: 'Lora', Georgia, serif;  /* Most common body text font */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;  /* Most common heading font */
+  --font-mono: 'Courier New', Courier, monospace;  /* Monospace font (if needed) */
 
   /* Font Sizes */
   --font-size-xs: 0.75rem;
@@ -324,11 +400,16 @@ Verify:
 - ✅ Clear, consistent naming
 - ✅ No unused tokens
 - ✅ Organized and well-commented
+- ✅ **Web font imports at the top** (if non-system fonts used)
+- ✅ Font imports include all required weights
+- ✅ Font imports include `&display=swap` parameter
 - ✅ Files saved in correct location
 
 ### 3. Present Summary to User
 Show the user:
 - Number of tokens extracted by category
+- **Fonts extracted**: Body font and heading font names
+- **Web font imports**: Confirm if Google Fonts or other imports were added
 - Location of files
 - Key observations and any inconsistencies
 - Brief preview of the design tokens

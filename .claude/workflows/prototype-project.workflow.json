@@ -231,13 +231,14 @@
       "requiresPhase": "Phase 1: Project Foundation",
       "steps": [
         {
-          "id": "prototype-research-design",
-          "name": "Prototype Research-to-Design",
-          "agent": "prototype-research-design.agent.md",
-          "description": "Combined BA and UX workflow: gather requirements through discovery, then translate into clear design intent (produces 3 documents)",
+          "id": "prototype-requirements",
+          "name": "Prototype Requirements Research",
+          "agent": "prototype-requirements.agent.md",
+          "description": "BA and UX research: discover and document requirements combining business and user perspectives (no design decisions)",
           "inputs": {
             "required": [
-              "docs/framework-docs/requirements.md"
+              "docs/framework-docs/requirements.md",
+              "docs/framework-docs/css-guidelines.md"
             ],
             "optional": [
               "docs/project-docs/prototype-[prototype-name]/brief.md",
@@ -245,56 +246,23 @@
               "Supporting materials"
             ],
             "context": [
-              "docs/project-docs/business-requirements.md",
-              "prototypes/shared/styles/design-tokens.css"
+              "docs/project-docs/business-requirements.md"
             ]
           },
-          "workflows": [
-            {
-              "name": "Workflow 1: Requirements Research (9 steps)",
-              "steps": [
-                "Step 1: Brief & Materials Review",
-                "Step 2: Complexity Check (stop if too complex)",
-                "Step 3: Read Framework Requirements",
-                "Step 4: Understand What to Capture (prototype-specific only)",
-                "Step 5: Requirements Q&A via requirements-thinking-with-validation skill",
-                "Step 6: Integrate Information Sources",
-                "Step 7: Document Prototype Requirements",
-                "Step 8: Requirements Quality Review via requirements-review skill",
-                "Step 9: User Approval of Requirements"
-              ],
-              "userApprovalGate": "After Step 9 - user must approve requirements before proceeding to Workflow 2"
-            },
-            {
-              "name": "Workflow 2: Design Intent (18 steps)",
-              "prerequisites": "Requirements document approved by user",
-              "steps": [
-                "Step 1: Validate Requirements",
-                "Step 2: Clarify Prototype Purpose (BA + UX)",
-                "Step 3: Compile User Tasks",
-                "Step 4: Confirm Tasks with User",
-                "Step 5: Document Tasks as User Stories",
-                "Step 6: Suggest Prototype Views",
-                "Step 7: Suggest UI Patterns",
-                "Step 8: Ascertain Design Preferences",
-                "Step 9: Suggest UI Architecture Alternatives",
-                "Step 10: Define Task Flows",
-                "Step 11: Identify Required Controls",
-                "Step 12: Identify Common vs Custom Controls",
-                "Step 13: Define MVP Feature Set",
-                "Step 14: Capture Additional Feature Ideas",
-                "Step 15: Identify and Document Risks",
-                "Step 16: Review Design Documentation Quality via requirements-review skill",
-                "Step 17: Document Design Intent for Handoff",
-                "Step 18: User Approval of Design Documents"
-              ],
-              "userApprovalGate": "After Step 18 - user must approve both design documents"
-            }
+          "workflow": [
+            "Phase 0: Module Identification & User Guidance (if module not provided)",
+            "Step 1: Brief & Materials Review",
+            "Step 2: Complexity Check (stop if too complex)",
+            "Step 3: Read Framework Requirements",
+            "Step 4: Understand What to Capture (prototype-specific only)",
+            "Step 5: Requirements Q&A via requirements-thinking-with-validation skill",
+            "Step 6: Integrate Information Sources",
+            "Step 7: Document Prototype Requirements",
+            "Step 8: Requirements Quality Review via requirements-review skill",
+            "Step 9: User Approval of Requirements"
           ],
           "outputs": [
-            "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
-            "docs/project-docs/prototype-[prototype-name]/design-brief.md",
-            "docs/project-docs/prototype-[prototype-name]/user-verification-tasks.md"
+            "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md"
           ],
           "userApprovalRequired": true,
           "blocking": true,
@@ -303,17 +271,76 @@
             "requirements-review"
           ],
           "mandatoryCaptures": [
-            "Prototype Purpose - why it exists, what decision/learning it supports",
-            "Relationship to Business Goals - how prototype supports business objectives",
-            "Assumptions - areas where decisions based on incomplete information",
-            "Success Signals - observable outcomes if prototype succeeds"
+            "Prototype Purpose - why it exists (business + user value)",
+            "Users - primary and secondary user roles",
+            "Core User Tasks - max 5 tasks with business and user value",
+            "Must-Have Functionality - MVP scope with explicit out-of-scope items",
+            "Business Constraints",
+            "User Constraints",
+            "Assumptions - business, user, and technical",
+            "Success Criteria - business and user outcomes",
+            "Risks - business, UX, and scope risks"
           ],
           "complexityGatekeeper": true,
           "notes": [
-            "This agent combines both requirements and design workflows",
-            "User must approve requirements before design workflow begins",
-            "User must approve both design documents before handoff",
+            "This agent performs combined BA and UX research",
+            "No design decisions are made at this stage",
+            "Output is combined business and user requirements",
             "Agent will stop user if module is too complex and suggest splits"
+          ]
+        },
+        {
+          "id": "prototype-design",
+          "name": "Prototype Design Intent",
+          "agent": "prototype-design.agent.md",
+          "description": "Systems and Interface design: translate requirements into clear design intent with views, patterns, flows, and controls (produces 2 documents)",
+          "requires": ["prototype-requirements"],
+          "inputs": {
+            "required": [
+              "docs/project-docs/prototype-[prototype-name]/prototype-requirements.md",
+              "docs/framework-docs/requirements.md",
+              "docs/framework-docs/css-guidelines.md"
+            ],
+            "context": [
+              "docs/project-docs/business-requirements.md",
+              "prototypes/shared/styles/design-tokens.css"
+            ]
+          },
+          "workflow": [
+            "Step 1: Read and Validate Requirements",
+            "Step 2: Read Framework Requirements",
+            "Step 3: Clarify Prototype Purpose",
+            "Step 4: Extract and Organize User Tasks",
+            "Step 5: Suggest Prototype Views (numbered options)",
+            "Step 6: Suggest UI Patterns (numbered options)",
+            "Step 7: Ascertain Design Preferences",
+            "Step 8: Suggest UI Architecture Alternatives (numbered options)",
+            "Step 9: Define Task Flows for Each User Story",
+            "Step 10: Identify Required Controls",
+            "Step 11: Categorize Common vs Custom Controls",
+            "Step 12: Define MVP Feature Set",
+            "Step 13: Capture Additional Feature Ideas",
+            "Step 14: Identify and Document Risks",
+            "Step 15: Document Design Intent",
+            "Step 16: Create User Verification Tasks",
+            "Step 17: Review Design Documentation Quality via requirements-review skill",
+            "Step 18: User Approval of Design Documents"
+          ],
+          "outputs": [
+            "docs/project-docs/prototype-[prototype-name]/design-brief.md",
+            "docs/project-docs/prototype-[prototype-name]/user-verification-tasks.md"
+          ],
+          "userApprovalRequired": true,
+          "blocking": true,
+          "skills": [
+            "requirements-review"
+          ],
+          "notes": [
+            "This agent performs combined systems and interface design",
+            "Uses requirements from prototype-requirements agent",
+            "Presents design alternatives using numbered options",
+            "Does NOT re-research requirements or change scope",
+            "User must approve both design documents before handoff to development"
           ]
         },
         {
@@ -321,7 +348,7 @@
           "name": "Prototype Implementation",
           "agent": "prototype-development.agent.md",
           "description": "Build the prototype based on all requirement documents",
-          "requires": ["prototype-research-design"],
+          "requires": ["prototype-design"],
           "inputs": {
             "required": [
               "docs/project-docs/business-requirements.md",
@@ -552,8 +579,9 @@
         }
       ],
       "completionCriteria": [
-        "Prototype research-to-design complete (3 documents: requirements, design brief, user verification tasks)",
-        "All documents approved by user",
+        "Prototype requirements research complete (prototype-requirements.md approved)",
+        "Prototype design intent complete (design-brief.md and user-verification-tasks.md approved)",
+        "All 3 documents approved by user",
         "Prototype implemented and tested",
         "Code review gate passed (verdict: Acceptable)",
         "All compliance violations resolved",
@@ -576,7 +604,7 @@
       "purpose": "Help users express requirements naturally through informal conversation while ensuring formal, complete, traceable output",
       "usedBy": [
         "project-requirements-agent",
-        "prototype-research-design-agent"
+        "prototype-requirements-agent"
       ],
       "timing": "During requirements gathering phase (before creating requirement documents)",
       "output": "Formal Requirements Summary (5 sections: Overview, Confirmed Decisions, Constraints & Rules, Assumptions, Open Questions)",
@@ -589,7 +617,8 @@
       "purpose": "Review requirements documents against established rules and framework guidance, report issues clearly and concisely",
       "usedBy": [
         "project-requirements-agent",
-        "prototype-research-design-agent"
+        "prototype-requirements-agent",
+        "prototype-design-agent"
       ],
       "timing": "After creating requirement or design documents, before presenting to user for approval",
       "output": "Requirements Review Report",

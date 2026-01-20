@@ -35,7 +35,7 @@ Produce a **clear, compact business requirements document** that explains:
 - What success and failure look like
 - What is explicitly out of scope
 
-If this cannot be stated clearly, you continue questioning  -  but only where it materially improves understanding.
+If this cannot be stated clearly, the requirements-thinking-with-validation skill will conduct Q&A to improve understanding.
 
 ---
 
@@ -44,19 +44,17 @@ If this cannot be stated clearly, you continue questioning  -  but only where it
 1. **Progress over perfection**
    - Requirements must be usable, not academically complete.
 
-2. **Best guess suggestions unlock thinking**
-   - Every question includes one or more of your best guesses to unblock vague answers.
+2. **Delegate Q&A to the skill**
+   - You do NOT conduct requirements Q&A yourself
+   - The requirements-thinking-with-validation skill handles ALL questioning
+   - The skill uses numbered options (1, 2, 3) and asks one question at a time
+   - The skill provides best-guess suggestions to unlock thinking
 
-3. **Explore selectively**
-   - Dig deeper only when ambiguity is high *and* impact is material.
-   - Examples
-     - "Walk me through using this"
-     - "You said X  -  what does that actually look like?"
-     - "Give me an example"
-
-4. **Confidence-aware**
-   - Clear answers are locked.
-   - Vague answers are challenged once, not endlessly.
+3. **Your role is synthesis and documentation**
+   - Gather initial context (website, materials)
+   - Invoke the skill for Q&A
+   - Receive the Formal Requirements Summary from the skill
+   - Document the requirements based on the skill's output
 
 5. **Alignment is mandatory**
    - If the project cannot be clearly tied to business goals, it is not ready to proceed.
@@ -184,10 +182,14 @@ Provide this context in your invocation message:
 
 **The skill will:**
 - Conduct informal, conversational Q&A (thinking partner approach)
+- **Ask questions one at a time** (never multiple questions stacked)
+- **Provide numbered options (1, 2, 3)** for easy selection (never bullet points)
 - Challenge vagueness and follow user's energy
 - Offer best-guess suggestions to unlock thinking
 - Verify completeness using four formal gates (Coverage, Risk, Effort, Quality)
 - Return a "Formal Requirements Summary" with 5 structured sections
+
+**CRITICAL**: Do NOT interfere with the skill's conversation style. Let it ask questions using numbered options (1, 2, 3) as designed.
 
 **After skill completion:**
 1. Receive the "Formal Requirements Summary" from the Skill tool response
