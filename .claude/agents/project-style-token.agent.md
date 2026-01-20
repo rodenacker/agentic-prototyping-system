@@ -43,8 +43,9 @@ If the website URL is missing, **stop immediately** and request it.
 2. **Extract Visual Patterns**
    - Identify color palette (primary, secondary, accent, neutral)
    - **Identify typography:**
-     - **Body text font**: Analyze `<p>` and content paragraphs - what font renders most often?
-     - **Heading font**: Analyze `<h1>` through `<h6>` - what font renders most often?
+     - **Find all fonts**: Extract all `font-family` declarations from the website's CSS files
+     - Create a complete list of all fonts found on the website
+     - Present the list to the user for selection (see Font Selection step below)
      - Font sizes across heading levels
      - Font weights used
      - Line heights
@@ -52,7 +53,16 @@ If the website URL is missing, **stop immediately** and request it.
    - Identify shape patterns (border radius, border widths)
    - Identify shadows and effects (if present)
 
-3. **Document Observations**
+3. **Font Selection (CRITICAL - User Decision Required)**
+   - Present the complete list of fonts found on the website to the user
+   - Ask the user to select:
+     1. **Headings font**: Which font should be used for headings (h1-h6)?
+     2. **Body font**: Which font should be used for body text and paragraphs?
+   - Format the question with numbered options for easy selection
+   - Wait for user selection before proceeding
+   - Use the selected fonts for creating `--font-heading` and `--font-body` tokens
+
+4. **Document Observations**
    - Note any inconsistencies in styling
    - Flag potential design system improvements (but don't implement them)
    - Identify missing patterns that may need defaults
@@ -119,37 +129,30 @@ You must attempt to extract, where present:
 - Font weights
 - Line heights
 
-**CRITICAL - Font Family Extraction Rules:**
+**CRITICAL - Font Family Extraction and Selection:**
 
-1. **Analyze Body Text Font:**
-   - Inspect the most common body text elements: `<p>`, `<div>`, `<span>`, article content
-   - Look at multiple paragraphs across different sections
-   - Identify the font-family that appears most frequently for body text
-   - Extract the ACTUAL computed font-family from CSS (not just the first declared font)
-   - Check: "What font is being used for the majority of readable content?"
+1. **Extract All Fonts from CSS:**
+   - Use WebFetch to analyze the website's HTML and CSS
+   - Find ALL `font-family` declarations in the website's stylesheets
+   - Extract the complete list of font families used across the site
+   - Include the full font-family stacks with fallbacks (e.g., `'Lora', Georgia, serif`)
+   - Do NOT filter or guess which fonts are for body vs headings
 
-2. **Analyze Heading Font:**
-   - Inspect heading elements: `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`
-   - Look at multiple headings across different sections
-   - Identify the font-family that appears most frequently for headings
-   - Extract the ACTUAL computed font-family from CSS
-   - Check: "What font is being used for the majority of headings?"
+2. **Present Fonts to User for Selection:**
+   - Create a numbered list of all unique font families found
+   - Present two questions to the user:
+     - **Question 1**: "Which font should be used for headings (h1-h6)?" (provide numbered list)
+     - **Question 2**: "Which font should be used for body text?" (provide numbered list)
+   - Format using numbered options (1, 2, 3, etc.) for easy selection
+   - Wait for user to make both selections before proceeding
 
-3. **Font Family Token Naming:**
-   - `--font-body`: Most common body text font with fallbacks
-   - `--font-heading`: Most common heading font with fallbacks
-   - If body and heading fonts are the same, still create both tokens (they may diverge later)
-   - Preserve the complete font-family stack including fallbacks (e.g., `'Lora', Georgia, serif`)
+3. **Font Family Token Creation:**
+   - `--font-body`: User-selected body text font with fallbacks
+   - `--font-heading`: User-selected heading font with fallbacks
+   - If user selects the same font for both, still create both tokens (they may diverge later)
+   - Preserve the complete font-family stack including fallbacks exactly as found in CSS
 
-4. **Common Pitfalls to Avoid:**
-   - ❌ DON'T just take the first font declared on `<body>` or `html`
-   - ❌ DON'T assume the most popular Google Font on the page is the body font
-   - ❌ DON'T extract fonts from navigation, buttons, or UI elements as body/heading fonts
-   - ✅ DO inspect actual paragraphs and headings in the main content area
-   - ✅ DO verify which font is rendering in the browser (computed style)
-   - ✅ DO include the full font-family stack with web-safe fallbacks
-
-5. **Web Font Loading (CRITICAL):**
+4. **Web Font Loading (CRITICAL):**
 
    **Check if fonts are system-available:**
    - System fonts: Arial, Helvetica, Times New Roman, Georgia, Courier, Verdana, Tahoma, etc.
