@@ -13,8 +13,8 @@ A structured, agent-based framework for creating consistent, defensible prototyp
    4. [Start Claude Code](#44-start-claude-code)
    5. [Invoke The Project Orchestration Agent](#45-invoke-the-project-orchestration-agent)
    6. [Identify Prototypes To Build](#46-identify-prototypes-to-build)
-   7. [Testing Prototypes](#47-testing-prototypes)
-   8. [Debugging Prototype Issues](#48-debugging-prototype-issues)
+   7. [Debugging Prototype Issues](#47-debugging-prototype-issues)
+   8. [Testing Prototypes](#48-testing-prototypes)
 5. [Individual Agent Commands](#5-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
@@ -509,200 +509,7 @@ The orchestrator will guide you through the prototype workflow.
 
 ---
 
-### 4.7 Testing Prototypes
-
-Prototype testing validates that your design decisions work for real users before investing in full development. This section outlines best practices for effective usability testing.
-
-#### Purpose of Prototype Testing
-
-**Validation goals:**
-- **Verify task completion** - Can users actually complete the core tasks?
-- **Identify usability issues early** - Find problems before development begins
-- **Test design assumptions** - Validate or challenge your design decisions
-- **Compare alternatives** - Test multiple approaches side-by-side
-- **Build stakeholder confidence** - Create tangible evidence that the design works
-
-Prototypes are "proof of understanding" - they demonstrate that your team understands the problem and has a viable solution.
-
-#### Who Should Test
-
-**Primary testers:**
-- **Actual end-users** - People who will use the system in their daily work
-- **Representative personas** - Users matching your target user profiles
-
-**Secondary testers:**
-- **Subject matter experts** - Domain specialists who understand the business context
-- **Stakeholders** - Decision-makers who need to validate business value
-
-**Test facilitators:**
-- **UX designers, product managers, business analysts** - Guide sessions and capture feedback
-
-**When to involve developers:**
-- After usability validation to discuss technical feasibility
-- To understand implementation constraints before finalizing designs
-
-#### Testing Methodology
-
-**Task-based usability testing** (recommended approach):
-
-1. **Use the verification tasks document** - The framework generates `user-verification-tasks.md` for each prototype. Use this as your test script.
-
-2. **Give users realistic scenarios** - Frame tasks as real-world situations, not UI instructions:
-   - ✅ "A new customer request just arrived. Review it and decide how to proceed."
-   - ❌ "Click the item in the table, then click the button."
-
-3. **Observe without helping** - Let users struggle. That's where you learn what's confusing.
-
-4. **Ask users to think aloud** - Encourage users to verbalize their thoughts as they work:
-   - "What are you looking for?"
-   - "What do you expect will happen when you click that?"
-   - "What's confusing you right now?"
-
-**Moderated vs. unmoderated testing:**
-
-- **Moderated** (recommended for prototypes):
-  - Facilitator guides user through tasks
-  - Can ask follow-up questions in real-time
-  - Provides deeper insights into user thinking
-  - Better for identifying "why" behind behaviors
-
-- **Unmoderated**:
-  - User tests alone, provides written feedback
-  - Faster and cheaper for large sample sizes
-  - Less depth, misses subtle insights
-  - Better for simple validation tests
-
-**Test session structure** (30-45 minutes typical):
-
-1. **Introduction (5 min)** - Explain what's being tested, set expectations
-   - "We're testing the prototype, not you"
-   - "Please think aloud as you work"
-   - "There are no wrong answers"
-
-2. **Task scenarios (20-30 min)** - Work through verification tasks from design document
-   - Present one task at a time
-   - Don't intervene unless user is completely stuck
-   - Note where users hesitate, struggle, or express confusion
-
-3. **Follow-up questions (5-10 min)** - Explore what worked and what didn't
-   - "What was most confusing?"
-   - "What felt natural?"
-   - "What would you change?"
-
-4. **Open feedback (5 min)** - Invite any additional thoughts
-   - "Is there anything else you'd like to share?"
-
-#### What to Observe
-
-**Task completion:**
-- Can users complete tasks without help?
-- How many attempts does it take?
-- Do users give up or find workarounds?
-
-**Navigation patterns:**
-- Do users find the right paths intuitively?
-- Where do they get lost or backtrack?
-- Are they clicking where you expect?
-
-**Hesitation points:**
-- Where do users pause, unsure what to do next?
-- What causes them to stop and think?
-- When do they look confused or frustrated?
-
-**Error recovery:**
-- When users make mistakes, can they recover easily?
-- Do error messages help or confuse?
-- Can users undo actions if needed?
-
-**Terminology and labels:**
-- Do labels make sense to users?
-- Are instructions clear?
-- Does terminology match users' mental models?
-
-**Expectations vs. reality:**
-- What do users expect to happen vs. what actually happens?
-- Are there surprising behaviors or outcomes?
-- Do users understand system responses?
-
-**Satisfaction indicators:**
-- Facial expressions (smiles, frowns, confusion)
-- Verbal reactions ("Oh!", "Huh?", "That's easy")
-- Confidence levels and body language
-
-#### Capturing Feedback
-
-**Use the framework's bug reporting format:**
-
-When users encounter issues, document them using this structure:
-- **Task**: Which verification task were they attempting?
-- **What happened**: Describe the issue or confusion
-- **What expected**: What did the user expect to happen?
-- **Optional**: Screenshot or screen recording
-
-**Document patterns, not one-offs:**
-- Focus on issues that affect multiple users (3+ users = pattern)
-- Note whether issues **block** task completion or just **slow it down**
-- Distinguish "user struggled" from "user expressed preference"
-
-**Prioritize feedback:**
-- **Critical**: Blocks task completion (must fix)
-- **High**: Causes significant confusion or errors (should fix)
-- **Medium**: Slows down workflow (nice to fix)
-- **Low**: Minor preferences or nice-to-haves (consider for future)
-
-#### Sample Size Guidelines
-
-**For prototype testing: 3-5 users per persona**
-- Nielsen Norman Group research shows 5 users find ~85% of usability issues
-- Enough to identify major problems
-- Fast turnaround for iterative cycles
-- Cost-effective for rapid prototyping
-
-**When to test more:**
-- Testing multiple user personas (3-5 per persona)
-- Very diverse user base with different needs
-
-#### From Feedback to Action
-
-**Revision workflow:**
-1. **Prioritize issues** - Focus on critical and high-priority items first
-2. **Fix in tightly scoped changes** - One issue at a time
-3. **Re-run code review** - Ensure fixes maintain quality
-4. **Re-test critical changes** - Validate fixes with users
-
-**When to iterate vs. rebuild:**
-- **Iterate**: Minor usability tweaks, terminology changes, flow adjustments
-- **Rebuild**: Fundamental design approach isn't working, scope was wrong, wrong user tasks
-
-#### Best Practices
-
-**✅ Do:**
-- Test early and often (don't wait for perfection)
-- Focus on core tasks from verification task list
-- Watch what users do, not just what they say
-- Use realistic data and scenarios
-- Allow users to explore freely between tasks
-- Record sessions (with permission) for later analysis
-- Share findings with team immediately
-- Test in the user's actual environment when possible
-
-**❌ Don't:**
-- Don't explain how to use the prototype upfront
-- Don't defend design choices during testing
-- Don't lead users to the "right" answer
-- Don't interrupt users while they're working
-- Don't test only with internal team members
-- Don't skip testing because "we already know it works"
-
-#### Recommended Resources
-
-- [Nielsen Norman Group: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/)
-- [Steve Krug: "Rocket Surgery Made Easy"](https://sensible.com/rocket-surgery-made-easy/)
-- [Steve Krug: "Don't Make Me Think"](https://sensible.com/dont-make-me-think/)
-
----
-
-### 4.8 Debugging Prototype Issues
+### 4.7 Debugging Prototype Issues
 
 When testing prototypes, you may encounter bugs or unexpected behavior. This section provides a quick reference for reporting issues to Claude Code effectively.
 
@@ -766,6 +573,60 @@ If Claude seems stuck or suggests unrelated fixes, use `/clear` to reset the con
 
 **For complex issues:**
 If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex—can you investigate the root cause before suggesting a fix?"
+
+---
+
+### 4.8 Testing Prototypes
+
+Prototype testing validates design decisions with real users before committing to full development. The framework generates `user-verification-tasks.md` for each prototype—use this as your test script.
+
+#### Why Test
+
+Prototypes are "proof of understanding." Testing confirms:
+- Users can complete core tasks successfully
+- Design assumptions hold up in practice
+- Issues are caught early, before expensive rework
+
+#### Who to Test With
+
+- **Primary**: Actual end-users (3-5 users per persona typically finds 85% of issues)
+- **Secondary**: Subject matter experts and stakeholders for business validation
+
+#### Key Testing Tasks
+
+**Setup:**
+- Use realistic scenarios, not UI instructions ("A new request arrived—review and decide" vs. "Click the button")
+- Ask users to think aloud as they work
+- Observe without helping—struggle reveals problems
+
+**What to Watch For:**
+- Can users complete tasks without help?
+- Where do they hesitate, backtrack, or look confused?
+- What do they expect vs. what actually happens?
+- Can they recover from mistakes?
+
+**Capture Feedback:**
+- Document patterns that affect multiple users (not one-offs)
+- Prioritize: Blockers (must fix) → High impact (should fix) → Nice-to-haves
+- Use the debugging format from section 4.7 to report issues
+
+#### Taking Action
+
+**Fix in priority order:**
+1. Blockers first (prevent task completion)
+2. High-impact issues next (significant confusion/errors)
+3. Re-test critical changes with users
+
+**When to iterate vs. rebuild:**
+- **Iterate**: Minor tweaks, terminology, flow adjustments
+- **Rebuild**: Fundamental approach isn't working
+
+#### Learn More
+
+Essential resources for effective usability testing:
+- [Nielsen Norman Group: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/)
+- [Steve Krug: "Rocket Surgery Made Easy"](https://sensible.com/rocket-surgery-made-easy/)
+- [Jakob Nielsen: Why You Only Need to Test with 5 Users](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/)
 
 ---
 
