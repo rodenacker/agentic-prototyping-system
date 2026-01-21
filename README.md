@@ -4,8 +4,8 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 ## Table of Contents
 1. [Quick Start](#1-quick-start)
-2. [Purpose](#2-purpose)
-3. [The Workflow](#3-the-workflow)
+2. [Framework Purpose](#2-framework-purpose)
+3. [Workflow](#3-workflow)
 4. [Using The Framework](#4-using-the-framework)
    1. [Preparing Customer Requirements](#41-preparing-customer-requirements)
    2. [Run the Setup Script](#42-run-the-setup-script)
@@ -13,8 +13,8 @@ A structured, agent-based framework for creating consistent, defensible prototyp
    4. [Start Claude Code](#44-start-claude-code)
    5. [Invoke The Project Orchestration Agent](#45-invoke-the-project-orchestration-agent)
    6. [Identify Prototypes To Build](#46-identify-prototypes-to-build)
-   7. [Debugging Prototype Issues](#47-debugging-prototype-issues)
-   8. [Testing Prototypes](#48-testing-prototypes)
+   7. [Debugging Prototypes](#47-debugging-prototypes)
+   8. [Testing Prototypes With Customers](#48-testing-prototypes-with-customers)
 5. [Individual Agent Commands](#5-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
@@ -38,7 +38,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 The orchestrator will guide you through Phase 1 (Project Foundation) and then help you create prototypes through Phase 2 cycles.
 
-## 2. Purpose
+## 2. Framework Purpose
 
 AI-augmented prototyping transforms the design process from slow, static documentation into a tangible, visual "proof of understanding." When rapid generation is combined with deep domain expertise it can demonstrate to the customer how their business problem will be solved. 
 
@@ -51,7 +51,7 @@ This framework provides a systematic approach to prototype development by orches
 - **Defensibility**: Clear documentation and rationale at every step
 - **Efficiency**: Reusable foundation work across multiple prototypes
 
-## 3. The Workflow
+## 3. Workflow
 
 The framework implements prototypes in a **two-phase approach**:
 
@@ -509,7 +509,7 @@ The orchestrator will guide you through the prototype workflow.
 
 ---
 
-### 4.7 Debugging Prototype Issues
+### 4.7 Debugging Prototypes
 
 When testing prototypes, you may encounter bugs or unexpected behavior. This section provides a quick reference for reporting issues to Claude Code effectively.
 
@@ -576,7 +576,7 @@ If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex
 
 ---
 
-### 4.8 Testing Prototypes
+### 4.8 Testing Prototypes With Customers
 
 Prototype testing validates design decisions with real users before committing to full development. The framework generates `user-verification-tasks.md` for each prototype—use this as your test script.
 
