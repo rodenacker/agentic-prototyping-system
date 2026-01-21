@@ -221,88 +221,143 @@ Start: Continue with orchestrator or /research-prototype
 
 ## 4. Using The Framework
 
-### 4.1 Collect Customer Requirements
+### 4.1 Information Required by the Framework
 
-Before using the framework, you need to gather requirements from your stakeholders and customers. The quality of your input directly impacts the quality of your prototypes. This section guides you through the requirements collection effort.
+The framework transforms requirements information into working prototypes. This section describes what information the framework needs and what it produces.
 
-#### Understanding What You Need to Collect
+---
 
-The framework needs two levels of requirements:
+#### Input: What the Framework Needs
 
-**Project-Level (Phase 1 - once per project):**
-- Overall business goals and context
-- Target user personas
-- Success metrics and constraints
-- Customer website URL (for brand styling)
+The framework requires information at two levels to generate prototypes:
 
-**Prototype-Level (Phase 2 - per prototype):**
-- Specific feature or workflow scope
-- User tasks for this prototype
-- Business value and constraints
-- Known design preferences or risks
+**Project-Level Information (Phase 1 - Foundation)**
 
-#### Requirements Collection Process
+To establish the project foundation, provide:
 
-**1. Conduct Stakeholder Interviews**
+- **Business context and goals**: What problem is being solved and why
+- **Target users**: Who will use the system and their roles
+- **Success criteria**: How success will be measured (business outcomes)
+- **Constraints**: Budget, timeline, technical limitations, regulatory requirements
+- **Assumptions**: What is assumed to be true
+- **Customer website URL**: For extracting brand styling and design tokens
 
-**Who to interview:**
-- **Business stakeholders** - Goals, constraints, success metrics
-- **End users** - Workflows, pain points, current processes
-- **Subject matter experts** - Domain knowledge, business rules, edge cases
-- **Technical stakeholders** - Integration points, technical constraints
+**Prototype-Level Information (Phase 2 - Per Prototype)**
 
-**Questions to ask (Project Level):**
-- What business problem are we solving? Why now?
-- Who are the primary users and their roles?
-- How will we measure success?
-- What are the key constraints?
-- What assumptions exist?
+For each prototype you want to build, provide:
 
-**Questions to ask (Prototype Level):**
-- What user tasks must this prototype support? (3-5 core actions)
-- Why does this prototype matter to the business?
-- What's the current process? What are the pain points?
-- Are there any known design preferences or constraints?
-- What risks should we explore?
+- **Prototype scope**: What specific feature or workflow this prototype covers
+- **Core user tasks**: 3-5 specific actions users must complete
+  - Example: "Review invoice details, check against PO, approve or reject with reason"
+- **Business value**: Why this prototype matters and what it validates
+- **Constraints**: Technical, design, or business constraints specific to this prototype
+- **Uncertainties**: Questions this prototype should help answer
 
-**2. Document Interview Findings**
+**Note**: Prototype-level information is not required before starting. Many users provide project-level information first, then identify prototypes after completing Phase 1.
 
-**For Project-Level:**
-- Business context and goals
-- Target user personas
-- Success metrics
-- Key constraints
-- Assumptions and dependencies
+---
 
-**For Prototype-Level:**
-- Prototype scope and purpose
-- 3-5 core user tasks
-- Business value
-- Constraints or preferences
-- Supporting materials
+#### Information Quality: What Makes Good Input
 
-**3. Focus on "What" and "Why", Not "How"**
+**Focus on outcomes, not solutions:**
+- ✅ "Users need to review and approve requests quickly on mobile devices"
+- ❌ "Create a table with green approve and red reject buttons"
 
-- ✅ **What** problem needs solving
-- ✅ **Why** it matters to business and users
-- ✅ **Who** will use it and in what context
-- ❌ **NOT How** to design or implement
+**Use concrete examples:**
+- ✅ "When amount exceeds threshold by 10%, highlight both values"
+- ❌ "Handle discrepancies"
 
-#### Requirements Collection Best Practices
+**Flag uncertainties explicitly:**
+- ✅ "Not sure if users need side-by-side comparison—need to test"
+- ❌ Pretending certainty when uncertain
 
-**✅ Do:**
-- Interview multiple stakeholders for diverse perspectives
-- Document business and user value with real examples
-- Flag uncertainties and constraints explicitly
+**Provide context, not implementation:**
+- ✅ "Reason required for audit compliance"
+- ❌ "Use a dropdown for reasons"
 
-**❌ Don't:**
-- Specify exact UI layouts or prescribe solutions
-- Over-scope prototypes or mix unrelated features
-- Use vague success criteria
+**Be specific about tasks:**
+- ✅ "Review invoice details, check against PO, approve or reject with reason"
+- ❌ "Process invoices"
 
-#### Output: Documented Requirements Ready for Framework
+---
 
-Once you've collected and documented requirements, you're ready to provide them to the framework. See section 4.3 for how to structure this information as input files.
+#### Supporting Materials (Optional)
+
+You may optionally provide supporting materials to supplement your information:
+
+**For project-level:**
+- Strategy documents or market research
+- Meeting notes or workshop outputs
+- Existing process documentation
+- User research findings
+
+**For prototype-level:**
+- Wireframes or mockups (visual references)
+- Data models or examples (JSON, CSV, tables)
+- Process diagrams or workflow documentation
+- User research specific to this prototype
+
+Supporting materials help framework agents understand context but are not required.
+
+---
+
+#### Information Completeness Levels
+
+The framework adapts to different levels of information completeness:
+
+**Comprehensive**: Detailed documentation covering most required information
+- Framework agents read materials, ask minimal clarifying questions
+- Faster progression through phases
+
+**Partial**: Some documentation with gaps
+- Framework agents read what you provide, fill gaps through Q&A
+- Balanced between preparation and discovery
+
+**Minimal**: High-level goals with limited details
+- Framework agents guide you through comprehensive Q&A
+- Discovery-driven approach
+
+All levels are equally valid. Choose the approach that fits your context.
+
+---
+
+#### Output: What the Framework Produces
+
+**Phase 1 - Business Requirements Agent produces:**
+- `business-requirements.md` - Structured project-level requirements document
+- Presented for your approval before proceeding
+
+**Phase 2 - Prototype Requirements Agent produces:**
+- `prototype-requirements.md` - Structured prototype-specific requirements
+- Presented for your approval before design
+
+**Phase 2 - Design Agent produces:**
+- `design-brief.md` - Design decisions, flows, views, and controls
+- `user-verification-tasks.md` - Testing checklist for validating the prototype
+- Both presented for your approval before implementation
+
+**Phase 2 - Development Agent produces:**
+- Working prototype (clickable React application)
+- Landing page updated with link to new prototype
+- Prompted for your testing and approval
+
+---
+
+#### How Framework Agents Use Your Information
+
+**If you provide information:**
+- Framework agents read what you provide
+- Agents ask clarifying questions to fill gaps or resolve ambiguities
+- Agents structure your information into standardized documents
+- You approve documents before proceeding to next phase
+
+**If you provide no information:**
+- Framework agents guide you through conversational Q&A
+- Agents capture your responses
+- Agents structure responses into standardized documents
+- You approve documents before proceeding to next phase
+
+Both approaches produce the same quality output.
 
 ---
 
