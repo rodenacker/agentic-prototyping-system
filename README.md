@@ -268,7 +268,7 @@ For each prototype you want to build, provide:
 - ❌ "Handle discrepancies"
 
 **Flag uncertainties explicitly:**
-- ✅ "Not sure if users need side-by-side comparison—need to test"
+- ✅ "Not sure if users need side-by-side comparison - need to test"
 - ❌ Pretending certainty when uncertain
 
 **Provide context, not implementation:**
@@ -581,7 +581,7 @@ When reporting several bugs at once, indicate priority:
 - **Functional** - Feature works inconsistently (e.g., "Search only works sometimes")
 - **Cosmetic** - Visual issues (e.g., "Button text misaligned")
 
-Focus on blockers first—they prevent testing the rest of the prototype.
+Focus on blockers first - they prevent testing the rest of the prototype.
 
 #### If You Have a Theory
 
@@ -591,7 +591,7 @@ If you suspect what's causing the issue, share your observation:
 - ✅ "It seems like the form submits before validating the email"
 - ❌ Avoid technical jargon unless you're familiar with React (let Claude diagnose)
 
-You don't need to know how to fix it—just describe what you observe.
+You don't need to know how to fix it - just describe what you observe.
 
 #### Using Claude Code Features
 
@@ -602,13 +602,13 @@ Use `@filename` to point Claude to the relevant code. This helps Claude target t
 If Claude seems stuck or suggests unrelated fixes, use `/clear` to reset the conversation and start fresh with a clear bug report.
 
 **For complex issues:**
-If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex—can you investigate the root cause before suggesting a fix?"
+If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex - can you investigate the root cause before suggesting a fix?"
 
 ---
 
 ### 4.7 Test Prototypes With Customers
 
-Prototype testing validates design decisions with real users before committing to full development. The framework generates `user-verification-tasks.md` for each prototype—use this as your test script.
+Prototype testing validates design decisions with real users before committing to full development. The framework generates `user-verification-tasks.md` for each prototype - use this as your test script.
 
 #### Why Test
 
@@ -625,9 +625,9 @@ Prototypes are "proof of understanding." Testing confirms:
 #### Key Testing Tasks
 
 **Setup:**
-- Use realistic scenarios, not UI instructions ("A new request arrived—review and decide" vs. "Click the button")
+- Use realistic scenarios, not UI instructions ("A new request arrived - review and decide" vs. "Click the button")
 - Ask users to think aloud as they work
-- Observe without helping—struggle reveals problems
+- Observe without helping - struggle reveals problems
 
 **What to Watch For:**
 - Can users complete tasks without help?
