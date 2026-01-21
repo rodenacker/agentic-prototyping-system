@@ -40,6 +40,10 @@ The orchestrator will guide you through Phase 1 (Project Foundation) and then he
 
 ## 2. Purpose
 
+AI-augmented prototyping transforms the design process from slow, static documentation into a dynamic "proof of understanding." AI allows experts to generate high-fidelity, tactile realities in a fraction of the time, serving as a visual contract that aligns stakeholder expectations with technical feasibility. 
+
+When rapid generation is combined with deep domain expertise it demonstrates how the customers business problem will be solved. By validating complex logic early, organisations also significantly reduce developmental rework and replace theoretical uncertainty with the tangible confidence required to drive high-stakes investment.
+
 This framework provides a systematic approach to prototype development by orchestrating specialized AI agents, each responsible for a specific phase of the prototyping process. The goal is to ensure:
 
 - **Consistency**: Shared design tokens and business requirements across all prototypes
