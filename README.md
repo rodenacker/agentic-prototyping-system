@@ -5,10 +5,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 ## Table of Contents
 1. [Quick Start](#1-quick-start)
 2. [Purpose](#2-purpose)
-3. [How It Works](#3-how-it-works)
-   1. [Design Philosophy](#31-design-philosophy)
-   2. [Modularization](#32-modularization)
-   3. [The Workflow](#33-the-workflow)
+3. [The Workflow](#3-the-workflow)
 4. [Using The Framework](#4-using-the-framework)
    1. [Preparing Customer Requirements](#41-preparing-customer-requirements)
    2. [Run the Setup Script](#42-run-the-setup-script)
@@ -43,9 +40,9 @@ The orchestrator will guide you through Phase 1 (Project Foundation) and then he
 
 ## 2. Purpose
 
-AI-augmented prototyping transforms the design process from slow, static documentation into a dynamic "proof of understanding." AI allows experts to generate high-fidelity, tactile realities in a fraction of the time, serving as a visual contract that aligns stakeholder expectations with technical feasibility. 
+AI-augmented prototyping transforms the design process from slow, static documentation into a tangible, visual "proof of understanding." When rapid generation is combined with deep domain expertise it can demonstrate to the customer how their business problem will be solved. 
 
-When rapid generation is combined with deep domain expertise it demonstrates how the customers business problem will be solved. By validating complex logic early, organisations also significantly reduce developmental rework and replace theoretical uncertainty with the tangible confidence required to drive high-stakes investment.
+AI allows experts to generate high-fidelity, tactile realities in a fraction of the time, serving as a visual contract that aligns stakeholder expectations with technical feasibility. By validating complex logic early, organisations also significantly reduce developmental rework and replace uncertainty with confidence.
 
 This framework provides a systematic approach to prototype development by orchestrating specialized AI agents, each responsible for a specific phase of the prototyping process. The goal is to ensure:
 
@@ -54,67 +51,7 @@ This framework provides a systematic approach to prototype development by orches
 - **Defensibility**: Clear documentation and rationale at every step
 - **Efficiency**: Reusable foundation work across multiple prototypes
 
-## 3. How It Works
-
-### 3.1 Design Philosophy
-
-This framework is built on three core principles:
-
-#### 1. Modular Complexity Management
-
-Rather than building one massive prototype of your entire system, you create **many small, focused prototypes** - each representing a distinct module or feature.
-
-**The result**: One landing page that links to multiple independent prototypes, each exploring a specific part of your system.
-
-**Benefits**:
-- Complex systems become manageable pieces
-- Each module can be validated independently
-- Failed experiments are isolated and low-cost
-- Successful patterns can be identified and reused
-
-#### 2. Clickable Over Abstract
-
-Prototypes are **fully interactive, clickable experiences**, not wireframes, mockups, or static designs.
-
-**The result**: Users can actually click through workflows, interact with controls, and experience the system tactically.
-
-**Benefits**:
-- Reveals usability issues that static designs miss
-- Provides realistic user testing scenarios
-- Builds confidence in design decisions through hands-on validation
-- Creates shared understanding across stakeholders through concrete artifacts
-
-#### 3. Rapid Iteration Cycles
-
-Each prototype cycle is designed to be **fast and repeatable**, encouraging experimentation and learning.
-
-**The result**: You can quickly test multiple approaches to the same problem, compare alternatives, and iterate based on feedback.
-
-**Benefits**:
-- Test risky ideas cheaply before committing
-- Compare competing design solutions side-by-side
-- Rapidly incorporate user feedback
-- Build momentum through frequent, tangible progress
-
-### 3.2 Modularization
-
-**When to Modularize**: After Phase 1 is complete (business requirements, design tokens, and project setup), but before starting any prototype cycles, break your system into smaller modules.
-
-**How to Modularize**:
-Think about your system as a collection of independent features or workflows:
-- Individual user tasks or journeys
-- Specific features or capabilities
-- Critical interaction patterns
-- Alternative approaches to solve the same problem
-- High-risk or uncertain design decisions
-
-**Examples**:
-- ❌ Don't: "Customer portal prototype" (too broad)
-- ✅ Do: "Invoice approval workflow", "Profile settings page", "Dashboard overview"
-
-Each prototype should be small enough to build, review, and test in a focused session.
-
-### 3.3 The Workflow
+## 3. The Workflow
 
 The framework implements prototypes in a **two-phase approach**:
 
@@ -281,20 +218,7 @@ Start: Continue with orchestrator or /research-prototype
 - All prototypes share the foundation (business requirements, design tokens)
 - Each prototype cycle is independent and produces 3 documents + working code
 
-**Bug Reporting During Testing:**
-If you encounter issues while testing a prototype, simply describe what's wrong in natural language. The orchestrator will automatically detect bug reports and invoke the Debug Assistant to help diagnose the issue.
-
-Example trigger phrases:
-- "This doesn't work"
-- "I found a bug"
-- "When I click X, Y happens instead"
-- "Something's wrong with [feature]"
-
-The Debug Assistant will:
-- Help you understand what's happening
-- Narrow down the likely cause
-- Suggest focused next steps or fixes
-- Route to the appropriate fix agent if needed
+---
 
 ## 4. Using The Framework
 
@@ -633,17 +557,46 @@ The orchestrator will guide you through the project setup workflow.
 
 ### 4.6 Identify Modules To Prototype
 
-Identify a module you want to prototype. Then create a sub-folder in the `docs/project-docs` for this module like this:
+After Phase 1 is complete (business requirements, design tokens, and project setup), break your system into smaller modules. Rather than building one massive prototype of your entire system, you create **many small, focused prototypes** - each representing a distinct module or feature.
+
+**The result**: One landing page that links to multiple independent prototypes, each exploring a specific part of your system.
+
+#### How to Think About Modules
+
+Think about your system as a collection of independent features or workflows:
+- Individual user tasks or journeys
+- Specific features or capabilities
+- Critical interaction patterns
+- Alternative approaches to solve the same problem
+- High-risk or uncertain design decisions
+
+Each prototype should be small enough to build, review, and test in a focused session.
+
+#### What Makes a Good Module
+
+**Good modules:**
+- ✅ "Invoice approval workflow" - focused, specific tasks
+- ✅ "Profile settings page" - bounded scope
+- ✅ "Dashboard overview" - clear deliverable
+
+**Too broad:**
+- ❌ "Customer portal prototype" - encompasses many features
+- ❌ "Complete CRM system" - too complex for one prototype
+
+#### Creating the Module Folder
+
+Once you've identified a module, create a subfolder in `docs/project-docs`:
 
 `docs/project-docs/prototype-[module-name]`
 
-Optionally add any module information you may have to the `docs/project-docs/prototype-[module-name]` folder. If you don't provide any information, an agent will guide you through a set of questions. 
+**Naming convention:** Use kebab-case (e.g., `prototype-invoice-approval`, `prototype-dashboard-overview`)
 
-Optional Module Information:
+Optionally add module information to this folder:
+- A module brief (`brief.md`)
+- Wireframes or mockups
+- Data models or schemas
 
-- A module brief
-- Wireframes
-- Data models
+If you don't provide any information, an agent will guide you through a set of questions.
 
 The orchestrator will guide you through the prototype workflow.
 
