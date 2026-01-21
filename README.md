@@ -10,11 +10,10 @@ A structured, agent-based framework for creating consistent, defensible prototyp
    1. [Collect Customer Requirements](#41-collect-customer-requirements)
    2. [Prepare The Project](#42-prepare-the-project)
    3. [Define Input Documents](#43-define-input-documents)
-   4. [Start Claude Code](#44-start-claude-code)
-   5. [Invoke The Project Orchestration Agent](#45-invoke-the-project-orchestration-agent)
-   6. [Identify Prototypes To Build](#46-identify-prototypes-to-build)
-   7. [Debugging Prototypes](#47-debugging-prototypes)
-   8. [Testing Prototypes With Customers](#48-testing-prototypes-with-customers)
+   4. [Start The Orchestrator](#44-start-the-orchestrator)
+   5. [Identify Prototypes To Build](#45-identify-prototypes-to-build)
+   6. [Debugging Prototypes](#46-debugging-prototypes)
+   7. [Testing Prototypes With Customers](#47-testing-prototypes-with-customers)
 5. [Individual Agent Commands](#5-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
@@ -440,26 +439,24 @@ Supporting materials (optional):
 - ✅ "Reason required for audit compliance"
 - ❌ "Use a dropdown for reasons"
 
-### 4.4 Start Claude Code
+### 4.4 Start The Orchestrator
 
-Start Claude Code
+Start Claude Code and invoke the Project Orchestration Agent:
 
 ```powershell
 cd your-project-folder-name
 claude --model claude-4-5-opus
 ```
 
-### 4.5 Invoke The Project Orchestration Agent
-
-Once Claude Code is running, invoke the Project Orchestration Agent using the slash command:
+Once Claude Code is running, invoke the orchestrator:
 
 ```
 /start
 ```
 
-The orchestrator will guide you through the project setup workflow. This begins with the framework agents reading your materials to guide conversational Q&A sessions. 
+The orchestrator will guide you through the project setup workflow, beginning with framework agents reading your materials to guide conversational Q&A sessions.
 
-### 4.6 Identify Prototypes To Build
+### 4.5 Identify Prototypes To Build
 
 After Phase 1 is complete (business requirements, design tokens, and project setup), decompose your system into smaller prototypes through modularization. Rather than building one massive prototype of your entire system, you create **many small, focused prototypes** - each representing a distinct feature or workflow.
 
@@ -509,7 +506,7 @@ The orchestrator will guide you through the prototype workflow.
 
 ---
 
-### 4.7 Debugging Prototypes
+### 4.6 Debugging Prototypes
 
 When testing prototypes, you may encounter bugs or unexpected behavior. This section provides a quick reference for reporting issues to Claude Code effectively.
 
@@ -576,7 +573,7 @@ If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex
 
 ---
 
-### 4.8 Testing Prototypes With Customers
+### 4.7 Testing Prototypes With Customers
 
 Prototype testing validates design decisions with real users before committing to full development. The framework generates `user-verification-tasks.md` for each prototype—use this as your test script.
 
@@ -608,7 +605,7 @@ Prototypes are "proof of understanding." Testing confirms:
 **Capture Feedback:**
 - Document patterns that affect multiple users (not one-offs)
 - Prioritize: Blockers (must fix) → High impact (should fix) → Nice-to-haves
-- Use the debugging format from section 4.7 to report issues
+- Use the debugging format from section 4.6 to report issues
 
 #### Taking Action
 
