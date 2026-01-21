@@ -7,7 +7,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 2. [Framework Purpose](#2-framework-purpose)
 3. [Workflow](#3-workflow)
 4. [Using The Framework](#4-using-the-framework)
-   1. [Collecting Customer Requirements](#41-collecting-customer-requirements)
+   1. [Collect Customer Requirements](#41-collect-customer-requirements)
    2. [Prepare The Project](#42-prepare-the-project)
    3. [Define Input Documents](#43-define-input-documents)
    4. [Start Claude Code](#44-start-claude-code)
@@ -222,7 +222,7 @@ Start: Continue with orchestrator or /research-prototype
 
 ## 4. Using The Framework
 
-### 4.1 Collecting Customer Requirements
+### 4.1 Collect Customer Requirements
 
 Before using the framework, you need to gather requirements from your stakeholders and customers. The quality of your input directly impacts the quality of your prototypes. This section guides you through the requirements collection effort.
 
