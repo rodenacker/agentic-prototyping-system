@@ -321,28 +321,6 @@ All levels are equally valid. Choose the approach that fits your context.
 
 ---
 
-#### Output: What the Framework Produces
-
-**Phase 1 - Business Requirements Agent produces:**
-- `business-requirements.md` - Structured project-level requirements document
-- Presented for your approval before proceeding
-
-**Phase 2 - Prototype Requirements Agent produces:**
-- `prototype-requirements.md` - Structured prototype-specific requirements
-- Presented for your approval before design
-
-**Phase 2 - Design Agent produces:**
-- `design-brief.md` - Design decisions, flows, views, and controls
-- `user-verification-tasks.md` - Testing checklist for validating the prototype
-- Both presented for your approval before implementation
-
-**Phase 2 - Development Agent produces:**
-- Working prototype (clickable React application)
-- Landing page updated with link to new prototype
-- Prompted for your testing and approval
-
----
-
 #### How Framework Agents Use Your Information
 
 **If you provide information:**
