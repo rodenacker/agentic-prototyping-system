@@ -440,28 +440,6 @@ Supporting materials (optional):
 - ✅ "Reason required for audit compliance"
 - ❌ "Use a dropdown for reasons"
 
-#### What Happens Next
-
-Once you've documented your requirements in `docs/project-docs/`:
-
-**Phase 1 (Project Foundation):**
-1. Start Claude Code (section 4.4)
-2. Run `/start` (section 4.5)
-3. Business Requirements Agent processes project materials
-4. Style Tokens Agent extracts design tokens
-5. Setup Agent initializes React application
-
-**Phase 2 (Prototype Cycle - per prototype):**
-1. Identify prototype to build (section 4.6)
-2. Create prototype folder in `docs/project-docs/prototype-[name]/`
-3. Add prototype brief and materials (optional)
-4. Run `/start` to continue
-5. Requirements Research Agent processes brief
-6. Design Agent creates design documents
-7. Development Agent builds prototype
-
-Framework agents read your materials to guide conversational Q&A sessions.
-
 ### 4.4 Start Claude Code
 
 Start Claude Code
@@ -479,7 +457,7 @@ Once Claude Code is running, invoke the Project Orchestration Agent using the sl
 /start
 ```
 
-The orchestrator will guide you through the project setup workflow.
+The orchestrator will guide you through the project setup workflow. This begins with the framework agents reading your materials to guide conversational Q&A sessions. 
 
 ### 4.6 Identify Prototypes To Build
 
