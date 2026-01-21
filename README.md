@@ -613,6 +613,8 @@ Prototype testing validates design decisions with real users before committing t
 #### Why Test
 
 Prototypes are "proof of understanding." Testing confirms:
+- The business problem was understood correctly
+- The proposed solution meets business goals
 - Users can complete core tasks successfully
 - Design assumptions hold up in practice
 - Issues are caught early, before expensive rework
