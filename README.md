@@ -621,8 +621,8 @@ Prototypes are "proof of understanding." Testing confirms:
 
 #### Who to Test With
 
-- **Primary**: Actual end-users (3-5 users per persona typically finds 85% of issues)
-- **Secondary**: Subject matter experts and stakeholders for business validation
+- Subject matter experts and stakeholders for business validation
+- Actual end-users for usability (3-5 users per persona typically finds 85% of issues)
 
 #### Key Testing Tasks
 
