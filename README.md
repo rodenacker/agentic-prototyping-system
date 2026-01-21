@@ -8,7 +8,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 3. [Workflow](#3-workflow)
 4. [Using The Framework](#4-using-the-framework)
    1. [Collecting Customer Requirements](#41-collecting-customer-requirements)
-   2. [Preparing The Project](#42-preparing-the-project)
+   2. [Prepare The Project](#42-prepare-the-project)
    3. [Define Input Documents](#43-define-input-documents)
    4. [Start Claude Code](#44-start-claude-code)
    5. [Invoke The Project Orchestration Agent](#45-invoke-the-project-orchestration-agent)
@@ -307,7 +307,7 @@ Once you've collected and documented requirements, you're ready to provide them 
 
 ---
 
-### 4.2 Preparing The Project
+### 4.2 Prepare The Project
 
 Execute the setup script:
 
