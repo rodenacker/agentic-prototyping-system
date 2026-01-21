@@ -12,8 +12,8 @@ A structured, agent-based framework for creating consistent, defensible prototyp
    3. [Define Input Documents](#43-define-input-documents)
    4. [Start The Orchestrator](#44-start-the-orchestrator)
    5. [Identify Prototypes To Build](#45-identify-prototypes-to-build)
-   6. [Debugging Prototypes](#46-debugging-prototypes)
-   7. [Testing Prototypes With Customers](#47-testing-prototypes-with-customers)
+   6. [Prototype Debugging](#46-prototype-debugging)
+   7. [Test Prototypes With Customers](#47-test-prototypes-with-customers)
 5. [Individual Agent Commands](#5-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
@@ -506,7 +506,7 @@ The orchestrator will guide you through the prototype workflow.
 
 ---
 
-### 4.6 Debugging Prototypes
+### 4.6 Prototype Debugging
 
 When testing prototypes, you may encounter bugs or unexpected behavior. This section provides a quick reference for reporting issues to Claude Code effectively.
 
@@ -573,7 +573,7 @@ If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex
 
 ---
 
-### 4.7 Testing Prototypes With Customers
+### 4.7 Test Prototypes With Customers
 
 Prototype testing validates design decisions with real users before committing to full development. The framework generates `user-verification-tasks.md` for each prototype—use this as your test script.
 
