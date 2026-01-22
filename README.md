@@ -27,7 +27,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 2. **Navigate to project and start Claude Code:**
    ```powershell
    cd your-project-folder-name
-   claude --model claude-4-5-opus
+   claude
    ```
 
 3. **Start the orchestrator:**
@@ -478,7 +478,7 @@ Start Claude Code and invoke the Project Orchestration Agent:
 
 ```powershell
 cd your-project-folder-name
-claude --model claude-4-5-opus
+claude
 ```
 
 Once Claude Code is running, invoke the orchestrator:
