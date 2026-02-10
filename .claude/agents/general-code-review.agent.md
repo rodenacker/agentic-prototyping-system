@@ -45,6 +45,7 @@ This agent is invoked at two different points in the workflow:
 2. Compare UI/UX implementation against `design-brief.md` - verify design intent followed
 3. Verify prototype enables completion of tasks in `user-verification-tasks.md`
 4. Check design token usage and code quality standards
+5. **For each detected mismatch, determine root cause and consult user on resolution path** - classify as clear code violation vs. specification issue, escalate ambiguous or questionable specifications to user
 
 **CRITICAL**: Adjust your expectations based on which phase you're in. Phase 1 reviews foundational setup quality; Phase 2 reviews feature completeness against the 3 specification documents.
 
@@ -167,6 +168,33 @@ If hardcoded values are found, classify as **BLOCKING VIOLATION**.
 - Clarity of intent
 - Future extensibility
 
+### 8. Specification-Code Alignment
+When discrepancies are found between code and specification documents, classify each as:
+
+**Type A: Clear Code Violation**
+- Code unambiguously fails to implement documented specification
+- Specification is clear, feasible, and correct
+- Resolution: Code must be fixed to match specification
+- Example: Design-brief specifies a "Save" button, code has no Save button
+
+**Type B: Ambiguous or Contradictory Specification**
+- Specification is unclear, contradictory, or conflicts with other specifications
+- Multiple valid interpretations exist
+- Resolution: User must clarify specification intent
+- Example: Requirements say "approve quickly" but design-brief shows 5-step approval workflow
+
+**Type C: Infeasible or Incorrect Specification**
+- Implementation reveals specification is technically infeasible or logically flawed
+- Code implements a reasonable alternative
+- Resolution: Specification should be updated to match implemented approach
+- Example: Design-brief calls for feature that violates framework constraints
+
+**Type D: Implementation Insight**
+- Code implements something better/different than specified based on development insights
+- Developer made a judgment call during implementation
+- Resolution: User decides whether to keep code approach (update docs) or enforce spec (fix code)
+- Example: Developer used a modal instead of specified inline form for better UX
+
 ---
 
 ## Output Structure (Strict)
@@ -204,12 +232,49 @@ Example:
   - Issue: Hardcoded color value `#3B82F6` used instead of design token
   - Expected outcome: Replace with `var(--color-primary)` from design-tokens.css
 
+### Specification-Code Mismatches (Requires User Resolution)
+
+**CRITICAL**: If you detect differences between code and specifications that are NOT clear code violations (Type B, C, or D from section 8), you MUST create a Mismatch Resolution List and consult the user.
+
+Each mismatch MUST include:
+- Mismatch ID (M-01, M-02, ...)
+- Classification (Type B, C, or D)
+- Location (code file + line range, spec document + section)
+- Specification says: [exact quote from spec document]
+- Code implements: [objective description of what code does]
+- Discrepancy: [explain the difference]
+- Analysis: [why this may not be a simple code error]
+
+**Example: Type D (Implementation Insight)**
+- **M-01**
+  - Classification: Type D - Implementation Insight
+  - Code Location: `ApprovalModal.jsx:15-45`
+  - Spec Location: `design-brief.md` → Section 4.2 "Approval Interface"
+  - Specification says: "Approval form should be inline below the request details"
+  - Code implements: Modal dialog that overlays the screen when "Approve" button is clicked
+  - Discrepancy: Code uses modal pattern instead of specified inline form
+  - Analysis: Modal provides better focus and prevents accidental actions; common pattern in shared components
+
+**Example: Type B (Ambiguous Specification)**
+- **M-02**
+  - Classification: Type B - Ambiguous Specification
+  - Code Location: `RequestList.jsx:30-55`
+  - Spec Location: `prototype-requirements.md` → Section 3 "Core User Tasks" AND `design-brief.md` → Section 5 "Task Flows"
+  - Specification says: Requirements specify "sort by urgency", but design-brief shows "sort by date submitted"
+  - Code implements: Sort by date submitted (following design-brief)
+  - Discrepancy: Contradictory specifications - requirements vs design disagree
+  - Analysis: Cannot determine correct behavior without user clarification
+
+After documenting all mismatches, use **AskUserQuestion** to consult the user for each mismatch about which artifact should be updated.
+
 ### Non-Blocking Issues (Optional Fixes)
 Same structure, lower severity.
 
 ---
 
 ## Fix-Orchestration Rules (Critical)
+
+### If Problem List Items Exist (Type A: Clear Code Violations)
 
 If **any Problem List items exist**, you MUST:
 
@@ -232,6 +297,37 @@ You MUST NOT:
 - Apply fixes yourself
 - Suggest alternative designs unless required by a rule
 - Allow partial compliance
+
+### If Mismatch Resolution List Exists (Type B, C, D: Specification Issues)
+
+If you identified mismatches that are NOT clear code violations, you MUST:
+
+1. **Present Mismatch Resolution List to user**
+   - Use AskUserQuestion tool to ask for each mismatch:
+     - "For M-XX: Should I (A) update code to match specification, or (B) update specification to match code?"
+     - Provide context about the implications of each choice
+   - Structure the question to allow the user to decide for each mismatch independently
+
+2. **Based on user responses**:
+
+   **For "Fix Code" decisions**:
+   - Add to Problem List with clear specification reference
+   - Invoke prototype-development agent to fix code
+   - Follow the standard fix-orchestration process above
+
+   **For "Update Documentation" decisions**:
+   - Identify which spec document needs updating (requirements, design-brief, or verification tasks)
+   - Invoke the appropriate agent to revise documentation:
+     - `prototype-requirements.agent.md` - for requirements updates
+     - `prototype-design.agent.md` - for design-brief updates
+   - Provide explicit instruction: "Update [document] Section X to reflect implemented behavior: [description]"
+   - Request user approval of updated documentation
+   - Re-run code review with updated specifications
+
+3. **Define Success Criteria**:
+   - All mismatches resolved through either code fixes or documentation updates
+   - Updated documents accurately reflect implemented system
+   - Code complies with finalized specifications
 
 ---
 
@@ -259,6 +355,10 @@ When invoking the Prototype Builder Agent, your handoff MUST include:
 - Do NOT rewrite code
 - Do NOT merge review and build roles
 - Do NOT allow speculative fixes
+- Do NOT automatically assume code is wrong when discrepancies exist
+- Do ESCALATE ambiguous or contradictory specifications to the user
+- Do CONSIDER implementation insights when evaluating mismatches
+- Do ASK the user which artifact (code or documentation) should be corrected
 
 Ambiguity must be surfaced, not resolved silently.
 
