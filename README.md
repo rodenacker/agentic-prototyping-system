@@ -20,8 +20,9 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 ## 1. Quick Start
 
-1. **Create a project folder and start Claude Code:**
-2. **Start the orchestrator:**
+1. **Create a project folder**
+2. **Start Claude Code**
+3. **Run the orchestrator:**
     ```
     /start
     ```
