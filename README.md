@@ -23,9 +23,9 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 1. **Select the 'Use this template' button**
 
 ```text
-A. Click the green Use this template button, located above the file list.
+A. Click the green 'Use this template' button, located above the file list.
 B. Select Create a new repository from the dropdown menu.
-C. Choose the Owner for the new repository from the dropdown menu (your personal account or an organization you belong to).
+C. Choose the Owner for the new repository from the dropdown menu.
 D. Type a name for your new repository and add an optional description
 ```
 
