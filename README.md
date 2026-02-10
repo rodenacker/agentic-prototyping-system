@@ -22,11 +22,9 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 1. **Create a repo from the template**
 
-```text
-A. Click the green 'Use this template' button, located above the file list.
-B. Select Create a new repository from the dropdown menu.
-C. Choose the Owner for the new repository from the dropdown menu.
-D. Type a name for your new repository and add an optional description
+```
+A. Click the green 'Use this template' button.
+B. Create a new repository from the template.
 ```
 
 2. **Clone the repository to your local drive**
