@@ -3,43 +3,34 @@
 A structured, agent-based framework for creating consistent, defensible prototypes through coordinated AI workflows.
 
 ## Table of Contents
+
 1. [Quick Start](#1-quick-start)
 2. [Framework Purpose](#2-framework-purpose)
 3. [Workflow](#3-workflow)
 4. [Using The Framework](#4-using-the-framework)
-   1. [Collect Customer Requirements](#41-collect-customer-requirements)
-   2. [Prepare The Project](#42-prepare-the-project)
-   3. [Define Input Documents](#43-define-input-documents)
-   4. [Start The Orchestrator](#44-start-the-orchestrator)
-   5. [Identify Prototypes To Build](#45-identify-prototypes-to-build)
-   6. [Prototype Debugging](#46-prototype-debugging)
-   7. [Test Prototypes With Customers](#47-test-prototypes-with-customers)
+    1. [Collect Customer Requirements](#41-collect-customer-requirements)
+    2. [Prepare The Project](#42-prepare-the-project)
+    3. [Define Input Documents](#43-define-input-documents)
+    4. [Start The Orchestrator](#44-start-the-orchestrator)
+    5. [Identify Prototypes To Build](#45-identify-prototypes-to-build)
+    6. [Prototype Debugging](#46-prototype-debugging)
+    7. [Test Prototypes With Customers](#47-test-prototypes-with-customers)
 5. [Individual Agent Commands](#5-individual-agent-commands)
 6. [Requirements](#6-requirements)
 
 ## 1. Quick Start
 
-1. **Run setup script:**
-   ```powershell
-   .\setup-proto.ps1
-   ```
-
-2. **Navigate to project and start Claude Code:**
-   ```powershell
-   cd your-project-folder-name
-   claude
-   ```
-
-3. **Start the orchestrator:**
-   ```
-   /start
-   ```
+1. **Create a project folder and start Claude Code:**
+2. **Start the orchestrator:**
+    ```
+    /start
+    ```
 
 The orchestrator will guide you through Phase 1 (Project Foundation) and then help you create prototypes through Phase 2 cycles.
 
 ## 2. Framework Purpose
 
-AI-augmented prototyping transforms the design process from slow, static documentation into a tangible, visual "proof of understanding." When rapid generation is combined with deep domain expertise it can demonstrate to the customer how their business problem will be solved. 
+AI-augmented prototyping transforms the design process from slow, static documentation into a tangible, visual "proof of understanding." When rapid generation is combined with deep domain expertise it can demonstrate to the customer how their business problem will be solved.
 
 AI allows experts to generate high-fidelity, tactile realities in a fraction of the time, serving as a visual contract that aligns stakeholder expectations with technical feasibility. By validating complex logic early, organisations also significantly reduce developmental rework and replace uncertainty with confidence.
 
@@ -57,16 +48,16 @@ The framework implements prototypes in a **two-phase approach**:
 #### High-Level Overview
 
 1. **Phase 1: Project Foundation** (run once)
-   - Gather business requirements
-   - Extract design tokens from your brand
-   - Set up the React application and landing page
-   - Code review foundation code (scaffolding, landing page)
-   - Verify project structure compliance
+    - Gather business requirements
+    - Extract design tokens from your brand
+    - Set up the React application and landing page
+    - Code review foundation code (scaffolding, landing page)
+    - Verify project structure compliance
 
 2. **Phase 2: Prototype Cycle** (repeat for each prototype)
-   - Requirements Research → Design Intent → Implement → Code review → Validate
-   - Verify project structure compliance
-   - Each cycle produces a clickable prototype linked from the landing page
+    - Requirements Research → Design Intent → Implement → Code review → Validate
+    - Verify project structure compliance
+    - Each cycle produces a clickable prototype linked from the landing page
 
 #### Detailed Workflow Visualization
 
@@ -206,11 +197,13 @@ Start: Continue with orchestrator or /research-prototype
 ```
 
 **Legend:**
+
 - ✋ = User approval gate (workflow pauses for your decision)
 - 👤 = Manual user action required
 - ↓ = Automatic progression to next step
 
 **Key Points:**
+
 - Phase 1 runs once, Phase 2 repeats for each prototype
 - Each approval gate requires explicit user confirmation
 - Cleanup agents verify structure compliance at end of each phase
@@ -248,7 +241,7 @@ For each prototype you want to build, provide:
 
 - **Prototype scope**: What specific feature or workflow this prototype covers
 - **Core user tasks**: 3-5 specific actions users must complete
-  - Example: "Review invoice details, check against PO, approve or reject with reason"
+    - Example: "Review invoice details, check against PO, approve or reject with reason"
 - **Business value**: Why this prototype matters and what it validates
 - **Constraints**: Technical, design, or business constraints specific to this prototype
 - **Uncertainties**: Questions this prototype should help answer
@@ -260,22 +253,27 @@ For each prototype you want to build, provide:
 #### Information Quality: What Makes Good Input
 
 **Focus on outcomes, not solutions:**
+
 - ✅ "Users need to review and approve requests quickly on mobile devices"
 - ❌ "Create a table with green approve and red reject buttons"
 
 **Use concrete examples:**
+
 - ✅ "When amount exceeds threshold by 10%, highlight both values"
 - ❌ "Handle discrepancies"
 
 **Flag uncertainties explicitly:**
+
 - ✅ "Not sure if users need side-by-side comparison - need to test"
 - ❌ Pretending certainty when uncertain
 
 **Provide context, not implementation:**
+
 - ✅ "Reason required for audit compliance"
 - ❌ "Use a dropdown for reasons"
 
 **Be specific about tasks:**
+
 - ✅ "Review invoice details, check against PO, approve or reject with reason"
 - ❌ "Process invoices"
 
@@ -286,12 +284,14 @@ For each prototype you want to build, provide:
 You may optionally provide supporting materials to supplement your information:
 
 **For project-level:**
+
 - Strategy documents or market research
 - Meeting notes or workshop outputs
 - Existing process documentation
 - User research findings
 
 **For prototype-level:**
+
 - Wireframes or mockups (visual references)
 - Data models or examples (JSON, CSV, tables)
 - Process diagrams or workflow documentation
@@ -306,14 +306,17 @@ Supporting materials help framework agents understand context but are not requir
 The framework adapts to different levels of information completeness:
 
 **Comprehensive**: Detailed documentation covering most required information
+
 - Framework agents read materials, ask minimal clarifying questions
 - Faster progression through phases
 
 **Partial**: Some documentation with gaps
+
 - Framework agents read what you provide, fill gaps through Q&A
 - Balanced between preparation and discovery
 
 **Minimal**: High-level goals with limited details
+
 - Framework agents guide you through comprehensive Q&A
 - Discovery-driven approach
 
@@ -324,12 +327,14 @@ All levels are equally valid. Choose the approach that fits your context.
 #### How Framework Agents Use Your Information
 
 **If you provide information:**
+
 - Framework agents read what you provide
 - Agents ask clarifying questions to fill gaps or resolve ambiguities
 - Agents structure your information into standardized documents
 - You approve documents before proceeding to next phase
 
 **If you provide no information:**
+
 - Framework agents guide you through conversational Q&A
 - Agents capture your responses
 - Agents structure responses into standardized documents
@@ -348,6 +353,7 @@ Execute the setup script:
 ```
 
 Or perform these steps manually:
+
 - Create the project folder
 - Clone the `agent-prototyping-system` repository into the folder
 - Create a `prototypes` folder in the project root
@@ -373,11 +379,13 @@ your-project-folder/
 #### Project-Level Inputs (Phase 1 - Once Per Project)
 
 **Required:**
+
 - **Customer website URL** - Provide when the Business Requirements Agent asks. The framework extracts brand styling and design tokens.
 
 **Optional but recommended:**
 
 Create a project brief in `docs/project-docs/` containing:
+
 - Business problem and objectives
 - Target user personas
 - Success metrics (business outcomes)
@@ -385,16 +393,19 @@ Create a project brief in `docs/project-docs/` containing:
 - Assumptions and dependencies
 
 Supporting materials (optional):
+
 - Workshop notes, meeting summaries
 - Strategy documents, market research
 
 **What the framework does:**
+
 - Business Requirements Agent reads your materials
 - Conducts conversational Q&A for clarification
 - Creates `docs/project-docs/business-requirements.md`
 - You approve before proceeding
 
 **If you don't provide materials:**
+
 - Agent guides you through comprehensive Q&A
 - Agent captures and structures your responses
 
@@ -415,33 +426,41 @@ docs/project-docs/prototype-[prototype-name]/
 **Recommended: Create a prototype brief (`brief.md`)**
 
 Structure:
+
 ```markdown
 # Prototype: [Descriptive Name]
 
 ## Purpose
+
 [1-2 sentences: What does this prototype enable users to do?]
 
 ## Core User Tasks
+
 1. [Task 1 - specific, observable action]
 2. [Task 2 - specific, observable action]
 3. [Task 3 - specific, observable action]
 
 ## Business Value
+
 [Why does this prototype matter? What problem does it solve?]
 
 ## Known Constraints
+
 - [Technical, regulatory, or business constraints]
 
 ## Uncertainties to Explore
+
 - [Questions the prototype should help validate]
 ```
 
 Supporting materials (optional):
+
 - Wireframes or mockups (PNG, JPG, PDF)
 - Data models (JSON, CSV, markdown tables)
 - User research findings, workflow diagrams
 
 **What the framework does:**
+
 - Requirements Research Agent reads your brief
 - Conducts Q&A to clarify requirements
 - Creates `prototype-requirements.md`
@@ -449,6 +468,7 @@ Supporting materials (optional):
 - You approve before implementation
 
 **If you don't provide a brief:**
+
 - Agent guides you through Q&A
 - Agent captures and structures your responses
 
@@ -457,18 +477,22 @@ Supporting materials (optional):
 **Use plain markdown (`.md`) format** - Easy to read, works well with AI agents, version control friendly
 
 **Be descriptive, not prescriptive:**
+
 - ✅ "Users need to review and approve requests quickly on mobile devices"
 - ❌ "Create a table with green approve and red reject buttons"
 
 **Include real examples:**
+
 - ✅ "When amount exceeds threshold by 10%, highlight both values"
 - ❌ "Handle discrepancies"
 
 **Flag uncertainties:**
+
 - ✅ "Not sure if users need side-by-side comparison - need to test"
 - ❌ Pretending certainty when uncertain
 
 **Provide context, not solutions:**
+
 - ✅ "Reason required for audit compliance"
 - ❌ "Use a dropdown for reasons"
 
@@ -498,6 +522,7 @@ After Phase 1 is complete (business requirements, design tokens, and project set
 #### How to Think About Prototypes
 
 Think about your system as a collection of independent features or workflows:
+
 - Individual user tasks or journeys
 - Specific features or capabilities
 - Critical interaction patterns
@@ -509,11 +534,13 @@ Each prototype should be small enough to build, review, and test in a focused se
 #### What Makes a Good Prototype
 
 **Good scope:**
+
 - ✅ "Customer onboarding workflow" - focused, specific tasks
 - ✅ "Profile settings page" - bounded scope
 - ✅ "Dashboard overview" - clear deliverable
 
 **Too broad:**
+
 - ❌ "Customer portal" - encompasses many features
 - ❌ "Complete CRM system" - too complex for one prototype
 
@@ -528,6 +555,7 @@ Once you've identified a prototype to build, create a subfolder in `docs/project
 **Naming convention:** Use kebab-case (e.g., `prototype-customer-onboarding`, `prototype-dashboard-overview`)
 
 Optionally add prototype information to this folder:
+
 - A prototype brief (`brief.md`)
 - Wireframes or mockups
 - Data models or schemas
@@ -535,7 +563,6 @@ Optionally add prototype information to this folder:
 If you don't provide any information, an agent will guide you through a set of questions.
 
 The orchestrator will guide you through the prototype workflow.
-
 
 ---
 
@@ -555,6 +582,7 @@ Actual: [what's happening instead]
 ```
 
 **Example:**
+
 ```
 In @CustomerDashboard.jsx, clicking "Export" does nothing.
 
@@ -595,14 +623,11 @@ You don't need to know how to fix it - just describe what you observe.
 
 #### Using Claude Code Features
 
-**Focus Claude on specific files:**
-Use `@filename` to point Claude to the relevant code. This helps Claude target the issue quickly.
+**Focus Claude on specific files:** Use `@filename` to point Claude to the relevant code. This helps Claude target the issue quickly.
 
-**Reset if Claude gets confused:**
-If Claude seems stuck or suggests unrelated fixes, use `/clear` to reset the conversation and start fresh with a clear bug report.
+**Reset if Claude gets confused:** If Claude seems stuck or suggests unrelated fixes, use `/clear` to reset the conversation and start fresh with a clear bug report.
 
-**For complex issues:**
-If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex - can you investigate the root cause before suggesting a fix?"
+**For complex issues:** If the bug is tricky, ask Claude to analyze more thoroughly: "This seems complex - can you investigate the root cause before suggesting a fix?"
 
 ---
 
@@ -613,6 +638,7 @@ Prototype testing validates design decisions with real users before committing t
 #### Why Test
 
 Prototypes are "proof of understanding." Testing confirms:
+
 - The business problem was understood correctly
 - The proposed solution meets business goals
 - Users can complete core tasks successfully
@@ -627,17 +653,20 @@ Prototypes are "proof of understanding." Testing confirms:
 #### Key Testing Tasks
 
 **Setup:**
+
 - Use realistic scenarios, not UI instructions ("A new request arrived - review and decide" vs. "Click the button")
 - Ask users to think aloud as they work
 - Observe without helping - struggle reveals problems
 
 **What to Watch For:**
+
 - Can users complete tasks without help?
 - Where do they hesitate, backtrack, or look confused?
 - What do they expect vs. what actually happens?
 - Can they recover from mistakes?
 
 **Capture Feedback:**
+
 - Document patterns that affect multiple users (not one-offs)
 - Prioritize: Blockers (must fix) → High impact (should fix) → Nice-to-haves
 - Use the debugging format from section 4.6 to report issues
@@ -645,17 +674,20 @@ Prototypes are "proof of understanding." Testing confirms:
 #### Taking Action
 
 **Fix in priority order:**
+
 1. Blockers first (prevent task completion)
 2. High-impact issues next (significant confusion/errors)
 3. Re-test critical changes with users
 
 **When to iterate vs. rebuild:**
+
 - **Iterate**: Minor tweaks, terminology, flow adjustments
 - **Rebuild**: Fundamental approach isn't working
 
 #### Learn More
 
 Essential resources for effective usability testing:
+
 - [Nielsen Norman Group: Usability Testing 101](https://www.nngroup.com/articles/usability-testing-101/)
 - [Steve Krug: "Rocket Surgery Made Easy"](https://sensible.com/rocket-surgery-made-easy/)
 - [Jakob Nielsen: Why You Only Need to Test with 5 Users](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/)
@@ -667,9 +699,11 @@ Essential resources for effective usability testing:
 You can invoke specific agents directly using their slash commands:
 
 **Primary Command:**
+
 - `/start` - Start the project orchestrator (guides you through entire workflow)
 
 **Phase 1 Commands (Foundation - Run Once):**
+
 - `/project-requirements` - Business requirements gathering
 - `/style-tokens` - Design token extraction
 - `/setup-project` - Application setup
@@ -679,22 +713,23 @@ You can invoke specific agents directly using their slash commands:
 The prototype cycle now uses a **two-agent approach** that separates requirements research from design:
 
 1. **Requirements Research** (First Step):
-   - `/research-prototype` - BA + UX research combining business and user perspectives
-   - Produces: `prototype-requirements.md`
-   - No design decisions made at this stage
-   - After approval, orchestrator automatically invokes design agent
+    - `/research-prototype` - BA + UX research combining business and user perspectives
+    - Produces: `prototype-requirements.md`
+    - No design decisions made at this stage
+    - After approval, orchestrator automatically invokes design agent
 
 2. **Design Intent** (Second Step):
-   - `/design-prototype` - Systems + Interface design based on approved requirements
-   - Produces: `design-brief.md` and `user-verification-tasks.md`
-   - Suggests views, patterns, flows, and controls with numbered options
-   - Requires approved requirements document
+    - `/design-prototype` - Systems + Interface design based on approved requirements
+    - Produces: `design-brief.md` and `user-verification-tasks.md`
+    - Suggests views, patterns, flows, and controls with numbered options
+    - Requires approved requirements document
 
 3. **Implementation & Review**:
-   - `/develop-prototype` - Build prototype based on all 3 documents
-   - `/review-code` - Code review & compliance gate
+    - `/develop-prototype` - Build prototype based on all 3 documents
+    - `/review-code` - Code review & compliance gate
 
 **Utility Commands:**
+
 - `/cleanup-folders` - Verify and enforce project structure compliance
 - `/debug-prototype` - Debug assistant for investigating bugs (auto-invoked when you report issues)
 
