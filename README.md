@@ -20,7 +20,7 @@ A structured, agent-based framework for creating consistent, defensible prototyp
 
 ## 1. Quick Start
 
-1. **Select the 'Use this template' button**
+1. **Create a repo from the template**
 
 ```text
 A. Click the green 'Use this template' button, located above the file list.
@@ -29,7 +29,7 @@ C. Choose the Owner for the new repository from the dropdown menu.
 D. Type a name for your new repository and add an optional description
 ```
 
-2. **Clone your repository to your local drive**
+2. **Clone the repository to your local drive**
 
 3. **Run the orchestrator:**
     ```
